@@ -1,8 +1,13 @@
 .picture {
-  clip-path: circle(140px at center);
-  height:100px !important;
+  clip-path: circle(120px at center);
 }
 
+.underlined {
+  text-decoration: underline;
+}
 
-
-
+.map {
+  width: 100%;
+  height:400px;
+  padding: 10px 0;
+}

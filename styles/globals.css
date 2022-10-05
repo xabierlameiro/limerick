@@ -11,7 +11,6 @@ body {
   display: grid;
   place-items: center;
   background-image: linear-gradient(to right, #8360c3, #2ebf91);
-
 }
 main {
   max-width: 850px;
@@ -28,21 +27,33 @@ a {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 22px;
+  margin:0 0 10px;
+  text-align: center;
+}
+
+p {
+  margin: 4px 0;
+  line-height: 21px;
+}
+
+a {
+  color:hsl(207, 98%, 19%);
+  font-weight: bold;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
-    background: black;
+    background-image: linear-gradient(to right, #141e30, #243b55);
   }
-}
 
-h1 {
-  font-size: 22px;
-  margin:0 0 10px;
-}
-
-p {
-  margin:4px 0;
+  a {
+   
+    color:hsl(207, 100%, 50%);
+  }
 }
