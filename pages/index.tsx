@@ -25,6 +25,11 @@ const Home: NextPage = () => {
        </p>Nos gustaría alquilar un apartamento de una habitación o una habitacion en una vivienda compartida por esta zona si es posible:</p>
        <iframe className={styles.map} src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight={0} marginWidth={0} />
        <p>Si conoces a alguien que busque compañeros de piso, o simplemente eres un arrendador dispuesto a conocernos, no dudes en ponerte en contacto con nosotros.</p>
+       <ul>
+        <li>Escribenos a <a href="mailto:xabier.lameiro@gmail.com">Xabi</a> o <a href="mailto:maria.otero.ces@gmail.com">María</a> </li>
+        <li>Mejor Whastapp ? <a href="https://wa.me/+34603018268/?text=Hi, I saw you on www.couplelookinghomeinlimerick.com">Envíar mensaje</a>
+</li>
+       </ul>
   </main>
 }
 
