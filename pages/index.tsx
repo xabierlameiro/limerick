@@ -20,6 +20,7 @@ const Home: NextPage = () => {
           <Image
               alt="Xabi and María looking home in Limerick city"
               src={pictureRoute}
+              priority
               className={styles.picture}
               layout="fill"
               objectFit="contain"
