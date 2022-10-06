@@ -32,7 +32,7 @@ class MyDocument extends Document {
 					content="/xabiymaria.jpg"
 					/>
 					<meta name="robots" content="all" />
-					<link rel="canonical" href="https://couplelookinghomeinlimerick.com/" />
+					<link rel="canonical" hrefLang="en" href="https://couplelookinghomeinlimerick.com/" />
 				</Head>
 				<body>
 					<Main />
