@@ -3,9 +3,14 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import pictureRoute from '../public/xabiymaria.jpg'
 import { AiOutlineLinkedin ,AiOutlineFacebook} from 'react-icons/ai';
+import Head from 'next/head'
 
 const Home: NextPage = () => {
-  return<> <main>
+  return<>
+        <Head>
+					<title>We are looking for accommodation in Limerick</title>
+				</Head>
+   <main>
     <Image
         src={pictureRoute}
         className={styles.picture}
@@ -24,7 +29,7 @@ const Home: NextPage = () => {
        <p>Somos de Galicia (España) y tenemos 32 y 31 años respectivamente, somos personas tranquilas, nos gustan los animales y no somos fumadores.</p>
        <p>Llegaremos a Irlanda el 23 de Octubre de 2022 y tenemos alojamiento <span className={styles.underlined}>solo para 2 semanas.</span> 
        </p><p>Nos gustaría alquilar un apartamento de una habitación o un espacio en una vivienda compartida por esta zona si es posible:</p>
-       <iframe className={styles.map} src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight={0} marginWidth={0} />
+       <iframe title="This is the map where you can see the preferred zone" className={styles.map} src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight={0} marginWidth={0} />
        <p>Si conoces a alguien que busque compañeros de piso, o simplemente eres un arrendador dispuesto a conocernos, no dudes en ponerte en contacto con nosotros.</p>
        <ul>
         <li>Escribenos un correo a <a href="mailto:xabier.lameiro@gmail.com">Xabi</a> o <a href="mailto:maria.otero.ces@gmail.com">María</a> </li>
@@ -33,8 +38,8 @@ const Home: NextPage = () => {
        </ul>
   </main>
   <footer>
-  <a href="https://www.linkedin.com/in/xlameiro/" target="_blank" rel="noreferrer" className={styles.icon}><AiOutlineLinkedin size="2em"/></a>
-  <a href="https://www.facebook.com/mariajose.oteroces" target="_blank" rel="noreferrer"className={styles.icon}><AiOutlineFacebook size="2em"/></a>
+  <a href="https://www.linkedin.com/in/xlameiro/" target="_blank" rel="noreferrer" className={styles.icon}><AiOutlineLinkedin title="Link to Xabier Linkedin" size="2em"/></a>
+  <a href="https://www.facebook.com/mariajose.oteroces" target="_blank" rel="noreferrer"className={styles.icon}><AiOutlineFacebook title="Link to Maria Facebook" size="2em"/></a>
   </footer>
   </>
 }
