@@ -18,9 +18,7 @@ const Home: NextPage = () => {
         alt="Xabi y María"
         width={380}
         height={380}
-        quality={100}
         objectFit="contain"
-        priority
       />
       <h1>Hola &#128075; somos Xabi y María.</h1>
       <p>Somos una pareja que busca alojamiento en <a href="https://www.google.com/maps/place/Limerick,+Irlanda/@52.6515619,-8.6651593,13z/data=!3m1!4b1!4m5!3m4!1s0x485b5c611f545113:0xa00c7a997317330!8m2!3d52.6638367!4d-8.6267343" target="_blank" rel="noreferrer">Limerick</a>, para una estancía de <span>larga duración</span>.</p>

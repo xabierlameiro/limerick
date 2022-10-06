@@ -20,9 +20,9 @@ class MyDocument extends Document {
 				<link rel="icon" href="/favicon.svg" />
 				<meta
 					name="description"
-					content="We are Xabi and Maria and we are looking for accommodation in Limerick."
+					content="Xabi and Maria and we are looking for accommodation in Limerick."
 					/>
-					<meta property="og:title" content="We are looking for accommodation in Limerick" />
+					<meta property="og:title" content="We are a couple looking for housing in Limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke." />
 					<meta
 					property="og:description"
 					content="We are looking for accommodation in Limerick"
@@ -32,6 +32,7 @@ class MyDocument extends Document {
 					content="/xabiymaria.jpg"
 					/>
 					<meta name="robots" content="all" />
+					<link rel="canonical" href="https://couplelookinghomeinlimerick.com/" />
 				</Head>
 				<body>
 					<Main />
