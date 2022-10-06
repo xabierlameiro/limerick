@@ -22,8 +22,8 @@ const Home: NextPage = () => {
           src={pictureRoute}
           className={styles.picture}
           placeholder="blur"
-          width={380}
-          height={380}
+          width={240}
+          height={240}
           objectFit="contain"
         />
       </header>

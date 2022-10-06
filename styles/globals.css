@@ -38,14 +38,7 @@ h1 {
 h2 {
   font-size: 18px;
 }
-@media only screen and (max-width: 600px) {
-  h1 {
-    text-align: center;
-  }
-  h2 {
-    font-size: 16px;
-  }
-}
+
 
 p {
   margin: 4px 0;
@@ -61,6 +54,7 @@ a {
   html {
     color-scheme: dark;
   }
+ 
   body {
     color: white;
     background-image: linear-gradient(to right, #141e30, #243b55);
@@ -76,10 +70,27 @@ ul li {
   padding: 0 0 10px 0;
 }
 
+header {
+  padding:60px  0;
+}
+
 footer {
   display: grid;
   place-content: center;
   grid-auto-flow: column;
   padding: 0 0 20px 0;
   grid-gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  header {
+    padding: 20px  0;
+  }
+
 }
