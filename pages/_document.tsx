@@ -20,7 +20,7 @@ class MyDocument extends Document {
 				<link rel="icon" href="/favicon.svg" />
 				<meta
 					name="description"
-					content="Xabi and Maria and we are looking for accommodation in Limerick."
+					content="Xabi and Maria and we are looking for accommodation in Limerick city, if you are interested please contact us."
 					/>
 					<meta property="og:title" content="We are a couple looking for housing in Limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke." />
 					<meta
