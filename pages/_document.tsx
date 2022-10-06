@@ -17,6 +17,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
+				<link rel="icon" href="/favicon.svg" />
 				<meta
 					name="description"
 					content="We are Xabi and Maria and we are looking for accommodation in Limerick."
