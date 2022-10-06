@@ -31,6 +31,7 @@ class MyDocument extends Document {
 					property="og:image"
 					content="/xabiymaria.jpg"
 					/>
+					<meta name="robots" content="all" />
 				</Head>
 				<body>
 					<Main />
