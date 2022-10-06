@@ -18,7 +18,6 @@ class MyDocument extends Document {
 			<Html lang="en">
 				<Head>
 				<link rel="icon" href="/favicon.svg" />
-				<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"/>
 				<meta
 					name="description"
 					content="Xabi and Maria and we are looking for accommodation in Limerick city, if you are interested please contact us."
