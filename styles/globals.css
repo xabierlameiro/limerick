@@ -71,7 +71,8 @@ ul li {
 }
 
 header {
-  padding:60px  0;
+  position: relative;
+  height: 380px;
 }
 
 footer {
@@ -90,7 +91,7 @@ footer {
     font-size: 16px;
   }
   header {
-    padding: 20px  0;
+    height: 300px;
   }
 
 }

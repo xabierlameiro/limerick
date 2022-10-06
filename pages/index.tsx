@@ -15,17 +15,17 @@ const Home: NextPage = () => {
         <Head>
 					<title>We are looking for accommodation in Limerick</title>
 				</Head>
-  
-    <header>
-      <Image
-          alt="Xabi and María looking home in Limerick city"
-          src={pictureRoute}
-          className={styles.picture}
-          placeholder="blur"
-          width={240}
-          height={240}
-          objectFit="contain"
-        />
+      <header>
+        <section className={styles.imageWrapper}>
+          <Image
+              alt="Xabi and María looking home in Limerick city"
+              src={pictureRoute}
+              className={styles.picture}
+              layout="fill"
+              objectFit="contain"
+              placeholder="blur"
+            />
+            </section>
       </header>
       <main>
       <h1>Hello &#128075; we are Xabi and María.</h1>

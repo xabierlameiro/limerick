@@ -1,5 +1,14 @@
-.picture {
-  clip-path: circle(120px at center);
+.imageWrapper {
+  margin: 20px 0;
+    position: inherit;
+    clip-path: circle(170px at center);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .imageWrapper {
+      clip-path: circle(130px at center);
+  }
 }
 
 .underlined {
