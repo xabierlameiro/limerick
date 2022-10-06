@@ -31,13 +31,13 @@ const Home: NextPage = () => {
         <p>We are from Galicia (Spain) and we are 32 and 31 years old respectively, we are quiet people, we like animals and we are not smokers.</p>
         <p>We will arrive in Ireland on 23 October 2022 and we have accommodation. <span className={styles.underlined}>only for 2 weeks.</span> 
         </p><p>We would like to rent a one-bedroom flat or a shared living space in this area if possible:</p>
-        <iframe title="This is the map where you can see the preferred zone in Limerick city" className={styles.map} src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight={0} marginWidth={0} />
+        <iframe title="This is the map where you can see the preferred zone in Limerick city" className={styles.map} src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed" />
         <p>If you know someone who is looking for flatmates, or you are simply a landlord willing to get to know us, please do not hesitate to contact us.</p>
        </article>
        <aside>
        <ul>
           <li>Email us at <a href="mailto:xabier.lameiro@gmail.com">Xabi</a> o <a href="mailto:maria.otero.ces@gmail.com">María</a> </li>
-          <li>Better Whastapp ? <a href="https://wa.me/+34603018268/?text=Hi, I saw you on www.couplelookinghomeinlimerick.com">Send message</a></li>
+          <li>Better Whastapp ? <a href="https://wa.me/+34603018268/?text=Hi,%20I%20saw%20you%20on%20www.couplelookinghomeinlimerick.com">Send message</a></li>
        </ul>
        </aside>
   </main>
