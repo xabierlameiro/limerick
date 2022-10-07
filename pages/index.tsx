@@ -42,8 +42,7 @@ const Home: NextPage = () => {
        </article>
        <aside>
        <ul>
-          <li>Email us at <a onClick={()=>(window as any).gtag('event', 'Mail to', {'event_category' : 'click','event_label' : 'Sending mail to xabier.lameiro@gmail.com'})} href="mailto:xabier.lameiro@gmail.com">Xabi</a> o 
-          <a onClick={()=>(window as any).gtag('event', 'Mail to', {'event_category' : 'click','event_label' : 'Sending mail to maria.otero.ces@gmail.com'})} href="mailto:maria.otero.ces@gmail.com">María</a> </li>
+          <li>Email us at <a onClick={()=>(window as any).gtag('event', 'Mail to', {'event_category' : 'click','event_label' : 'Sending mail to xabier.lameiro@gmail.com'})} href="mailto:xabier.lameiro@gmail.com">Xabi</a> o <a onClick={()=>(window as any).gtag('event', 'Mail to', {'event_category' : 'click','event_label' : 'Sending mail to maria.otero.ces@gmail.com'})} href="mailto:maria.otero.ces@gmail.com">María</a> </li>
           <li>Better Whastapp ? <a onClick={()=>(window as any).gtag('event', 'Whatsapp', {'event_category' : 'click','event_label' : 'Sending whatsapp to Xabier'})} href="https://wa.me/+34603018268/?text=Hi,%20I%20saw%20you%20on%20www.couplelookinghomeinlimerick.com">Send message</a></li>
        </ul>
        </aside>
