@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             </section>
       </header>
       <main>
-      <h1>Hello &#128075; we are Xabi and María.</h1>
+      <h1>Hello &#128075; we are Xabi and María!</h1>
       <article>
         <h2>We are a couple looking for accommodation in <a onClick={()=>(window as any).gtag('event', 'Limerick link', {'event_category' : 'click','event_label' : 'Click on Limerick map link'})} href="https://www.google.com/maps/place/Limerick,+Irlanda/@52.6515619,-8.6651593,13z/data=!3m1!4b1!4m5!3m4!1s0x485b5c611f545113:0xa00c7a997317330!8m2!3d52.6638367!4d-8.6267343" target="_blank" rel="noreferrer">Limerick</a>, for a stay of <span>long duration</span>.</h2>
         <p>Our aim is to get to know Ireland, learn and practice English while continuing with our usual life, working as a programmer in my case and
