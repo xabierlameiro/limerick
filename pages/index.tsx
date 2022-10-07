@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <header>
         <section className={styles.imageWrapper}>
           <Image
-              alt="Xabi and María looking home in Limerick city"
+              alt="Xabi and María looking home in Limerick city, find a rent Limerick"
               src={pictureRoute}
               priority
               className={styles.picture}
