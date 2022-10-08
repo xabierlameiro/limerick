@@ -35,9 +35,13 @@ a {
 
 h1 {
     font-size: 22px;
-    margin: 0 0 10px;
+    margin: 0;
 }
+
 h2 {
+    font-size: 20px;
+}
+h3 {
     font-size: 18px;
 }
 
@@ -88,6 +92,9 @@ footer {
         text-align: center;
     }
     h2 {
+        font-size: 18px;
+    }
+    h3 {
         font-size: 16px;
     }
     header {

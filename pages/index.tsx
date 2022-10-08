@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     return (
         <>
             <Head>
-                <title>We are looking for accommodation in Limerick</title>
+                <title>We are looking for accommodation in Limerick city</title>
             </Head>
             <header>
                 <section className={styles.imageWrapper}>
@@ -34,9 +34,10 @@ const Home: NextPage = () => {
                 </span>
             </header>
             <main>
-                <h1>Hello &#128075; we are Xabi and María!</h1>
+                <h1>We want to rent in Limerick</h1>
                 <article>
-                    <h2>
+                    <h2>Hello &#128075; we are Xabi and María!</h2>
+                    <h3>
                         We are a couple looking for accommodation in{" "}
                         <a
                             onClick={() =>
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
                             Limerick
                         </a>
                         , for a stay of <span>long duration</span>.
-                    </h2>
+                    </h3>
                     <p>
                         Our aim is to get to know Ireland, learn and practice
                         English while continuing with our usual life, working as
