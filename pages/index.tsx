@@ -5,9 +5,10 @@ import pictureRoute from "../public/xabiymaria.jpg";
 import { AiOutlineLinkedin, AiOutlineFacebook } from "react-icons/ai";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import Collapsible from "../components/collapsible/collapsible";
 
 const DynamicMap = dynamic(() =>
-    import("../components/map").then((mod) => mod.Map)
+    import("../components/map/map").then((mod) => mod.Map)
 );
 
 const Home: NextPage = () => {
@@ -130,6 +131,7 @@ const Home: NextPage = () => {
                         </li>
                     </ul>
                 </nav>
+                <Collapsible />
             </main>
             <footer>
                 <a
