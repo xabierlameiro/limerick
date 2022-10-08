@@ -4,7 +4,15 @@ export const Map = () => {
     return (
         <div className={styles.mapContainer}>
             <div className={styles.ribbon}>
-                <span>please share</span>
+                <span>
+                    <a
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcouplelookinghomeinlimerick.com%2F"
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                        please share
+                    </a>
+                </span>
             </div>
             <iframe
                 title="This is the map where you can see the preferred zone in Limerick city"

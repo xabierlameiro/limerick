@@ -28,7 +28,6 @@
 
 .badge {
     background-color: red;
-    color: #fff;
     padding: 4px 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -38,6 +37,10 @@
     bottom: 0;
     margin: auto;
     width: fit-content;
+}
+.badge a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .ribbon {
@@ -78,7 +81,7 @@
     font-weight: bold;
     background-color: #3498db;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #fff;
+
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     text-transform: uppercase;
     text-align: center;
@@ -86,6 +89,9 @@
     top: 30px;
     transform: rotate(45deg);
     z-index: 1;
+}
+.ribbon span a {
+    color: #fff;
 }
 .mapContainer {
     position: relative;

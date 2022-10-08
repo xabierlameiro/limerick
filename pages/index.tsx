@@ -29,7 +29,7 @@ const Home: NextPage = () => {
                     />
                 </section>
                 <span className={styles.badge}>
-                    Looking for tenants in limerick city?
+                    <a href="#contact">Looking for tenants in limerick city?</a>
                 </span>
             </header>
             <main>
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                         do not hesitate to contact us.
                     </p>
                 </article>
-                <nav>
+                <nav id="contact">
                     <ul>
                         <li>
                             Email us at{" "}
