@@ -17,6 +17,7 @@ const Home: NextPage = () => {
         <>
             <Head>
                 <title>We are looking for accommodation in Limerick city</title>
+                <meta name="robots" content="all" />
             </Head>
             <header>
                 <section className={styles.imageWrapper}>

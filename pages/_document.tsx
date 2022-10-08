@@ -45,7 +45,6 @@ class MyDocument extends Document {
                         property="og:url"
                         content=" http://www.example.com/"
                     />
-                    <meta name="robots" content="all" />
                     <link
                         rel="canonical"
                         hrefLang="en"
