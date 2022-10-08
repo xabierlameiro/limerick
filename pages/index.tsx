@@ -29,7 +29,7 @@ const Home: NextPage = () => {
                     />
                 </section>
                 <span className={styles.badge}>
-                    Looking for tenants limerick city?
+                    Looking for tenants in limerick city?
                 </span>
             </header>
             <main>
@@ -75,6 +75,7 @@ const Home: NextPage = () => {
                         We would like to rent a one-bedroom flat or a shared
                         living space in this area if possible:
                     </p>
+
                     <DynamicMap />
                     <p>
                         If you know someone who is looking for flatmates, or you
