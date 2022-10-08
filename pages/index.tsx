@@ -53,7 +53,7 @@ const Home: NextPage = () => {
                         >
                             Limerick
                         </a>
-                        , for a stay of <span>long duration </span>.<Tooltip />
+                        , for a stay of <span>long duration</span>.<Tooltip />
                     </h3>
                     <p>
                         Our aim is to get to know Ireland, learn and practice

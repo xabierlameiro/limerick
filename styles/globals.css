@@ -161,12 +161,12 @@ input[type="checkbox"] {
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
 }
+
 .tooltip .tiptext {
     visibility: hidden;
     width: max-content;
-    background-color: black;
+    background-color: #3eaf0a;
     color: #fff;
     text-align: center;
     border-radius: 3px;
@@ -193,5 +193,5 @@ input[type="checkbox"] {
     margin-top: -5px;
     top: 50%;
     left: 100%;
-    border-color: transparent transparent transparent #2e2e2e;
+    border-color: transparent transparent transparent #3eaf0a;
 }
