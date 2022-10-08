@@ -161,6 +161,7 @@ input[type="checkbox"] {
 .tooltip {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .tooltip .tiptext {
