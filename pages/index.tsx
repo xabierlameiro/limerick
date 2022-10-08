@@ -28,6 +28,9 @@ const Home: NextPage = () => {
                         placeholder="blur"
                     />
                 </section>
+                <span className={styles.badge}>
+                    Looking for tenants limerick city?
+                </span>
             </header>
             <main>
                 <h1>Hello &#128075; we are Xabi and María!</h1>

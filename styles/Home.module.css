@@ -1,29 +1,42 @@
 .imageWrapper {
-  margin: 20px 0;
+    margin: 20px 0;
     position: inherit;
     clip-path: circle(170px at center);
 }
 
-
 @media only screen and (max-width: 600px) {
-  .imageWrapper {
-      clip-path: circle(130px at center);
-  }
+    .imageWrapper {
+        clip-path: circle(130px at center);
+    }
 }
 
 .underlined {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .map {
-  width: 100%;
-  height:400px;
-  padding: 10px 0;
-  opacity: .8;
-  border: none;
+    width: 100%;
+    height: 400px;
+    padding: 10px 0;
+    opacity: 0.8;
+    border: none;
 }
 
 .icon {
-  color: #FFF;
-  opacity: .4;
+    color: #fff;
+    opacity: 0.4;
+}
+
+.badge {
+    background-color: red;
+    color: #fff;
+    padding: 4px 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: fit-content;
 }
