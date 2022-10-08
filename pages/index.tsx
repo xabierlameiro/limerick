@@ -6,6 +6,7 @@ import { AiOutlineLinkedin, AiOutlineFacebook } from "react-icons/ai";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Collapsible from "../components/collapsible/collapsible";
+import Tooltip from "../components/tooltip/tooltip";
 
 const DynamicMap = dynamic(() =>
     import("../components/map/map").then((mod) => mod.Map)
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
                         >
                             Limerick
                         </a>
-                        , for a stay of <span>long duration</span>.
+                        , for a stay of <span>long duration </span>.<Tooltip />
                     </h3>
                     <p>
                         Our aim is to get to know Ireland, learn and practice
