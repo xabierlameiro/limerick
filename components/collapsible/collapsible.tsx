@@ -8,11 +8,18 @@ const Collapsible = () => {
             <div className="collapsible-content">
                 <div className="content-inner">
                     <p>
-                        In Spain we have our own house. But people who know us
-                        can give us references. We want to rent a flat in
-                        Limerick City for ourselves. Work from home and go to
-                        the academy in the afternoons. We have no children and
-                        no pets. We are going to{" "}
+                        It is necessary that the house has{" "}
+                        <strong>internet access</strong> because it is an
+                        indispensable tool to be able to telework as a web
+                        developer.
+                    </p>
+                    <p>
+                        In Spain we have our own house.But people who know us
+                        can give you references. We want to{" "}
+                        <strong>rent</strong> a flat in Limerick City for
+                        ourselves. Work from home and go to the academy in the
+                        afternoons. We have no children and no pets. We are
+                        going to{" "}
                         <a
                             href="https://rightwordinstitute.com/"
                             target="_blank"
@@ -20,9 +27,14 @@ const Collapsible = () => {
                         >
                             Rightword Institute
                         </a>
-                        , you can ask about us and ask for references.
+                        , you can ask about us.
                     </p>
-                    <p></p>
+                    <p>
+                        We are also interested in renting rooms with more
+                        roommates. <strong>Double Room</strong> with bathroom or
+                        shared bathroom in a <strong>appartment</strong> or a
+                        <strong>house</strong>
+                    </p>
                 </div>
             </div>
         </div>
