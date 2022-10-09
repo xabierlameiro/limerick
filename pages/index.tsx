@@ -140,40 +140,45 @@ const Home: NextPage = () => {
                 <Collapsible />
             </main>
             <footer>
-                <a
-                    onClick={() =>
-                        (window as any).gtag("event", "Linkedin", {
-                            event_category: "click",
-                            event_label: "Go to Xabier Linkedin profile",
-                        })
-                    }
-                    href="https://www.linkedin.com/in/xlameiro/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.icon}
-                >
-                    <AiOutlineLinkedin
-                        title="Link to the developer Xabier's Linkedin profile"
-                        size="2em"
-                    />
-                </a>
-                <a
-                    onClick={() =>
-                        (window as any).gtag("event", "Facebook", {
-                            event_category: "click",
-                            event_label: "Go to Maria Facebook profile",
-                        })
-                    }
-                    href="https://www.facebook.com/mariajose.oteroces"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.icon}
-                >
-                    <AiOutlineFacebook
-                        title="Link to Maria Facebook profile"
-                        size="2em"
-                    />
-                </a>
+                <nav className={styles.media}>
+                    <a
+                        onClick={() =>
+                            (window as any).gtag("event", "Linkedin", {
+                                event_category: "click",
+                                event_label: "Go to Xabier Linkedin profile",
+                            })
+                        }
+                        href="https://www.linkedin.com/in/xlameiro/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.icon}
+                    >
+                        <AiOutlineLinkedin
+                            title="Link to the developer Xabier's Linkedin profile"
+                            size="2em"
+                        />
+                    </a>
+                    <a
+                        onClick={() =>
+                            (window as any).gtag("event", "Facebook", {
+                                event_category: "click",
+                                event_label: "Go to Maria Facebook profile",
+                            })
+                        }
+                        href="https://www.facebook.com/mariajose.oteroces"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.icon}
+                    >
+                        <AiOutlineFacebook
+                            title="Link to Maria Facebook profile"
+                            size="2em"
+                        />
+                    </a>
+                </nav>
+                <span className={styles.copyright}>
+                    Copyright © 2022 Xabier Lameiro. All rights reserved.
+                </span>
             </footer>
         </>
     );

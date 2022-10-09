@@ -83,7 +83,6 @@ header {
 footer {
     display: grid;
     place-content: center;
-    grid-auto-flow: column;
     padding: 0 0 20px 0;
     grid-gap: 20px;
 }

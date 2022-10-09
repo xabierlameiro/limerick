@@ -97,3 +97,12 @@
     position: relative;
     margin: 20px 0;
 }
+
+.media {
+    width: fit-content;
+    justify-self: center;
+}
+
+.copyright {
+    opacity: 0.4;
+}
