@@ -81,6 +81,9 @@ const Home: NextPage = () => {
                     </p>
 
                     <DynamicMap />
+
+                    <h4>#limerick #rent #room #ireland</h4>
+
                     <p>
                         If you know someone who is looking for flatmates, or you
                         are simply a landlord willing to get to know us, please
