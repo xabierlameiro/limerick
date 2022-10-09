@@ -43,7 +43,7 @@ class MyDocument extends Document {
                     />
                     <meta
                         property="og:url"
-                        content=" http://www.example.com/"
+                        content=" http://www.couplelookinghomeinlimerick.com/"
                     />
                     <link
                         rel="canonical"
