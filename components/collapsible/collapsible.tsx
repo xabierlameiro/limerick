@@ -24,6 +24,7 @@ const Collapsible = () => {
                             href="https://rightwordinstitute.com/"
                             target="_blank"
                             rel="noreferrer"
+                            title="Go to Limerick Right word Insitute website"
                         >
                             Rightword Institute
                         </a>

@@ -6,6 +6,7 @@ export const Map = () => {
             <div className={styles.ribbon}>
                 <span>
                     <a
+                        title="Share in facebook"
                         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcouplelookinghomeinlimerick.com%2F"
                         rel="noreferrer"
                         target="_blank"

@@ -35,16 +35,19 @@ const Home: NextPage = () => {
                     />
                 </section>
                 <span className={styles.badge}>
-                    <a href="#contact">Looking for tenants in limerick city?</a>
+                    <a title="Go to the contact information" href="#contact">
+                        Looking for tenants in limerick city?
+                    </a>
                 </span>
             </header>
             <main>
-                <h1>We want to rent house in Limerick</h1>
+                <h1>Looking for accommodation, rent in Limerick city center</h1>
                 <article>
                     <h2>Hello &#128075; we are Xabi and María!</h2>
                     <h3>
                         We are a couple looking for accommodation in{" "}
                         <a
+                            title="Link to limerick city center map position"
                             onClick={() =>
                                 (window as any).gtag("event", "Limerick link", {
                                     event_category: "click",
@@ -101,6 +104,7 @@ const Home: NextPage = () => {
                         <li>
                             Email us at{" "}
                             <a
+                                title="Send email for get more information to Xabier"
                                 onClick={() =>
                                     (window as any).gtag("event", "Mail to", {
                                         event_category: "click",
@@ -114,6 +118,7 @@ const Home: NextPage = () => {
                             </a>{" "}
                             o{" "}
                             <a
+                                title="Send email for get more information to Maria"
                                 onClick={() =>
                                     (window as any).gtag("event", "Mail to", {
                                         event_category: "click",
@@ -129,6 +134,7 @@ const Home: NextPage = () => {
                         <li>
                             Better Whastapp ?{" "}
                             <a
+                                title="Making a chat with Xabier"
                                 onClick={() =>
                                     (window as any).gtag("event", "Whatsapp", {
                                         event_category: "click",
@@ -148,6 +154,7 @@ const Home: NextPage = () => {
             <footer>
                 <nav className={styles.media}>
                     <a
+                        title="Linkedin profile"
                         onClick={() =>
                             (window as any).gtag("event", "Linkedin", {
                                 event_category: "click",
@@ -165,6 +172,7 @@ const Home: NextPage = () => {
                         />
                     </a>
                     <a
+                        title="Facebook network"
                         onClick={() =>
                             (window as any).gtag("event", "Facebook", {
                                 event_category: "click",
