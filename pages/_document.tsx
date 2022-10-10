@@ -22,7 +22,7 @@ class MyDocument extends Document {
                     <link rel="icon" href="/favicon.svg" />
                     <meta
                         name="description"
-                        content="Xabi and Maria we are looking for accommodation in Limerick city, if you are interested please contact us."
+                        content="We are a couple looking for housing in Limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
                     />
                     <meta
                         property="og:site_name"
@@ -31,11 +31,11 @@ class MyDocument extends Document {
                     <meta property="og:type" content="article" />
                     <meta
                         property="og:title"
-                        content="We are a couple looking for housing in Limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
+                        content="We are looking for accommodation, rent in Limerick city center"
                     />
                     <meta
                         property="og:description"
-                        content="Xabi and Maria we are looking for accommodation in Limerick city, if you are interested please contact us."
+                        content="We are a couple looking for housing in Limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
                     />
                     <meta
                         property="og:image"

@@ -16,7 +16,10 @@ const Home: NextPage = () => {
     return (
         <>
             <Head>
-                <title>We are looking for accommodation in Limerick city</title>
+                <title>
+                    We are looking for accommodation, rent in Limerick city
+                    center
+                </title>
                 <meta name="robots" content="all" />
             </Head>
             <header>
@@ -36,7 +39,7 @@ const Home: NextPage = () => {
                 </span>
             </header>
             <main>
-                <h1>We want to rent in Limerick</h1>
+                <h1>We want to rent house in Limerick</h1>
                 <article>
                     <h2>Hello &#128075; we are Xabi and María!</h2>
                     <h3>
@@ -82,7 +85,10 @@ const Home: NextPage = () => {
 
                     <DynamicMap />
 
-                    <h4>#limerick #rent #room #ireland</h4>
+                    <h4>
+                        #limerick #houses #flat #apartments #rent #bedroom
+                        #double #room #ireland
+                    </h4>
 
                     <p>
                         If you know someone who is looking for flatmates, or you

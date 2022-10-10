@@ -14,7 +14,7 @@ const Collapsible = () => {
                         developer.
                     </p>
                     <p>
-                        In Spain we have our own house.But people who know us
+                        In Spain we have our own house. But people who know us
                         can give you references. We want to{" "}
                         <strong>rent</strong> a flat in Limerick City for
                         ourselves. Work from home and go to the academy in the

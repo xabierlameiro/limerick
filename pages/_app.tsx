@@ -21,14 +21,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                   `}
             </Script>
             <Script
-                id="Adsense-id"
-                data-ad-client="ca-pub-3537017956623483"
                 async
+                id="Adsense-id"
+                data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_AD_CLIENT}
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
                 strategy="afterInteractive"
                 onError={(e) => {
                     console.error("Script failed to load", e);
                 }}
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
             />
             <Component {...pageProps} />
         </>
