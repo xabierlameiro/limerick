@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                       gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ADDS}');
                   `}
             </Script>
-            <Script
+            {/* <Script
                 async
                 id="Adsense-id"
                 data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_AD_CLIENT}
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 onError={(e) => {
                     console.error("Script failed to load", e);
                 }}
-            />
+            /> */}
             <Component {...pageProps} />
         </>
     );

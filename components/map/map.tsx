@@ -16,7 +16,7 @@ export const Map = () => {
                 </span>
             </div>
             <iframe
-                title="This is the map where you can see the preferred zone in Limerick city"
+                title="This is the map where you can see the preferred zone in Limerick city, heart of limerick."
                 className={styles.map}
                 src="https://maps.google.com/maps?q=52.65945039377984,%20-8.631359605893005&t=&z=13&ie=UTF8&iwloc=&output=embed"
             />

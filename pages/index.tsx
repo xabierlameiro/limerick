@@ -58,7 +58,7 @@ const Home: NextPage = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Limerick
+                            Limerick (County)
                         </a>
                         , for a stay of <span>long duration</span>.<Tooltip />
                     </h3>
@@ -90,13 +90,13 @@ const Home: NextPage = () => {
 
                     <h4>
                         #limerick #houses #flat #apartments #rent #bedroom
-                        #double #room #ireland
+                        #double #room #ireland #rentalonly
                     </h4>
 
                     <p>
-                        If you know someone who is looking for flatmates, or you
-                        are simply a landlord willing to get to know us, please
-                        do not hesitate to contact us.
+                        If you know someone who is looking for housemates,
+                        flatmates, or you are simply a landlord willing to get
+                        to know us, please do not hesitate to contact us.
                     </p>
                 </article>
                 <nav id="contact">

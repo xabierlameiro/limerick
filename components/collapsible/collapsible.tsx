@@ -35,7 +35,14 @@ const Collapsible = () => {
                         roommates. <strong>Double Room</strong> with bathroom or
                         shared bathroom in a <strong>appartment</strong> or a{" "}
                         <strong>house</strong>.
+                        <p>
+                            In question, find houses to rent or bedroom houses
+                            in limerick city centre. Also is possible a
+                            furnished house or not, without share living room or
+                            at some minutes drive to limerick city.
+                        </p>
                     </p>
+                    <p></p>
                 </div>
             </div>
         </div>
