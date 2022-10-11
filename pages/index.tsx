@@ -91,10 +91,10 @@ const Home: NextPage = () => {
 
                     <DynamicMap />
 
-                    <h4>
-                        #limerick #houses #flat #apartments #rent #bedroom
-                        #double #room #ireland #rental only
-                    </h4>
+                    <h5>
+                        #houses #flat #apartments #rent #bedroom #double #room
+                        #ireland #rental only
+                    </h5>
 
                     <p>
                         If you know someone who is looking for housemates,

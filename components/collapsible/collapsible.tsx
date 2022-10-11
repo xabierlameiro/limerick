@@ -1,6 +1,6 @@
 const Collapsible = () => {
     return (
-        <div className="wrap-collabsible">
+        <section className="wrap-collabsible">
             <input id="collapsible" className="toggle" type="checkbox" />
             <label htmlFor="collapsible" className="lbl-toggle">
                 More Information
@@ -42,9 +42,16 @@ const Collapsible = () => {
                         possible a furnished house or not, without share living
                         room or at some minutes drive to share limerick city.
                     </p>
+                    <p>Group house</p>
+                    <p>
+                        Seek rooms to rent limerick city is hard, in all
+                        Ireland. But I looking roommates or flatmates. If you
+                        have a room available and want a roommate. Please
+                        contact us, we are house hunt.
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
