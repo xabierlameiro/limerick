@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <>
             <Head>
                 <title>
-                    We are looking for accommodation, rent in Limerick city
-                    center
+                    We are looking for accommodation, rent in Limerick city or
+                    share
                 </title>
                 <meta name="robots" content="all" />
             </Head>
@@ -41,7 +41,10 @@ const Home: NextPage = () => {
                 </span>
             </header>
             <main>
-                <h1>Looking for accommodation, rent in Limerick city center</h1>
+                <h1>
+                    Looking for accommodation, rent, share in Limerick city
+                    center
+                </h1>
                 <article>
                     <h2>Hello &#128075; we are Xabi and María!</h2>
                     <h3>
@@ -90,7 +93,7 @@ const Home: NextPage = () => {
 
                     <h4>
                         #limerick #houses #flat #apartments #rent #bedroom
-                        #double #room #ireland #rentalonly
+                        #double #room #ireland #rental only
                     </h4>
 
                     <p>
