@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <>
             <Head>
                 <title>
-                    We are looking for accommodation, rent in Limerick city or
-                    share
+                    We are looking for flatmates, roommates, rent in Limerick
+                    city or share
                 </title>
                 <meta name="robots" content="all" />
             </Head>

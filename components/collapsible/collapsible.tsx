@@ -16,10 +16,9 @@ const Collapsible = () => {
                     <p>
                         In Spain we have our own house. But people who know us
                         can give you references. We want to{" "}
-                        <strong>rent</strong> a flat in Limerick City for
-                        ourselves. Work from home and go to the academy in the
-                        afternoons. We have no children and no pets. We are
-                        going to{" "}
+                        <strong>rent</strong> a flat for ourselves. Work from
+                        home and go to the academy in the afternoons. We have no
+                        children and no pets. We are going to{" "}
                         <a
                             href="https://rightwordinstitute.com/"
                             target="_blank"
@@ -38,16 +37,16 @@ const Collapsible = () => {
                     </p>
                     <p>
                         In question, find houses to rent or bedroom houses in
-                        limerick city centre or heart of limerick. Also is
-                        possible a furnished house or not, without share living
-                        room or at some minutes drive to share limerick city.
+                        heart of limerick. Also is possible a furnished house or
+                        not, without share living room or at some minutes drive
+                        to share.
                     </p>
                     <p>Group house</p>
                     <p>
-                        Seek rooms to rent limerick city is hard, in all
-                        Ireland. But I looking roommates or flatmates. If you
-                        have a room available and want a roommate. Please
-                        contact us, we are house hunt.
+                        Seek rooms to rent in this city is hard, in all Ireland.
+                        But I looking roommates or flatmates. If you have a room
+                        available and want a roommate. Please contact us, we are
+                        house hunt.
                     </p>
                 </div>
             </div>
