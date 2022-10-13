@@ -32,7 +32,7 @@ const Collapsible = () => {
                     <p>
                         We are also interested in renting rooms with more
                         roommates. <strong>Double Room</strong> with bathroom or
-                        shared bathroom in a <strong>appartment</strong> or a{" "}
+                        shared bathroom in a <strong>apartment</strong> or a{" "}
                         <strong>house</strong>.
                     </p>
                     <p>

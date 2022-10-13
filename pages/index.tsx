@@ -43,14 +43,14 @@ const Home: NextPage = () => {
             <main>
                 <h1>
                     Looking for accommodation, rent, share in Limerick city
-                    center
+                    centre
                 </h1>
                 <article>
                     <h2>Hello &#128075; we are Xabi and María!</h2>
                     <h3>
                         We are a couple looking for accommodation in{" "}
                         <a
-                            title="Link to limerick city center map position"
+                            title="Link to limerick city centre map position"
                             onClick={() =>
                                 (window as any).gtag("event", "Limerick link", {
                                     event_category: "click",
@@ -63,26 +63,25 @@ const Home: NextPage = () => {
                         >
                             Limerick (County)
                         </a>
-                        , for a stay of <span>long duration</span>.<Tooltip />
+                        , for a <span>long-term</span> stay.
+                        <Tooltip />
                     </h3>
                     <p>
                         Our aim is to get to know Ireland, learn and practice
                         English while continuing with our usual life, working as
                         a programmer in my case and studying for the competitive
-                        examinations to become an Kindergarten teacher in
+                        examinations to become a Kindergarten teacher in
                         Maria&apos;s case.
                     </p>
                     <p>
                         We are from Galicia (Spain) and we are 32 and 31 years
                         old respectively, we are quiet people, we like animals
-                        and we are not smokers.
+                        and we are no-smokers.
                     </p>
                     <p>
-                        We will arrive in Ireland on 23 October 2022 and we have
-                        accommodation.{" "}
-                        <span className={styles.underlined}>
-                            only for 2 weeks.
-                        </span>
+                        We will arrive in Ireland on 23 October 2022 and we only
+                        have accommodation.{" "}
+                        <span className={styles.underlined}>for 2 weeks.</span>
                     </p>
                     <p>
                         We would like to rent a one-bedroom flat or a shared
