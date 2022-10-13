@@ -15,10 +15,10 @@ body {
     place-items: center;
     background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
-header {
+#__next > header {
     display: grid;
 }
-main {
+#__next > main {
     max-width: 850px;
     padding: 20px 16px;
     display: grid;
@@ -75,12 +75,12 @@ ul li {
     padding: 0 0 10px 0;
 }
 
-header {
+#__next > header {
     position: relative;
     height: 380px;
 }
 
-footer {
+#__next > footer {
     display: grid;
     place-content: center;
     padding: 0 0 20px 0;
@@ -97,7 +97,7 @@ footer {
     h3 {
         font-size: 16px;
     }
-    header {
+    #__next > header {
         height: 300px;
     }
 }
@@ -195,4 +195,57 @@ input[type="checkbox"] {
     top: 50%;
     left: 100%;
     border-color: transparent transparent transparent #3eaf0a;
+}
+
+/* cookies */
+
+.cookies {
+    display: grid;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: not-allowed;
+}
+
+.cookies-content {
+    display: grid;
+    gap: 20px;
+    background-color: #fefefe;
+    padding: 20px;
+    width: 90vw;
+    max-width: 400px;
+    cursor: pointer;
+    color: #000;
+    margin: auto auto;
+    border-radius: 10px;
+}
+
+.cookies-content header {
+    font-size: 50px;
+    text-align: center;
+}
+
+.cookies-content main {
+    padding: 0;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.cookies-content footer {
+    padding: 20px 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.cookies-content footer button {
+    padding: 20px;
+    cursor: pointer;
+}
+
+button.success {
+    background-color: #3eaf0a;
 }
