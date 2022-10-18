@@ -1,0 +1,28 @@
+.imageWrapper {
+    margin: 20px 0;
+    position: inherit;
+    clip-path: circle(170px at center);
+}
+
+@media only screen and (max-width: 600px) {
+    .imageWrapper {
+        clip-path: circle(130px at center);
+    }
+}
+
+.badge {
+    background-color: red;
+    padding: 4px 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: fit-content;
+}
+.badge a {
+    color: #fff;
+    text-decoration: none;
+}

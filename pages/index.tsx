@@ -1,6 +1,3 @@
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import pictureRoute from "../public/xabiymaria.jpg";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Collapsible from "../components/collapsible/collapsible";
@@ -12,6 +9,7 @@ import type { NextPageWithLayout } from "./_app";
 const DynamicMap = dynamic(() =>
     import("../components/map/map").then((mod) => mod.Map)
 );
+const Banner = dynamic(() => import("../components/banner").then((mod) => mod));
 
 const Home: NextPageWithLayout = () => {
     return (
@@ -23,24 +21,7 @@ const Home: NextPageWithLayout = () => {
                 </title>
                 <meta name="robots" content="all" />
             </Head>
-            <figure>
-                <section className={styles.imageWrapper}>
-                    <Image
-                        alt="Xabi and María looking home in Limerick city, find a rent Limerick"
-                        src={pictureRoute}
-                        priority
-                        className={styles.picture}
-                        layout="fill"
-                        objectFit="contain"
-                        placeholder="blur"
-                    />
-                </section>
-                <span className={styles.badge}>
-                    <a title="Go to the contact information" href="#contact">
-                        Looking for tenants in limerick city?
-                    </a>
-                </span>
-            </figure>
+            <Banner />
             <main>
                 <h1>
                     Looking for accommodation, rent, share in Limerick city
@@ -78,11 +59,6 @@ const Home: NextPageWithLayout = () => {
                         We are from Galicia (Spain) and we are 32 and 31 years
                         old respectively, we are quiet people, we like animals
                         and we are no-smokers.
-                    </p>
-                    <p>
-                        We will arrive in Ireland on 23 October 2022 and we only
-                        have accommodation.{" "}
-                        <span className={styles.underlined}>for 2 weeks.</span>
                     </p>
                     <p>
                         We would like to rent a one-bedroom flat or a shared

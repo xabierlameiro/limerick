@@ -1,12 +1,13 @@
+import styles from "./collapsible.module.css";
 const Collapsible = () => {
     return (
-        <section className="wrap-collabsible">
-            <input id="collapsible" className="toggle" type="checkbox" />
-            <label htmlFor="collapsible" className="lbl-toggle">
+        <section>
+            <input id="collapsible" className={styles.toggle} type="checkbox" />
+            <label htmlFor="collapsible" className={styles.lbl_toggle}>
                 More Information
             </label>
-            <div className="collapsible-content">
-                <div className="content-inner">
+            <div className={styles.collapsible_content}>
+                <div className={styles.content_inner}>
                     <p>
                         It is necessary that the house has{" "}
                         <strong>internet access</strong> because it is an

@@ -18,10 +18,16 @@
 
 .policies ul {
     list-style: none;
+    justify-content: space-between;
+    gap: 20px;
     display: grid;
     grid-auto-flow: column;
     margin: 0;
     padding: 0;
     opacity: 0.7;
     font-size: 16px;
+}
+
+.policies ul li {
+    padding: 0;
 }

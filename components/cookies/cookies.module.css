@@ -1,0 +1,53 @@
+.cookies {
+    display: grid;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: not-allowed;
+    border: none;
+}
+
+.cookies_content {
+    display: grid;
+    gap: 20px;
+    background-color: #fefefe;
+    padding: 20px;
+    width: 90vw;
+    max-width: 400px;
+    cursor: pointer;
+    color: #000;
+    margin: auto auto;
+    border-radius: 10px;
+}
+
+.cookies_content header {
+    font-size: 50px;
+    text-align: center;
+}
+
+.cookies_content main {
+    padding: 0;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.cookies_content footer {
+    padding: 20px 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.cookies_content button {
+    padding: 20px;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+button.success {
+    background-color: #3eaf0a;
+    opacity: 1;
+}

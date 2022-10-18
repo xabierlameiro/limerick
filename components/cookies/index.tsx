@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { setCookie, hasCookie } from "cookies-next";
+import styles from "./cookies.module.css";
 
 function Coookies() {
     const [consent, setConsent] = useState(true);
@@ -39,8 +40,8 @@ function Coookies() {
     if (consent) return null;
 
     return (
-        <dialog open className="cookies">
-            <div className="cookies-content">
+        <dialog open className={styles.cookies}>
+            <div className={styles.cookies_content}>
                 <header>🍪</header>
                 <main>
                     We use cookies to enhance your browsing experience and
@@ -50,7 +51,10 @@ function Coookies() {
                 </main>
                 <footer>
                     <button onClick={() => denyCookie()}>Deny All</button>
-                    <button className="success" onClick={() => acceptCookie()}>
+                    <button
+                        className={styles.success}
+                        onClick={() => acceptCookie()}
+                    >
                         Accept All
                     </button>
                 </footer>

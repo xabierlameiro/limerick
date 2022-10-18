@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.css";
+import styles from "./map.module.css";
 
 export const Map = () => {
     return (
