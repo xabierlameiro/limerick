@@ -1,18 +1,19 @@
-import type { NextPage } from "next";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import pictureRoute from "../public/xabiymaria.jpg";
-import { AiOutlineLinkedin, AiOutlineFacebook } from "react-icons/ai";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Collapsible from "../components/collapsible/collapsible";
 import Tooltip from "../components/tooltip/tooltip";
+import Layout from "../components/layouts";
+import type { ReactElement } from "react";
+import type { NextPageWithLayout } from "./_app";
 
 const DynamicMap = dynamic(() =>
     import("../components/map/map").then((mod) => mod.Map)
 );
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
     return (
         <>
             <Head>
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
                 </title>
                 <meta name="robots" content="all" />
             </Head>
-            <header>
+            <figure>
                 <section className={styles.imageWrapper}>
                     <Image
                         alt="Xabi and María looking home in Limerick city, find a rent Limerick"
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
                         Looking for tenants in limerick city?
                     </a>
                 </span>
-            </header>
+            </figure>
             <main>
                 <h1>
                     Looking for accommodation, rent, share in Limerick city
@@ -153,51 +154,12 @@ const Home: NextPage = () => {
                 </nav>
                 <Collapsible />
             </main>
-            <footer>
-                <nav className={styles.media}>
-                    <a
-                        title="Linkedin profile"
-                        onClick={() =>
-                            (window as any).gtag("event", "Linkedin", {
-                                event_category: "click",
-                                event_label: "Go to Xabier Linkedin profile",
-                            })
-                        }
-                        href="https://www.linkedin.com/in/xlameiro/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.icon}
-                    >
-                        <AiOutlineLinkedin
-                            title="Link to the developer Xabier's Linkedin profile"
-                            size="2em"
-                        />
-                    </a>
-                    <a
-                        title="Facebook network"
-                        onClick={() =>
-                            (window as any).gtag("event", "Facebook", {
-                                event_category: "click",
-                                event_label: "Go to Maria Facebook profile",
-                            })
-                        }
-                        href="https://www.facebook.com/mariajose.oteroces"
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.icon}
-                    >
-                        <AiOutlineFacebook
-                            title="Link to Maria Facebook profile"
-                            size="2em"
-                        />
-                    </a>
-                </nav>
-                <span className={styles.copyright}>
-                    Copyright © 2022 Xabier Lameiro. All rights reserved.
-                </span>
-            </footer>
         </>
     );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+    return <Layout>{page}</Layout>;
 };
 
 export default Home;

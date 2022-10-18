@@ -1,14 +1,24 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import Script from "next/script";
-
-import Layout from "../components/layout";
 import { getCookie } from "cookies-next";
 
-function MyApp({ Component, pageProps }: AppProps) {
-    const consent = getCookie("cookies-consents");
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
 
-    return (
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+    getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+    Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+    const consent = getCookie("cookies-consents");
+    const getLayout = Component.getLayout ?? ((page) => page);
+
+    return getLayout(
         <>
             <Script
                 strategy="afterInteractive"
@@ -40,9 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 </Script>
             )}
 
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
         </>
     );
 }

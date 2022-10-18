@@ -1,5 +1,7 @@
 import type { ReactElement } from "react";
-import Consent from "../consent";
+import Coookies from "../cookies";
+import Footer from "./footer";
+import Header from "./header";
 
 type Props = {
     children: ReactElement;
@@ -9,7 +11,8 @@ export default function Layout({ children }: Props) {
     return (
         <>
             {children}
-            <Consent />
+            <Footer />
+            <Coookies />
         </>
     );
 }

@@ -15,7 +15,12 @@ body {
     place-items: center;
     background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
-#__next > header {
+
+figure {
+    margin: 0;
+}
+
+#__next > figure {
     display: grid;
 }
 #__next > main {
@@ -75,7 +80,7 @@ ul li {
     padding: 0 0 10px 0;
 }
 
-#__next > header {
+#__next > figure {
     position: relative;
     height: 380px;
 }
@@ -97,7 +102,7 @@ ul li {
     h3 {
         font-size: 16px;
     }
-    #__next > header {
+    #__next > figure {
         height: 300px;
     }
 }

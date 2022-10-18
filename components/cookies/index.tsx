@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
 import { setCookie, hasCookie } from "cookies-next";
 
-function Consent() {
+function Coookies() {
     const [consent, setConsent] = useState(true);
 
     useEffect(() => {
@@ -13,6 +13,7 @@ function Consent() {
         if (!consent) {
             document.body.style.overflow = "hidden";
         }
+        return () => availableScroll();
     }, [consent]);
 
     const availableScroll = () => {
@@ -44,7 +45,8 @@ function Consent() {
                 <main>
                     We use cookies to enhance your browsing experience and
                     analyze our traffic. By clicking &quot;Accept All&quot;, you
-                    consent to our use of cookies.
+                    consent to our use of{" "}
+                    <Link href="/cookies-policy">Cookies</Link>.
                 </main>
                 <footer>
                     <button onClick={() => denyCookie()}>Deny All</button>
@@ -57,4 +59,4 @@ function Consent() {
     );
 }
 
-export default Consent;
+export default Coookies;

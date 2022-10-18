@@ -21,11 +21,6 @@
     border: none;
 }
 
-.icon {
-    color: #fff;
-    opacity: 0.4;
-}
-
 .badge {
     background-color: red;
     padding: 4px 10px;
@@ -96,14 +91,4 @@
 .mapContainer {
     position: relative;
     margin: 20px 0;
-}
-
-.media {
-    width: fit-content;
-    justify-self: center;
-}
-
-.copyright {
-    opacity: 0.4;
-    text-align: center;
 }
