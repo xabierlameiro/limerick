@@ -20,13 +20,18 @@ figure {
     margin: 0;
 }
 
+#__next {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
 #__next > figure {
     display: grid;
 }
 #__next > main {
     max-width: 850px;
     padding: 20px 16px;
-    display: grid;
 }
 
 a {

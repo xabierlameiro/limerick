@@ -3,6 +3,8 @@
     font-size: 30px;
     margin: 0;
     padding: 8px 16px;
+    display: flex;
+    gap: 20px;
 }
 
 .navBar ul li {

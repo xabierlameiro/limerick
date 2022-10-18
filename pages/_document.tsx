@@ -21,26 +21,14 @@ class MyDocument extends Document {
                 <Head>
                     <link rel="icon" href="/favicon.svg" />
                     <meta
-                        name="description"
-                        content="We are a couple looking for rent limerick, share, flatmates, roommates, housing in limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
-                    />
-                    <meta
                         property="og:site_name"
                         content="couplelookinghomeinlimerick"
-                    ></meta>
+                    />
                     <meta property="og:type" content="article" />
-                    <meta
-                        property="og:title"
-                        content="We are looking for flatmates, roommates, rent in Limerick
-                        city or share"
-                    />
-                    <meta
-                        property="og:description"
-                        content="We are a couple looking for rent limerick, share, flatmates, roommates, housing in limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
-                    />
+
                     <meta
                         property="og:image"
-                        content="https://couplelookinghomeinlimerick.com/xabiymaria.jpg"
+                        content="https://couplelookinghomeinlimerick.com/rent_share_limerick.jpg"
                     />
                     <meta
                         property="og:url"

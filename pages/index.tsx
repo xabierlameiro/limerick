@@ -19,6 +19,19 @@ const Home: NextPageWithLayout = () => {
                     We are looking for flatmates, roommates, rent in Limerick
                     city or share
                 </title>
+                <meta
+                    name="description"
+                    content="We are a couple looking for rent limerick, share, flatmates, roommates, housing in limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
+                />
+                <meta
+                    property="og:title"
+                    content="We are looking for flatmates, roommates, rent in Limerick
+                        city or share"
+                />
+                <meta
+                    property="og:description"
+                    content="We are a couple looking for rent limerick, share, flatmates, roommates, housing in limerick city, I am a programmer and my girlfriend is a teacher. We are serious, friendly and do not smoke."
+                />
                 <meta name="robots" content="all" />
             </Head>
             <Banner />

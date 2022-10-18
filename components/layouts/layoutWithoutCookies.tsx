@@ -8,6 +8,7 @@ type Props = {
     meta: {
         title: string;
         nofollow: boolean;
+        description: string;
     };
 };
 
@@ -16,8 +17,13 @@ export default function Layout({ meta, children }: Props) {
         <>
             <Head>
                 <title data-testid="meta-title">{meta.title}</title>
-                {meta.nofollow && (
+                <meta property="og:title" content={meta.title} />
+                <meta name="description" content={meta.description} />
+                <meta property="og:description" content={meta.description} />
+                {meta.nofollow ? (
                     <meta name="robots" content="noindex, nofollow" />
+                ) : (
+                    <meta name="robots" content="all" />
                 )}
             </Head>
             <Header />
