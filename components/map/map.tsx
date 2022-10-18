@@ -1,6 +1,6 @@
 import styles from "./map.module.css";
 
-export const Map = () => {
+const Map = () => {
     return (
         <>
             <h4>Map of limerick county</h4>
@@ -26,3 +26,5 @@ export const Map = () => {
         </>
     );
 };
+
+export default Map;

@@ -1,15 +1,21 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import Collapsible from "../components/collapsible/collapsible";
 import Tooltip from "../components/tooltip/tooltip";
 import Layout from "../components/layouts";
+import Loading from "../components/loading";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 
-const DynamicMap = dynamic(() =>
-    import("../components/map/map").then((mod) => mod.Map)
+const DynamicMap = dynamic(
+    () => import("../components/map/map").then((mod) => mod),
+    { suspense: true }
 );
-const Banner = dynamic(() => import("../components/banner").then((mod) => mod));
+const Banner = dynamic(
+    () => import("../components/banner").then((mod) => mod),
+    { suspense: true }
+);
 
 const Home: NextPageWithLayout = () => {
     return (
@@ -34,7 +40,9 @@ const Home: NextPageWithLayout = () => {
                 />
                 <meta name="robots" content="all" />
             </Head>
-            <Banner />
+            <Suspense fallback={<Loading />}>
+                <Banner />
+            </Suspense>
             <main>
                 <h1>
                     Looking for accommodation, rent, share in Limerick city
@@ -77,9 +85,9 @@ const Home: NextPageWithLayout = () => {
                         We would like to rent a one-bedroom flat or a shared
                         living space in this area if possible:
                     </p>
-
-                    <DynamicMap />
-
+                    <Suspense fallback={<Loading />}>
+                        <DynamicMap />
+                    </Suspense>
                     <h5>
                         #houses #flat #apartments #rent #bedroom #double #room
                         #ireland #rental only
