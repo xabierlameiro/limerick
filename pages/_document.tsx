@@ -17,27 +17,21 @@ class MyDocument extends Document {
     }
     render() {
         return (
-            <Html lang="en">
+            <Html lang="en_IE">
                 <Head>
                     <link rel="icon" href="/favicon.svg" />
                     <meta
                         property="og:site_name"
                         content="couplelookinghomeinlimerick"
                     />
-                    <meta property="og:type" content="article" />
-
+                    <meta property="og:type" content="website" />
                     <meta
                         property="og:image"
                         content="https://couplelookinghomeinlimerick.com/rent_share_limerick.jpg"
                     />
                     <meta
                         property="og:url"
-                        content=" http://www.couplelookinghomeinlimerick.com/"
-                    />
-                    <link
-                        rel="canonical"
-                        hrefLang="en"
-                        href="https://couplelookinghomeinlimerick.com/"
+                        content="https://couplelookinghomeinlimerick.com/"
                     />
                 </Head>
                 <body>

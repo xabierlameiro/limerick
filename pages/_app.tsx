@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import Script from "next/script";
 import { getCookie } from "cookies-next";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
@@ -16,10 +18,15 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const consent = getCookie("cookies-consents");
+    const router = useRouter();
     const getLayout = Component.getLayout ?? ((page) => page);
+    const canonicalUrl = `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`;
 
     return getLayout(
         <>
+            <Head>
+                <link rel="canonical" href={canonicalUrl} />
+            </Head>
             <Script
                 strategy="afterInteractive"
                 src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
