@@ -2,8 +2,10 @@ import type { ReactElement } from "react";
 import Footer from "./footer";
 import Header from "./header";
 import Head from "next/head";
+import Coookies from "../cookies";
 
 type Props = {
+    cookies: boolean;
     children: ReactElement;
     meta: {
         title: string;
@@ -12,7 +14,7 @@ type Props = {
     };
 };
 
-export default function Layout({ meta, children }: Props) {
+export default function LayoutWithSEO({ meta, cookies, children }: Props) {
     return (
         <>
             <Head>
@@ -29,6 +31,7 @@ export default function Layout({ meta, children }: Props) {
             <Header />
             <main>{children}</main>
             <Footer />
+            {cookies && <Coookies />}
         </>
     );
 }

@@ -1,4 +1,4 @@
-import LayoutWithoutCookies from "../components/layouts/layoutWithoutCookies.tsx";
+import LayoutWithSEO from "../components/layouts/layoutWithSEO.tsx";
 import Link from "next/link";
 import ripLimerickPicture from "public/rip_ie_limerick.png";
 import Image from "../components/image/index.tsx";
@@ -85,5 +85,7 @@ I hope that a landlord or someone who is looking for flatmates might read this a
 > If you would like to contact us, please go to <Link href="/#contact">contact</Link>.
 
 export default ({ children }) => (
-    <LayoutWithoutCookies meta={meta}>{children}</LayoutWithoutCookies>
+    <LayoutWithSEO cookies meta={meta}>
+        {children}
+    </LayoutWithSEO>
 );

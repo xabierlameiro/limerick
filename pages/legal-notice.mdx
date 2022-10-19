@@ -1,4 +1,4 @@
-import LayoutWithoutCookies from "../components/layouts/layoutWithoutCookies.tsx";
+import LayoutWithSEO from "../components/layouts/layoutWithSEO.tsx";
 
 export const meta = {
     title: "Legal Notice",
@@ -70,5 +70,5 @@ The owner reserves the right to bring any civil or criminal action that it deems
 The relationship between the User and the owner shall be governed by the regulations in force and applicable in Spanish territory. Should any dispute arise in relation to the interpretation and/or application of these Conditions, the parties shall submit their disputes to the ordinary jurisdiction, submitting themselves to the judges and courts that correspond according to law.
 
 export default ({ children }) => (
-    <LayoutWithoutCookies meta={meta}>{children}</LayoutWithoutCookies>
+    <LayoutWithSEO meta={meta}>{children}</LayoutWithSEO>
 );

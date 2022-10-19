@@ -1,4 +1,4 @@
-import LayoutWithoutCookies from "../components/layouts/layoutWithoutCookies.tsx";
+import LayoutWithSEO from "../components/layouts/layoutWithSEO.tsx";
 
 export const meta = {
     title: "Cookies policy",
@@ -90,5 +90,5 @@ Xabier Lameiro Cardama websites may modify this Cookies Policy in accordance wit
 When significant changes are made to this Cookies Policy, these will be communicated to users either through the website or by e-mail to registered users.
 
 export default ({ children }) => (
-    <LayoutWithoutCookies meta={meta}>{children}</LayoutWithoutCookies>
+    <LayoutWithSEO meta={meta}>{children}</LayoutWithSEO>
 );
