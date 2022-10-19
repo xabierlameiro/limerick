@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
-import Footer from "./footer";
-import Header from "./header";
 import Head from "next/head";
-import Coookies from "../cookies";
+import Footer from "@/components/layouts/footer";
+import Header from "@/components/layouts/header";
+import Coookies from "@/components/cookies";
 
 type Props = {
     cookies: boolean;

@@ -1,21 +1,20 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import Collapsible from "../components/collapsible/collapsible";
-import Tooltip from "../components/tooltip/tooltip";
-import Layout from "../components/layouts";
-import Loading from "../components/loading";
+import Collapsible from "@/components/collapsible";
+import Tooltip from "@/components/tooltip";
+import Layout from "@/components/layouts";
+import Loading from "@/components/loading";
 import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 
 const DynamicMap = dynamic(
-    () => import("../components/map/map").then((mod) => mod),
+    () => import("@/components/map").then((mod) => mod),
     { suspense: true }
 );
-const Banner = dynamic(
-    () => import("../components/banner").then((mod) => mod),
-    { suspense: true }
-);
+const Banner = dynamic(() => import("@/components/banner").then((mod) => mod), {
+    suspense: true,
+});
 
 const Home: NextPageWithLayout = () => {
     return (

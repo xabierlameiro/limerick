@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { setCookie, hasCookie } from "cookies-next";
+
 import styles from "./cookies.module.css";
 
 function Coookies() {

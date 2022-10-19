@@ -1,4 +1,5 @@
 import styles from "./collapsible.module.css";
+
 const Collapsible = () => {
     return (
         <section>
