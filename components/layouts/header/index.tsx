@@ -7,10 +7,14 @@ const Header = () => {
             <nav className={styles.navBar}>
                 <ul>
                     <li>
-                        <Link href="/">&#127968;</Link>
+                        <Link href="/">
+                            <a title="Go to home page">&#127968;</a>
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/rip-limerick">&#128214;</Link>
+                        <Link href="/rip-limerick">
+                            <a title="Go to rip limerick post">&#128214;</a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

@@ -47,7 +47,10 @@ function Coookies() {
                     We use cookies to enhance your browsing experience and
                     analyze our traffic. By clicking &quot;Accept All&quot;, you
                     consent to our use of{" "}
-                    <Link href="/cookies-policy">Cookies</Link>.
+                    <Link href="/cookies-policy">
+                        <a title="Go to Cookies policy">Cookies</a>
+                    </Link>
+                    .
                 </main>
                 <footer>
                     <button onClick={() => denyCookie()}>Deny All</button>
