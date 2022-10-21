@@ -7,11 +7,15 @@ export default function Custom404() {
             <Head>
                 <meta name="robots" content="noindex, nofollow" />
             </Head>
-            <h1>404 - Page Not Found</h1>
-            <br />
-            <Link href="/">
-                <a title="Go to Home page">Back to home</a>
-            </Link>
+            <header></header>
+            <main>
+                <h1>404 - Page Not Found</h1>
+                <br />
+                <Link href="/">
+                    <a title="Go to Home page">Back to home</a>
+                </Link>
+            </main>
+            <footer></footer>
         </>
     );
 }
