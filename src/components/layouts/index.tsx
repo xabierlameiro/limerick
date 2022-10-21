@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
-import Coookies from "../cookies";
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "@/components/layouts/footer";
+import Header from "@/components/layouts/header";
+import Coookies from "@/components/cookies";
 
 type Props = {
     children: ReactElement;

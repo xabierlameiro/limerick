@@ -1,7 +1,7 @@
 import NextImage from "next/image";
-import type ImageProps from "next";
-
 import styles from "./image.module.css";
+
+import type ImageProps from "next";
 
 type StaticImageData = {
     src: string;

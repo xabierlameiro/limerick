@@ -1,9 +1,8 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import Script from "next/script";
+import Head from "next/head";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
-import Head from "next/head";
-
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
