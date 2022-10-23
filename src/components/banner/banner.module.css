@@ -11,7 +11,7 @@
 }
 
 .badge {
-    background-color: red;
+    background-color: #cd2026;
     padding: 4px 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -25,4 +25,8 @@
 .badge a {
     color: #fff;
     text-decoration: none;
+}
+
+.picture {
+    object-fit: contain;
 }

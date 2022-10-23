@@ -1,18 +1,18 @@
 import styles from "./banner.module.css";
 import pictureRoute from "public/rent_share_limerick.jpg";
-import Image from "next/image";
+import Image from "next/future/image";
 
 const Banner = () => (
     <figure>
         <section className={styles.imageWrapper}>
             <Image
-                alt="Xabi and María looking home in Limerick city, find a rent Limerick"
-                src={pictureRoute}
+                fill
                 priority
-                className={styles.picture}
-                layout="fill"
-                objectFit="contain"
+                alt="Xabi and María looking home in Limerick city, find a rent Limerick"
                 placeholder="blur"
+                sizes="100vw"
+                src={pictureRoute}
+                className={styles.picture}
             />
         </section>
         <span className={styles.badge}>
