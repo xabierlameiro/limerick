@@ -5,7 +5,7 @@ import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -14,6 +14,24 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout;
 };
+
+export function reportWebVitals({
+    id,
+    name,
+    label,
+    value,
+}: NextWebVitalsMetric) {
+    if (process.env.NODE_ENV === "production") {
+        (window as any).gtag("send", "event", {
+            eventCategory:
+                label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+            eventAction: name,
+            eventValue: Math.round(name === "CLS" ? value * 1000 : value),
+            eventLabel: id,
+            nonInteraction: true,
+        });
+    }
+}
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const consent = getCookie("cookies-consents");

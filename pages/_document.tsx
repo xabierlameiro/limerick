@@ -20,6 +20,10 @@ class MyDocument extends Document {
             <Html lang="en-IE">
                 <Head>
                     <link rel="icon" href="/favicon.svg" />
+                    <link
+                        rel="apple-touch-icon"
+                        href="/looking_rent_limerick.png"
+                    />
                     <meta
                         property="og:site_name"
                         content="couplelookinghomeinlimerick"
