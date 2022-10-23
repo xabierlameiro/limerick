@@ -17,7 +17,7 @@ class MyDocument extends Document {
     }
     render() {
         return (
-            <Html lang="en_IE">
+            <Html lang="en-IE">
                 <Head>
                     <link rel="icon" href="/favicon.svg" />
                     <meta
