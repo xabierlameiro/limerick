@@ -47,22 +47,27 @@ const Footer = () => {
             <nav className={styles.policies}>
                 <ul>
                     <li>
-                        <Link href="/cookies-policy">
-                            <a title="Go to Cookies policy page">
-                                Cookies policy
-                            </a>
+                        <Link
+                            href="/cookies-policy"
+                            title="Go to Cookies policy page"
+                        >
+                            Cookies policy
                         </Link>
                     </li>
                     <li>
-                        <Link href="/legal-notice">
-                            <a title="Go to Legal notice page">Legal notice</a>
+                        <Link
+                            href="/legal-notice"
+                            title="Go to Legal notice page"
+                        >
+                            Legal notice
                         </Link>
                     </li>
                     <li>
-                        <Link href="/privacy-policy">
-                            <a title="Go to Privacy policy page">
-                                Privacy policy
-                            </a>
+                        <Link
+                            href="/privacy-policy"
+                            title="Go to Privacy policy page"
+                        >
+                            Privacy policy
                         </Link>
                     </li>
                 </ul>

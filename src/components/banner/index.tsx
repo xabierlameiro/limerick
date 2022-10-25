@@ -1,6 +1,6 @@
 import styles from "./banner.module.css";
 import pictureRoute from "public/rent_share_limerick.jpg";
-import Image from "next/future/image";
+import Image from "next/image";
 
 const Banner = () => (
     <figure>

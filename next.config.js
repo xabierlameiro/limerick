@@ -13,6 +13,9 @@ const nextConfig = {
     swcMinify: true,
     productionBrowserSourceMaps: false,
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+    images: {
+        domains: ["media.daft.ie"],
+    },
 };
 
 module.exports = withMDX(nextConfig);

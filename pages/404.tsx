@@ -11,8 +11,8 @@ export default function Custom404() {
             <main>
                 <h1>404 - Page Not Found</h1>
                 <br />
-                <Link href="/">
-                    <a title="Go to Home page">Back to home</a>
+                <Link href="/" title="Go to Home page">
+                    Back to home
                 </Link>
             </main>
             <footer></footer>

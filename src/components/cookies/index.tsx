@@ -48,8 +48,8 @@ function Coookies() {
                     We use cookies to enhance your browsing experience and
                     analyze our traffic. By clicking &quot;Accept All&quot;, you
                     consent to our use of{" "}
-                    <Link href="/cookies-policy">
-                        <a title="Go to Cookies policy">Cookies</a>
+                    <Link href="/cookies-policy" title="Go to Cookies policy">
+                        Cookies
                     </Link>
                     .
                 </main>
