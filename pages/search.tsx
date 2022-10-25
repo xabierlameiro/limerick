@@ -1,6 +1,7 @@
 import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
 import useSWR, { SWRConfig } from "swr";
+import hash from "stable-hash";
 
 function Flats({ fallback }: any) {
     const { data } = useSWR("/api/flats");
@@ -67,6 +68,12 @@ export default function Page({ fallback }: any) {
                 fallback,
                 fetcher: (arg: any, ...args: any) =>
                     fetch(arg, ...args).then((res) => res.json()),
+                refreshInterval: 10000,
+                refreshWhenHidden: true,
+                refreshWhenOffline: true,
+                compare(a, b) {
+                    return hash(a) === hash(b);
+                },
             }}
         >
             <Flats />
