@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Collapsible from "@/components/collapsible";
@@ -48,7 +49,10 @@ const Home: NextPageWithLayout = () => {
                     centre
                 </h1>
                 <article>
-                    <h2>Hello &#128075; we are Xabi and María!</h2>
+                    <h2>
+                        Hello &#128075; we are Xabi and María! and we are living
+                        with a family in Limerick.
+                    </h2>
                     <h3>
                         We are a couple looking for accommodation in{" "}
                         <a
