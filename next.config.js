@@ -16,6 +16,20 @@ const nextConfig = {
     images: {
         domains: ["media.daft.ie"],
     },
+    async redirects() {
+        return [
+            {
+                source: "/landlady_recommendation",
+                destination: "/landlady_recommendation.pdf",
+                permanent: true,
+            },
+            {
+                source: "/work_recommendation",
+                destination: "/work_recommendation.pdf",
+                permanent: true,
+            },
+        ];
+    },
 };
 
 module.exports = withMDX(nextConfig);
