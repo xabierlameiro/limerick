@@ -21,7 +21,11 @@ function Flats({ fallback }: any) {
         return false;
     });
 
-    const items = noDuplicatesList.map((item: any) => {
+    const sortListFromPublishDate = noDuplicatesList.sort(
+        (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
+    );
+
+    const items = sortListFromPublishDate.map((item: any) => {
         const { listing } = item;
         return (
             <div key={listing.id}>
@@ -36,6 +40,8 @@ function Flats({ fallback }: any) {
                     alt={listing.title}
                 />
                 <div>Price : {listing.price}</div>
+                <div>Id : {listing.id}</div>
+                <div>Category : {listing.category}</div>
                 <div>Title : {listing.title}</div>
                 <div>Baths : {listing.numBathrooms}</div>
                 <div>Rooms : {listing.numBedrooms}</div>
@@ -68,12 +74,9 @@ export default function Page({ fallback }: any) {
                 fallback,
                 fetcher: (arg: any, ...args: any) =>
                     fetch(arg, ...args).then((res) => res.json()),
-                refreshInterval: 10000,
+                refreshInterval: 20000,
                 refreshWhenHidden: true,
                 refreshWhenOffline: true,
-                compare(a, b) {
-                    return hash(a) === hash(b);
-                },
             }}
         >
             <Flats />
