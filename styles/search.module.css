@@ -17,11 +17,13 @@
     width: 100%;
     position: relative;
     background-color: #fff;
+    color: #000;
 }
 
 .card img {
     position: relative !important;
     height: 300px !important;
+    border: 1px solid grey;
 }
 .price {
     font-weight: bold;
