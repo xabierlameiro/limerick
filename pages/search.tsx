@@ -2,6 +2,7 @@ import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
 import useSWR, { SWRConfig } from "swr";
 import hash from "stable-hash";
+import styles from "../styles/search.module.css";
 
 function Flats({ fallback }: any) {
     const { data } = useSWR("/api/flats");
@@ -28,30 +29,36 @@ function Flats({ fallback }: any) {
     const items = sortListFromPublishDate.map((item: any) => {
         const { listing } = item;
         return (
-            <div key={listing.id}>
+            <div className={styles.card} key={listing.id}>
                 <Image
-                    width="600"
-                    height="600"
                     src={
                         listing.media.totalImages > 0
                             ? listing.media.images?.[0].size600x600
                             : noImage600x600
                     }
                     alt={listing.title}
+                    fill
                 />
-                <div>Price : {listing.price}</div>
+                <div> {listing.title}</div>
+                <div className={styles.price}>Price {listing.price}</div>
                 <div>Id : {listing.id}</div>
                 <div>Category : {listing.category}</div>
-                <div>Title : {listing.title}</div>
-                <div>Baths : {listing.numBathrooms}</div>
-                <div>Rooms : {listing.numBedrooms}</div>
                 <div>
-                    Publish date: {new Date(listing.publishDate).toString()}
+                    Baths : {listing.numBathrooms ?? "No info"} | Room :{" "}
+                    {listing.numBedrooms}
+                </div>
+                <div>
+                    Publish date:{" "}
+                    {new Date(listing.publishDate).toLocaleString()}
                 </div>
             </div>
         );
     });
-    return <SWRConfig value={{ fallback }}>{items} </SWRConfig>;
+    return (
+        <SWRConfig value={{ fallback }}>
+            <div className={styles.grid}>{items}</div>{" "}
+        </SWRConfig>
+    );
 }
 
 export async function getServerSideProps() {
