@@ -39,7 +39,7 @@ export const Card = ({
 
             let directionsService = new google.maps.DirectionsService();
 
-            const route = {
+            const route: any = {
                 origin: center,
                 destination: {
                     lat: 52.65944817040037,
@@ -73,23 +73,24 @@ export const Card = ({
     }, [mapReference, map, center]);
 
     const deepCompareEqualsForMaps = createCustomEqual(
-        (deepEqual) => (a: any, b: any) => {
-            if (
-                isLatLngLiteral(a) ||
-                a instanceof google.maps.LatLng ||
-                isLatLngLiteral(b) ||
-                b instanceof google.maps.LatLng
-            ) {
-                return new google.maps.LatLng(a).equals(
-                    new google.maps.LatLng(b)
-                );
+        (deepEqual): any =>
+            (a: any, b: any) => {
+                if (
+                    isLatLngLiteral(a) ||
+                    a instanceof google.maps.LatLng ||
+                    isLatLngLiteral(b) ||
+                    b instanceof google.maps.LatLng
+                ) {
+                    return new google.maps.LatLng(a).equals(
+                        new google.maps.LatLng(b)
+                    );
+                }
+
+                // TODO extend to other types
+
+                // use fast-equals for other objects
+                return (deepEqual as any)(a, b);
             }
-
-            // TODO extend to other types
-
-            // use fast-equals for other objects
-            return deepEqual(a, b);
-        }
     );
 
     function useDeepCompareMemoize(value: any) {
