@@ -127,12 +127,11 @@ export const Card = ({
             <div>
                 Price <strong>{listing.price}</strong>
             </div>
-            <div>Id : {listing.id}</div>
             <div>Category : {listing.category}</div>
-            {/* <div>
+            <div>
                 Baths : {listing.numBathrooms ?? "No info"} | Room :{" "}
                 {listing.numBedrooms}
-            </div> */}
+            </div>
             <div>
                 Publish date: {new Date(listing.publishDate).toLocaleString()}
             </div>
