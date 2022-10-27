@@ -60,3 +60,37 @@
     background-color: #000;
     opacity: 0.5;
 }
+
+.information {
+    border: 1px solid #fff;
+    margin: 0 20px 10px;
+    padding: 5px 10px;
+    max-width: 400px;
+    width: calc(100vw - 40px);
+}
+
+.information strong {
+    text-decoration: underline;
+}
+.information span {
+    background-color: red;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 35px;
+    margin: 0 5px 0 0;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon:last-child {
+    text-indent: 40px;
+}
