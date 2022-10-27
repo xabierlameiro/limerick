@@ -1,12 +1,53 @@
-import Image from "next/image";
-import noImage600x600 from "public/no-image-600x600.jpg";
+import React from "react";
+import Head from "next/head";
 import useSWR, { SWRConfig } from "swr";
-import hash from "stable-hash";
 import styles from "../styles/search.module.css";
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import Card from "@/components/card";
+import { TbMapSearch, TbHome } from "react-icons/tb";
+import Layout from "@/components/layouts";
+import type { ReactElement } from "react";
+
+const Delayed = ({ children, index }: any) => {
+    const [isShown, setIsShown] = React.useState(false);
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsShown(true);
+        }, index * 2000);
+        return () => clearTimeout(timer);
+    }, [index]);
+    return isShown ? children : null;
+};
+
+export { Delayed };
+
+const items = (data: any, display: boolean) =>
+    data.map((item: any, index: any) => {
+        const { listing } = item;
+        const ref = React.useRef<HTMLDivElement>(null);
+        return (
+            <Delayed key={listing.id} index={index}>
+                <Card
+                    display={display}
+                    key={listing.id}
+                    mapReference={ref}
+                    listing={listing}
+                    index={index}
+                    item={item}
+                >
+                    <div
+                        className={` ${display ? styles.noDisplay : ""}`}
+                        ref={ref}
+                    />
+                </Card>
+            </Delayed>
+        );
+    });
 
 function Flats({ fallback }: any) {
     const { data } = useSWR("/api/flats");
-
+    const [display, setDisplay] = React.useState(false);
     const uniqueIds = new Set();
 
     const noDuplicatesList = data.listings.filter((element: any) => {
@@ -26,38 +67,29 @@ function Flats({ fallback }: any) {
         (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
     );
 
-    const items = sortListFromPublishDate.map((item: any) => {
-        const { listing } = item;
-        return (
-            <div className={styles.card} key={listing.id}>
-                <Image
-                    src={
-                        listing.media.totalImages > 0
-                            ? listing.media.images?.[0].size600x600
-                            : noImage600x600
-                    }
-                    alt={listing.title}
-                    fill
-                />
-                <div> {listing.title}</div>
-                <div className={styles.price}>Price {listing.price}</div>
-                <div>Id : {listing.id}</div>
-                <div>Category : {listing.category}</div>
-                <div>
-                    Baths : {listing.numBathrooms ?? "No info"} | Room :{" "}
-                    {listing.numBedrooms}
-                </div>
-                <div>
-                    Publish date:{" "}
-                    {new Date(listing.publishDate).toLocaleString()}
-                </div>
-            </div>
-        );
-    });
     return (
-        <SWRConfig value={{ fallback }}>
-            <div className={styles.grid}>{items}</div>{" "}
-        </SWRConfig>
+        <section>
+            <h1>Limerick city centre home finder</h1>
+            <div className={styles.grid}>
+                {items(sortListFromPublishDate, display)}
+            </div>
+            <TbHome
+                className={`${styles.mapIcon} ${
+                    display ? styles.noDisplay : ""
+                }`}
+                title="Show home picture"
+                size="4em"
+                onClick={() => setDisplay((display) => !display)}
+            />
+            <TbMapSearch
+                className={`${styles.mapIcon} ${
+                    !display ? styles.noDisplay : ""
+                }`}
+                title="Show map information"
+                size="4em"
+                onClick={() => setDisplay((display) => !display)}
+            />
+        </section>
     );
 }
 
@@ -75,18 +107,50 @@ export async function getServerSideProps() {
 }
 
 export default function Page({ fallback }: any) {
+    const render = (status: Status) => {
+        return <span>{status}</span>;
+    };
     return (
-        <SWRConfig
-            value={{
-                fallback,
-                fetcher: (arg: any, ...args: any) =>
-                    fetch(arg, ...args).then((res) => res.json()),
-                refreshInterval: 20000,
-                refreshWhenHidden: true,
-                refreshWhenOffline: true,
-            }}
-        >
-            <Flats />
-        </SWRConfig>
+        <>
+            <Head>
+                <title>Limerick city centre home finder</title>
+                <meta
+                    name="description"
+                    content="Limerick city centre home finder is a tool to find accommodation in Limerick city centre created by me."
+                />
+                <meta
+                    property="og:title"
+                    content="Limerick city centre home finder
+                city or share"
+                />
+                <meta
+                    property="og:description"
+                    content="Limerick city centre home finder is a tool to find accommodation in Limerick city centre created by me."
+                />
+                <meta name="robots" content="all" />
+            </Head>
+
+            <Wrapper
+                apiKey="AIzaSyD_w6ud35ISjEvzQkdddzaUFpdDCDarqEY"
+                render={render}
+            >
+                <SWRConfig
+                    value={{
+                        fallback,
+                        fetcher: (arg: any, ...args: any) =>
+                            fetch(arg, ...args).then((res) => res.json()),
+                        refreshInterval: 20000,
+                        refreshWhenHidden: true,
+                        refreshWhenOffline: true,
+                    }}
+                >
+                    <Flats />
+                </SWRConfig>
+            </Wrapper>
+        </>
     );
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+    return <Layout>{page}</Layout>;
+};

@@ -19,6 +19,11 @@ const Header = () => {
                             &#128214;
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/search" title="Go to search page">
+                            &#128269;
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

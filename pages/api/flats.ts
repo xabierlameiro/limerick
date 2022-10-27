@@ -48,7 +48,7 @@ export default async function handler(
             pageSize: "50",
         },
         geoFilter: {
-            storedShapeIds: ["37"], //17 county //37 city
+            storedShapeIds: ["58"], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",
@@ -83,7 +83,7 @@ export default async function handler(
             pageSize: "50",
         },
         geoFilter: {
-            storedShapeIds: ["37"], //17 county //37 city
+            storedShapeIds: ["58"], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Collapsible from "@/components/collapsible";
