@@ -130,10 +130,7 @@ export default function Page({ fallback }: any) {
                 <meta name="robots" content="all" />
             </Head>
 
-            <Wrapper
-                apiKey="AIzaSyD_w6ud35ISjEvzQkdddzaUFpdDCDarqEY"
-                render={render}
-            >
+            <Wrapper apiKey={`${process.env.google_maps_key}`} render={render}>
                 <SWRConfig
                     value={{
                         fallback,

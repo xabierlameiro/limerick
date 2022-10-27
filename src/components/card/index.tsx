@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "@/styles/search.module.css";
-import { createCustomEqual } from "fast-equals";
-import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import hash from "stable-hash";
 import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
@@ -16,7 +14,9 @@ export const Card = ({
     const [map, setMap] = React.useState<google.maps.Map>();
     const [a, b]: [number, number] = item.listing.point.coordinates;
     const [message, setMessage] = React.useState("");
-    const center = { lat: b, lng: a };
+    const center = React.useMemo(() => {
+        return { lat: b, lng: a };
+    }, [a, b]);
 
     React.useEffect(() => {
         if (mapReference?.current && !map) {
@@ -71,44 +71,6 @@ export const Card = ({
             });
         }
     }, [mapReference, map, center]);
-
-    const deepCompareEqualsForMaps = createCustomEqual(
-        (deepEqual): any =>
-            (a: any, b: any) => {
-                if (
-                    isLatLngLiteral(a) ||
-                    a instanceof google.maps.LatLng ||
-                    isLatLngLiteral(b) ||
-                    b instanceof google.maps.LatLng
-                ) {
-                    return new google.maps.LatLng(a).equals(
-                        new google.maps.LatLng(b)
-                    );
-                }
-
-                // TODO extend to other types
-
-                // use fast-equals for other objects
-                return (deepEqual as any)(a, b);
-            }
-    );
-
-    function useDeepCompareMemoize(value: any) {
-        const ref = React.useRef();
-
-        if (!deepCompareEqualsForMaps(value, ref.current)) {
-            ref.current = value;
-        }
-
-        return ref.current;
-    }
-
-    function useDeepCompareEffectForMaps(
-        callback: React.EffectCallback,
-        dependencies: any[]
-    ) {
-        React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
-    }
 
     return (
         <div className={styles.card}>
