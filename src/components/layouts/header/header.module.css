@@ -23,3 +23,9 @@
     margin: 0;
     cursor: pointer;
 }
+
+.loginIcon {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}

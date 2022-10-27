@@ -3,6 +3,9 @@ import styles from "@/styles/search.module.css";
 import hash from "stable-hash";
 import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
+import { TbMailForward, TbMailOff } from "react-icons/tb";
+import useAuthUser from "@/hooks/useAuthUser";
+import { setDoc, db, doc, getDoc } from "@/firebase";
 
 export const Card = ({
     listing,
@@ -15,6 +18,10 @@ export const Card = ({
     const [a, b]: [number, number] = item.listing.point.coordinates;
     const [message, setMessage] = React.useState([""]);
     const [time, setTime] = React.useState("");
+    const { user } = useAuthUser();
+    const [hasEmail, setHasEmail] = React.useState(false);
+    const docRef = doc(db, "emails", listing.id.toString());
+
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
     }, [a, b]);
@@ -70,7 +77,7 @@ export const Card = ({
         }
     }, [mapReference, map, center]);
 
-    var x = setInterval(function () {
+    setInterval(function () {
         // Get todays date and time
         var now = new Date().getTime();
         // Find the distance between now an the count down date
@@ -78,10 +85,25 @@ export const Card = ({
         var hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        setTime(`${hours}h ${minutes}m ${seconds}s`);
+        setTime(
+            `${days != 0 ? `${days}d` : ""} ${hours}h ${minutes}m ${seconds}s`
+        );
     }, 1000);
+
+    React.useEffect(() => {
+        async function findDoc() {
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setHasEmail(true);
+            } else {
+                setHasEmail(false);
+            }
+        }
+        if (user) findDoc();
+    }, [user]);
 
     return (
         <div className={styles.card}>
@@ -117,6 +139,32 @@ export const Card = ({
             <div>
                 Time since publication: <strong>{time}</strong>
             </div>
+            {user && (
+                <>
+                    {!hasEmail && (
+                        <TbMailForward
+                            className={styles.mailIcon}
+                            onClick={async () => {
+                                try {
+                                    await fetch(
+                                        `${process.env.NEXT_PUBLIC_DOMAIN}/api/email?id=${listing.id}`
+                                    );
+                                    await setDoc(docRef, {
+                                        id: listing.id,
+                                        price: listing.price,
+                                        title: listing.title,
+                                        emailDate: new Date(),
+                                    });
+                                    setHasEmail(true);
+                                } catch (e) {
+                                    console.error("Error adding document: ", e);
+                                }
+                            }}
+                        />
+                    )}
+                    {hasEmail && <TbMailOff className={styles.mailIcon} />}
+                </>
+            )}
         </div>
     );
 };

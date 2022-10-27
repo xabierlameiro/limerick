@@ -6,28 +6,15 @@ import {
     provider,
     GoogleAuthProvider,
     signOut,
-    onAuthStateChanged,
     setPersistence,
     auth,
     browserLocalPersistence,
 } from "@/firebase";
+import useAuthUser from "@/hooks/useAuthUser";
 import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
 
 const Header = () => {
-    const [user, setUser] = React.useState(false);
-
-    React.useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                const uid = user.uid;
-                setUser(true);
-            } else {
-                setUser(false);
-            }
-        });
-    }, []);
+    const { user } = useAuthUser();
 
     return (
         <header className={styles.header}>
@@ -56,8 +43,7 @@ const Header = () => {
             <div>
                 {!user && (
                     <MdOutlineLogin
-                        color="#FFF"
-                        size={30}
+                        className={styles.loginIcon}
                         onClick={() =>
                             setPersistence(auth, browserLocalPersistence)
                                 .then(() => {
@@ -77,23 +63,29 @@ const Header = () => {
                                                 credential?.accessToken;
                                             // The signed-in user info.
                                             const user = result.user;
-                                            // ...
-
-                                            console.log(user);
+                                            debugger;
+                                            if (
+                                                user.email !==
+                                                "xabier.lameiro@gmail.com"
+                                            ) {
+                                                throw new Error(
+                                                    "Solo se permite el login a Xabier Lameiro"
+                                                );
+                                            }
                                         })
                                         .catch((error) => {
-                                            // Handle Errors here.
-                                            const errorCode = error.code;
-                                            const errorMessage = error.message;
-                                            // The email of the user's account used.
-                                            const email =
-                                                error.customData.email;
-                                            // The AuthCredential type that was used.
-                                            const credential =
-                                                GoogleAuthProvider.credentialFromError(
-                                                    error
-                                                );
-                                            // ...
+                                            signOut(auth)
+                                                .then(() => {
+                                                    console.log(
+                                                        "usuario des-logueado"
+                                                    );
+                                                })
+                                                .catch((error) => {
+                                                    console.log(
+                                                        "error al des-loguear el usuario",
+                                                        error
+                                                    );
+                                                });
                                         });
                                 })
                                 .catch((error) => {
@@ -106,8 +98,7 @@ const Header = () => {
                 )}
                 {user && (
                     <MdOutlineLogout
-                        color="#FFF"
-                        size={30}
+                        className={styles.loginIcon}
                         onClick={() =>
                             signOut(auth)
                                 .then(() => {
