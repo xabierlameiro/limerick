@@ -63,7 +63,6 @@ const Header = () => {
                                                 credential?.accessToken;
                                             // The signed-in user info.
                                             const user = result.user;
-                                            debugger;
                                             if (
                                                 user.email !==
                                                 "xabier.lameiro@gmail.com"
@@ -75,17 +74,8 @@ const Header = () => {
                                         })
                                         .catch((error) => {
                                             signOut(auth)
-                                                .then(() => {
-                                                    console.log(
-                                                        "usuario des-logueado"
-                                                    );
-                                                })
-                                                .catch((error) => {
-                                                    console.log(
-                                                        "error al des-loguear el usuario",
-                                                        error
-                                                    );
-                                                });
+                                                .then(() => {})
+                                                .catch((error) => {});
                                         });
                                 })
                                 .catch((error) => {
@@ -101,15 +91,8 @@ const Header = () => {
                         className={styles.loginIcon}
                         onClick={() =>
                             signOut(auth)
-                                .then(() => {
-                                    console.log("usuario des-logueado");
-                                })
-                                .catch((error) => {
-                                    console.log(
-                                        "error al des-loguear el usuario",
-                                        error
-                                    );
-                                })
+                                .then(() => {})
+                                .catch((error) => {})
                         }
                     />
                 )}
