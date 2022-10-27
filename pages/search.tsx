@@ -108,7 +108,7 @@ function Flats({ fallback }: any) {
                     display ? styles.noDisplay : ""
                 }`}
                 title="Show home picture"
-                size="4em"
+                size={35}
                 onClick={() => setDisplay((display) => !display)}
             />
             <TbMapSearch
@@ -117,7 +117,7 @@ function Flats({ fallback }: any) {
                     !display ? styles.noDisplay : ""
                 }`}
                 title="Show map information"
-                size="4em"
+                size={35}
                 onClick={() => setDisplay((display) => !display)}
             />
         </section>

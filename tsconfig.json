@@ -24,7 +24,8 @@
             "@/layoutWithSEO": ["src/components/layouts/layoutWithSEO.tsx"],
             "@/constants/*": ["src/constants/*"],
             "@/styles/*": ["styles/*"],
-            "@/test": ["./jest.setup.js"]
+            "@/test": ["./jest.setup.js"],
+            "@/firebase": ["src/configs/firebase.ts"]
         }
     },
     "include": ["types/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx"],

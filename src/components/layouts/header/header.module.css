@@ -1,3 +1,13 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 850px;
+    width: 100%;
+    justify-self: center;
+}
+
 .navBar ul {
     list-style: none;
     font-size: 30px;
@@ -5,6 +15,7 @@
     padding: 8px 16px;
     display: flex;
     gap: 20px;
+    padding-inline-start: 0;
 }
 
 .navBar ul li {
