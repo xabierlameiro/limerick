@@ -13,7 +13,8 @@ export const Card = ({
 }: any) => {
     const [map, setMap] = React.useState<google.maps.Map>();
     const [a, b]: [number, number] = item.listing.point.coordinates;
-    const [message, setMessage] = React.useState("");
+    const [message, setMessage] = React.useState([""]);
+    const [time, setTime] = React.useState("");
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
     }, [a, b]);
@@ -59,18 +60,28 @@ export const Card = ({
                         window.alert("Directions request failed");
                         return;
                     } else {
-                        setMessage(
-                            " Walking distance is " +
-                                directionsData.distance.text +
-                                " (" +
-                                directionsData.duration.text +
-                                ")."
-                        );
+                        setMessage([
+                            directionsData.distance.text,
+                            directionsData.duration.text,
+                        ]);
                     }
                 }
             });
         }
     }, [mapReference, map, center]);
+
+    var x = setInterval(function () {
+        // Get todays date and time
+        var now = new Date().getTime();
+        // Find the distance between now an the count down date
+        var distance = now - new Date(listing.publishDate).getTime();
+        var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        setTime(`${hours}h ${minutes}m ${seconds}s`);
+    }, 1000);
 
     return (
         <div className={styles.card}>
@@ -87,17 +98,24 @@ export const Card = ({
                 fill
             />
             {children}
+            <div>
+                Walking distance is {message[0]} (<strong>{message[1]}</strong>)
+            </div>
             <div> {listing.title}</div>
-            <div>{message}</div>
-            <div className={styles.price}>Price {listing.price}</div>
+            <div>
+                Price <strong>{listing.price}</strong>
+            </div>
             <div>Id : {listing.id}</div>
             <div>Category : {listing.category}</div>
-            <div>
+            {/* <div>
                 Baths : {listing.numBathrooms ?? "No info"} | Room :{" "}
                 {listing.numBedrooms}
-            </div>
+            </div> */}
             <div>
                 Publish date: {new Date(listing.publishDate).toLocaleString()}
+            </div>
+            <div>
+                Time since publication: <strong>{time}</strong>
             </div>
         </div>
     );

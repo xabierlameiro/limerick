@@ -55,7 +55,7 @@
 .mapIcon {
     position: fixed;
     bottom: 10px;
-    right: 10px;
+    right: 25px;
     cursor: pointer;
     background-color: #000;
     opacity: 0.5;

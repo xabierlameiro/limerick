@@ -103,6 +103,7 @@ function Flats({ fallback }: any) {
                 {items(sortListFromPublishDate, display)}
             </div>
             <TbHome
+                color="#FFF"
                 className={`${styles.mapIcon} ${
                     display ? styles.noDisplay : ""
                 }`}
@@ -111,6 +112,7 @@ function Flats({ fallback }: any) {
                 onClick={() => setDisplay((display) => !display)}
             />
             <TbMapSearch
+                color="#FFF"
                 className={`${styles.mapIcon} ${
                     !display ? styles.noDisplay : ""
                 }`}

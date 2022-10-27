@@ -116,3 +116,9 @@ ul li {
         height: 300px;
     }
 }
+
+.gmnoprint,
+.gmnoscreen,
+.gm-style-cc {
+    display: none !important;
+}
