@@ -4,29 +4,10 @@ import styles from "../../../styles/search.module.css";
 import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
-const NUM_OF_ELEMENTS = 10;
 
 const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
     const [display, setDisplay] = React.useState(false);
-    const uniqueIds = new Set();
-
-    const noDuplicatesList = data.listings.filter((element: any) => {
-        const [altitute, latitude] = element.listing.point.coordinates;
-        const isDuplicate = uniqueIds.has(altitute + latitude);
-
-        uniqueIds.add(altitute + latitude);
-
-        if (!isDuplicate) {
-            return true;
-        }
-
-        return false;
-    });
-
-    const sortListFromPublishDate = noDuplicatesList.sort(
-        (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
-    );
 
     return (
         <section>
@@ -34,11 +15,11 @@ const SearchDashBoard = () => {
             <div className={styles.information}>
                 <p className={styles.textAlignCenter}>
                     Adverts available in limerick city centre:{" "}
-                    <strong>{sortListFromPublishDate.length}</strong>
+                    <strong>{data.size}</strong>
                 </p>
                 <p className={styles.textAlignCenter}>
-                    Showing the <strong>{NUM_OF_ELEMENTS}</strong> most recent
-                    adds{" "}
+                    Showing the <strong>{data.listings.length}</strong> most
+                    recent adds
                 </p>
                 <p className={styles.icon}>
                     <Image
@@ -61,7 +42,7 @@ const SearchDashBoard = () => {
             </div>
 
             <div className={styles.grid}>
-                <Flats data={sortListFromPublishDate} display={display} />
+                <Flats data={data.listings} display={display} />
             </div>
             <TbHome
                 color="#FFF"

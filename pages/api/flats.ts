@@ -89,34 +89,35 @@ export default async function handler(
     );
     const resultOfRent = await responseOfRent.json();
 
-    // const data = {
-    //     ...resultOfRent,
-    //     listings: [...resultOfRent.listings, ...resultOfSharing.listings],
-    // };
+    const data = {
+        ...resultOfRent,
+        listings: [...resultOfRent.listings, ...resultOfSharing.listings],
+    };
 
-    // const uniqueIds = new Set();
+    const uniqueIds = new Set();
 
-    // const noDuplicatesList = data.listings.filter((element: any) => {
-    //     const [altitute, latitude] = element.listing.point.coordinates;
-    //     const isDuplicate = uniqueIds.has(altitute + latitude);
+    const noDuplicatesList = data.listings.filter((element: any) => {
+        const [altitute, latitude] = element.listing.point.coordinates;
+        const isDuplicate = uniqueIds.has(altitute + latitude);
 
-    //     uniqueIds.add(altitute + latitude);
+        uniqueIds.add(altitute + latitude);
 
-    //     if (!isDuplicate) {
-    //         return true;
-    //     }
+        if (!isDuplicate) {
+            return true;
+        }
 
-    //     return false;
-    // });
+        return false;
+    });
 
-    // const sortListFromPublishDate = noDuplicatesList.sort(
-    //     (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
-    // );
+    const sortListFromPublishDate = noDuplicatesList.sort(
+        (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
+    );
 
-    // data.listings = sortListFromPublishDate
+    const NUM_OF_ELEMENTS = 10;
 
     res.status(200).json({
         ...resultOfRent,
-        listings: [...resultOfRent.listings, ...resultOfSharing.listings],
+        size: sortListFromPublishDate.length,
+        listings: sortListFromPublishDate.slice(0, NUM_OF_ELEMENTS),
     });
 }
