@@ -9,8 +9,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/token`);
-    const { accessToken } = await data.json();
+    const tokenRequest = await fetch(
+        `${process.env.NEXT_PUBLIC_DOMAIN}/api/token`
+    );
+    const { accessToken } = await tokenRequest.json();
     var myHeaders = new Headers();
     myHeaders.append("authorization", `Bearer ${accessToken}`);
     myHeaders.append("brand", "daft");
@@ -86,6 +88,32 @@ export default async function handler(
         requestOptions
     );
     const resultOfRent = await responseOfRent.json();
+
+    // const data = {
+    //     ...resultOfRent,
+    //     listings: [...resultOfRent.listings, ...resultOfSharing.listings],
+    // };
+
+    // const uniqueIds = new Set();
+
+    // const noDuplicatesList = data.listings.filter((element: any) => {
+    //     const [altitute, latitude] = element.listing.point.coordinates;
+    //     const isDuplicate = uniqueIds.has(altitute + latitude);
+
+    //     uniqueIds.add(altitute + latitude);
+
+    //     if (!isDuplicate) {
+    //         return true;
+    //     }
+
+    //     return false;
+    // });
+
+    // const sortListFromPublishDate = noDuplicatesList.sort(
+    //     (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
+    // );
+
+    // data.listings = sortListFromPublishDate
 
     res.status(200).json({
         ...resultOfRent,

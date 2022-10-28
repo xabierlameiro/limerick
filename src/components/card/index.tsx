@@ -1,81 +1,18 @@
 import React from "react";
 import styles from "@/styles/search.module.css";
 import Image from "next/image";
+import { toast } from "react-toastify";
 import noImage600x600 from "public/no-image-600x600.jpg";
 import { TbMailForward, TbMailOff, TbBrandWhatsapp } from "react-icons/tb";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
-import { toast } from "react-toastify";
 import TimeCounter from "@/components/timeCounter";
+import CardMap from "@/components/cardMap";
 
-export const Card = ({
-    listing,
-    item,
-    children,
-    mapReference,
-    display,
-}: any) => {
-    const [map, setMap] = React.useState<google.maps.Map>();
-    const [a, b]: [number, number] = item.listing.point.coordinates;
-    const [message, setMessage] = React.useState([""]);
+export const Card = ({ listing, children, mapReference, display }: any) => {
     const { user } = useAuthUser();
     const [hasEmail, setHasEmail] = React.useState(false);
     const docRef = doc(db, "emails", listing.id.toString());
-
-    const center = React.useMemo(() => {
-        return { lat: b, lng: a };
-    }, [a, b]);
-
-    React.useEffect(() => {
-        if (mapReference?.current && !map) {
-            const map = new window.google.maps.Map(mapReference.current, {
-                center,
-                zoom: 12,
-                panControl: false,
-                scaleControl: false,
-                rotateControl: false,
-                scrollwheel: false,
-                streetViewControl: false,
-                zoomControl: false,
-                fullscreenControl: false,
-                mapTypeControl: false,
-            });
-            setMap(map);
-
-            let directionsRenderer = new google.maps.DirectionsRenderer();
-            directionsRenderer.setMap(map);
-
-            let directionsService = new google.maps.DirectionsService();
-
-            const route: any = {
-                origin: center,
-                destination: {
-                    lat: 52.65944817040037,
-                    lng: -8.631464207693316,
-                },
-                travelMode: "WALKING",
-            };
-
-            directionsService.route(route, function (response, status) {
-                // anonymous function to capture directions
-                if (status !== "OK") {
-                    return;
-                } else {
-                    directionsRenderer.setDirections(response); // Add route to the map
-                    var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
-                    if (!directionsData) {
-                        window.alert("Directions request failed");
-                        return;
-                    } else {
-                        setMessage([
-                            directionsData.distance.text,
-                            directionsData.duration.text,
-                        ]);
-                    }
-                }
-            });
-        }
-    }, [mapReference, map, center]);
 
     React.useEffect(() => {
         async function findDoc() {
@@ -109,10 +46,13 @@ export const Card = ({
                 alt={listing.title}
                 fill
             />
-            {children}
-            <div>
-                Walking distance is {message[0]} (<strong>{message[1]}</strong>)
-            </div>
+            <CardMap
+                mapReference={mapReference}
+                coordinates={listing.point.coordinates}
+            >
+                {children}
+            </CardMap>
+
             <div className={styles.title}> {listing.title}</div>
             <div>
                 Price <strong>{listing.price}</strong>
