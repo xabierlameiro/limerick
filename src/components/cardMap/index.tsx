@@ -1,7 +1,6 @@
 import React from "react";
 
 const CardMap = ({ children, mapReference, coordinates }: any) => {
-    debugger;
     const [a, b]: [number, number] = coordinates;
     const [map, setMap] = React.useState<google.maps.Map>();
     const [message, setMessage] = React.useState([""]);
