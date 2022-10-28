@@ -9,6 +9,8 @@ import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import Image from "next/image";
 
+const NUM_OF_ELEMENTS = 10;
+
 const Delayed = ({ children, index }: any) => {
     const [isShown, setIsShown] = React.useState(false);
 
@@ -24,7 +26,7 @@ const Delayed = ({ children, index }: any) => {
 export { Delayed };
 
 const items = (data: any, display: boolean) =>
-    data.slice(0, 10).map((item: any, index: any) => {
+    data.slice(0, NUM_OF_ELEMENTS).map((item: any, index: any) => {
         const { listing } = item;
         const ref = React.useRef<HTMLDivElement>(null);
         return (
@@ -77,7 +79,8 @@ function Flats({ fallback }: any) {
                     <strong>{sortListFromPublishDate.length}</strong>
                 </p>
                 <p className={styles.textAlignCenter}>
-                    Showing the <strong>10</strong> most recent adds{" "}
+                    Showing the <strong>{NUM_OF_ELEMENTS}</strong> most recent
+                    adds{" "}
                 </p>
                 <p className={styles.icon}>
                     <Image

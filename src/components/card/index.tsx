@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "@/styles/search.module.css";
-import hash from "stable-hash";
 import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
 import { TbMailForward, TbMailOff, TbBrandWhatsapp } from "react-icons/tb";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
 import { toast } from "react-toastify";
+import TimeCounter from "@/components/timeCounter";
 
 export const Card = ({
     listing,
@@ -15,11 +15,9 @@ export const Card = ({
     mapReference,
     display,
 }: any) => {
-    console.log("listing", listing);
     const [map, setMap] = React.useState<google.maps.Map>();
     const [a, b]: [number, number] = item.listing.point.coordinates;
     const [message, setMessage] = React.useState([""]);
-    const [time, setTime] = React.useState("");
     const { user } = useAuthUser();
     const [hasEmail, setHasEmail] = React.useState(false);
     const docRef = doc(db, "emails", listing.id.toString());
@@ -79,20 +77,6 @@ export const Card = ({
         }
     }, [mapReference, map, center]);
 
-    setInterval(function () {
-        var now = new Date().getTime();
-        var distance = now - new Date(listing.publishDate).getTime();
-        var hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        setTime(
-            `${days != 0 ? `${days}d` : ""} ${hours}h ${minutes}m ${seconds}s`
-        );
-    }, 1000);
-
     React.useEffect(() => {
         async function findDoc() {
             try {
@@ -142,7 +126,7 @@ export const Card = ({
                 Publish date: {new Date(listing.publishDate).toLocaleString()}
             </div>
             <div>
-                Time since publication: <strong>{time}</strong>
+                <TimeCounter publishDate={listing.publishDate} />
             </div>
             {user && (
                 <>
