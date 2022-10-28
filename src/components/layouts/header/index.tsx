@@ -4,7 +4,6 @@ import React from "react";
 import {
     signInWithPopup,
     provider,
-    GoogleAuthProvider,
     signOut,
     setPersistence,
     auth,
@@ -27,21 +26,13 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            href="/rip-limerick"
-                            title="Go to rip limerick post"
-                        >
-                            &#128214;
-                        </Link>
-                    </li>
-                    <li>
                         <Link href="/search" title="Go to search page">
                             &#128269;
                         </Link>
                     </li>
                 </ul>
             </nav>
-            <div>
+            <div className={styles.login}>
                 {!user && (
                     <MdOutlineLogin
                         className={styles.loginIcon}
@@ -94,14 +85,17 @@ const Header = () => {
                     />
                 )}
                 {user && (
-                    <MdOutlineLogout
-                        className={styles.loginIcon}
-                        onClick={() =>
-                            signOut(auth)
-                                .then(() => {})
-                                .catch((error) => {})
-                        }
-                    />
+                    <>
+                        <span>Hi, Xabier</span>
+                        <MdOutlineLogout
+                            className={styles.loginIcon}
+                            onClick={() =>
+                                signOut(auth)
+                                    .then(() => {})
+                                    .catch((error) => {})
+                            }
+                        />
+                    </>
                 )}
             </div>
         </header>

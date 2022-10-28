@@ -3,7 +3,7 @@ import styles from "@/styles/search.module.css";
 import hash from "stable-hash";
 import Image from "next/image";
 import noImage600x600 from "public/no-image-600x600.jpg";
-import { TbMailForward, TbMailOff } from "react-icons/tb";
+import { TbMailForward, TbMailOff, TbBrandWhatsapp } from "react-icons/tb";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
 import { toast } from "react-toastify";
@@ -15,6 +15,7 @@ export const Card = ({
     mapReference,
     display,
 }: any) => {
+    console.log("listing", listing);
     const [map, setMap] = React.useState<google.maps.Map>();
     const [a, b]: [number, number] = item.listing.point.coordinates;
     const [message, setMessage] = React.useState([""]);
@@ -79,9 +80,7 @@ export const Card = ({
     }, [mapReference, map, center]);
 
     setInterval(function () {
-        // Get todays date and time
         var now = new Date().getTime();
-        // Find the distance between now an the count down date
         var distance = now - new Date(listing.publishDate).getTime();
         var hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -130,7 +129,7 @@ export const Card = ({
             <div>
                 Walking distance is {message[0]} (<strong>{message[1]}</strong>)
             </div>
-            <div> {listing.title}</div>
+            <div className={styles.title}> {listing.title}</div>
             <div>
                 Price <strong>{listing.price}</strong>
             </div>
@@ -147,6 +146,24 @@ export const Card = ({
             </div>
             {user && (
                 <>
+                    {listing.seller?.phone && (
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Sen a landlord message"
+                            href={`https://wa.me/+353${listing.seller.phone
+                                .replace(/\D/g, "")
+                                .slice(-9)}/?text=Hello ${
+                                listing.seller?.name == "Private User"
+                                    ? ""
+                                    : listing.seller?.name ?? ""
+                            }%21%21%21%20My%20name%20is%20Xabier%20and%20I%20have%20seen%20your%20rental%20ad in ${
+                                listing.title
+                            }.%20I%20am%20a%20senior%20web%20developer%20working%20and%20living%20with%20my%20partner%20in%20Limerick%2C%20with%20a%20family%20who%20can%20give%20references.%20I%20also%20have%20a%20letter%20of%20recommendation%20from%20my%20company%20and%20my%20last%20landlady.%20You%20can%20see%20them%20here%20%3A%20https%3A%2F%2Fcouplelookinghomeinlimerick.com%2Fwork_recommendation%20and%20https%3A%2F%2Fcouplelookinghomeinlimerick.com%2Flandlady_recommendation%20.%20We%20are%20looking%20for%20accommodation%20for%20a%20long%20stay%2C%20If%20you%20have%20any%20questions%20just%20ask%20me%20and%20we%20can%20meet%20to%20get%20to%20know%20each%20other.%20Thanks`}
+                        >
+                            <TbBrandWhatsapp className={styles.whatsappIcon} />
+                        </a>
+                    )}
                     {!hasEmail && (
                         <TbMailForward
                             className={styles.mailIcon}

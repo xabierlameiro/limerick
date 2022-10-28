@@ -99,8 +99,21 @@
 .mailIcon {
     color: #000;
     position: absolute;
-    bottom: 20px;
+    bottom: 120px;
     right: 10px;
     cursor: pointer;
     font-size: 30px;
+}
+
+.whatsappIcon {
+    color: #000;
+    position: absolute;
+    bottom: 160px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.title {
+    width: 85%;
 }

@@ -6,6 +6,7 @@
     max-width: 850px;
     width: 100%;
     justify-self: center;
+    margin-bottom: 10px;
 }
 
 .navBar ul {
@@ -28,4 +29,11 @@
     color: #fff;
     font-size: 30px;
     cursor: pointer;
+}
+
+.login {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 10px;
 }
