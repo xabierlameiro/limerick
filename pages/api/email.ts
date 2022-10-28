@@ -53,10 +53,6 @@ export default async function handler(
             " with a family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
             " We are looking for accommodation for a long stay, if you want we can talk by WhatsApp and meet to see the house.\n" +
             " Please get in touch if you need more information. Thanks",
-        // message:
-        //     "Hello!,\n My couple and I are living in Limerick with a family, but would like to find something for ourselves. I telecommute" +
-        //     "from home 40h/week and I need a quiet place.\nIf you have anything available for us feel free to contact us.\nI leave you this" +
-        //     "link in case you want to know information about us:\n couplelookinghomeinlimerick.com \nThank you very much\n\nRegards, Xabier",
         phone: "+34 603018268",
     });
 
@@ -69,7 +65,6 @@ export default async function handler(
 
     try {
         await fetch("https://gateway.daft.ie/old/v1/reply", requestOptions);
-
         res.status(200).json({ message: "OK" });
     } catch (err: any) {
         res.status(500).json({ error: err });

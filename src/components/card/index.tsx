@@ -6,6 +6,7 @@ import noImage600x600 from "public/no-image-600x600.jpg";
 import { TbMailForward, TbMailOff } from "react-icons/tb";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
+import { toast } from "react-toastify";
 
 export const Card = ({
     listing,
@@ -95,11 +96,17 @@ export const Card = ({
 
     React.useEffect(() => {
         async function findDoc() {
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setHasEmail(true);
-            } else {
-                setHasEmail(false);
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setHasEmail(true);
+                } else {
+                    setHasEmail(false);
+                }
+            } catch (err) {
+                toast.error((err as Error).message, {
+                    position: "top-center",
+                });
             }
         }
         if (user) findDoc();
@@ -155,8 +162,10 @@ export const Card = ({
                                         emailDate: new Date(),
                                     });
                                     setHasEmail(true);
-                                } catch (e) {
-                                    console.error("Error adding document: ", e);
+                                } catch (err) {
+                                    toast.error((err as Error).message, {
+                                        position: "top-center",
+                                    });
                                 }
                             }}
                         />
