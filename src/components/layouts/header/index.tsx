@@ -12,6 +12,7 @@ import {
 } from "@/firebase";
 import useAuthUser from "@/hooks/useAuthUser";
 import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Header = () => {
     const { user } = useAuthUser();
@@ -47,41 +48,47 @@ const Header = () => {
                         onClick={() =>
                             setPersistence(auth, browserLocalPersistence)
                                 .then(() => {
-                                    // Existing and future Auth states are now persisted in the current
-                                    // session only. Closing the window would clear any existing state even
-                                    // if a user forgets to sign out.
-                                    // ...
-                                    // New sign-in will be persisted with session persistence.
                                     return signInWithPopup(auth, provider)
                                         .then((result) => {
-                                            // This gives you a Google Access Token. You can use it to access the Google API.
-                                            const credential =
-                                                GoogleAuthProvider.credentialFromResult(
-                                                    result
-                                                );
-                                            const token =
-                                                credential?.accessToken;
-                                            // The signed-in user info.
                                             const user = result.user;
                                             if (
                                                 user.email !==
                                                 "xabier.lameiro@gmail.com"
                                             ) {
-                                                throw new Error(
-                                                    "Solo se permite el login a Xabier Lameiro"
-                                                );
+                                                signOut(auth)
+                                                    .then(() => {
+                                                        toast.error(
+                                                            "Only Xabier Lameiro can login to this application!",
+                                                            {
+                                                                position:
+                                                                    "top-center",
+                                                                autoClose: 5000,
+                                                            }
+                                                        );
+                                                    })
+                                                    .catch((error) => {
+                                                        toast.error(
+                                                            error.message,
+                                                            {
+                                                                position:
+                                                                    "top-center",
+                                                            }
+                                                        );
+                                                    });
                                             }
                                         })
                                         .catch((error) => {
-                                            signOut(auth)
-                                                .then(() => {})
-                                                .catch((error) => {});
+                                            signOut(auth).catch(() => {
+                                                toast.error(error.message, {
+                                                    position: "top-center",
+                                                });
+                                            });
                                         });
                                 })
                                 .catch((error) => {
-                                    // Handle Errors here.
-                                    const errorCode = error.code;
-                                    const errorMessage = error.message;
+                                    toast.error(error.message, {
+                                        position: "top-center",
+                                    });
                                 })
                         }
                     />

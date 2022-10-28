@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
 import Head from "next/head";
 import { getCookie } from "cookies-next";
@@ -6,7 +7,7 @@ import { useRouter } from "next/router";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { Analytics } from "@vercel/analytics/react";
+import { ToastContainer } from "react-toastify";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -58,7 +59,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             )}
 
             <Component {...pageProps} />
-            <Analytics />
+            <ToastContainer />
         </>
     );
 }
