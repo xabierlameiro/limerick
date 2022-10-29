@@ -1,5 +1,5 @@
 export function isPushNotificationSupported() {
-    return "serviceWorker" in navigator && "PushManager" in window;
+    return typeof Notification !== "undefined";
 }
 
 export async function askUserPermission() {

@@ -3,6 +3,10 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import {
+    askUserPermission,
+    isPushNotificationSupported,
+} from "@/utils/notification";
+import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
@@ -64,13 +68,15 @@ async function saveMessagingDeviceToken() {
 }
 
 async function requestNotificationsPermissions() {
-    const permission = await Notification.requestPermission();
+    if (isPushNotificationSupported()) {
+        const permission = await askUserPermission();
 
-    if (permission === "granted") {
-        console.info("Notification permission granted.");
-        await saveMessagingDeviceToken();
-    } else {
-        console.error("Unable to get permission to notify.");
+        if (permission === "granted") {
+            console.info("Notification permission granted.");
+            await saveMessagingDeviceToken();
+        } else {
+            console.error("Unable to get permission to notify.");
+        }
     }
 }
 
