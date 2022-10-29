@@ -41,39 +41,23 @@ const db = getFirestore(app);
 
 // messaging
 
-function requestPermission() {
-    console.log("Requesting permission...");
-    if (typeof Notification !== "undefined")
-        Notification.requestPermission().then((permission) => {
-            if (permission === "granted") {
-                console.log("Notification permission granted.");
-                const messaging = getMessaging(app);
-                getToken(messaging, {
-                    vapidKey:
-                        "BMUC9BAeZObLcEGwWT4bTInw2fm6dBcY333217KBjhsLFa4Ztvd4Rd881PxZuxrv4KhEHjKmZofCv6C_y3XG2pU",
-                })
-                    .then((currentToken) => {
-                        if (currentToken) {
-                            console.info(
-                                "Registration token available",
-                                currentToken
-                            );
-                        } else {
-                            console.error("Can no get token");
-                        }
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "An error occurred while retrieving token. ",
-                            err
-                        );
-                    });
+export function requestPermission() {
+    const messaging = getMessaging(app);
+    getToken(messaging, {
+        vapidKey:
+            "BMUC9BAeZObLcEGwWT4bTInw2fm6dBcY333217KBjhsLFa4Ztvd4Rd881PxZuxrv4KhEHjKmZofCv6C_y3XG2pU",
+    })
+        .then((currentToken) => {
+            if (currentToken) {
+                console.info("Registration token available", currentToken);
             } else {
-                console.error("Do not have permissions");
+                console.error("Can no get token");
             }
+        })
+        .catch((err) => {
+            console.error("An error occurred while retrieving token. ", err);
         });
 }
-requestPermission();
 
 export {
     getDoc,

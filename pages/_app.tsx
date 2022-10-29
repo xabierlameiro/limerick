@@ -1,3 +1,4 @@
+import React from "react";
 import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
@@ -8,7 +9,7 @@ import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
-
+import { requestPermission } from "@/firebase";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -22,6 +23,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const router = useRouter();
     const getLayout = Component.getLayout ?? ((page) => page);
     const canonicalUrl = `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`;
+
+    React.useEffect(() => {
+        requestPermission();
+    }, []);
 
     return getLayout(
         <>
