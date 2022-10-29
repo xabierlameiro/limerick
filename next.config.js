@@ -1,12 +1,5 @@
 /** @type {import('next').NextConfig} */
-
-const withMDX = require("@next/mdx")({
-    extension: /\.mdx?$/,
-    options: {
-        remarkPlugins: [],
-        rehypePlugins: [],
-    },
-});
+const withMDX = require("@next/mdx");
 
 const nextConfig = {
     env: {
@@ -18,6 +11,19 @@ const nextConfig = {
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
     images: {
         domains: ["media.daft.ie", "ss"],
+    },
+    webpack: (config) => {
+        return {
+            ...config,
+            entry: async () => {
+                const entryConfig = await config.entry();
+                return {
+                    ...entryConfig,
+                    "public/firebase-messaging-sw.js":
+                        "./src/configs/firebase-messaging-sw.js",
+                };
+            },
+        };
     },
     async redirects() {
         return [
