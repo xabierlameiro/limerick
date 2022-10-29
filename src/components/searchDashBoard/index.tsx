@@ -9,6 +9,15 @@ const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
     const [display, setDisplay] = React.useState(false);
 
+    React.useEffect(() => {
+        const img = "/looking_rent_limerick.png";
+        const text = `It has been updated, there are now ${data.size}`;
+        new Notification("Attention, urgent!!", {
+            body: text,
+            icon: img,
+        });
+    }, [data.size]);
+
     return (
         <section>
             <h1>Limerick city centre home finder</h1>

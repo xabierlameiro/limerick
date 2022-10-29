@@ -1,12 +1,16 @@
 import React from "react";
 import Head from "next/head";
-import useSWR, { SWRConfig } from "swr";
+import { SWRConfig } from "swr";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import SearchDashBoard from "@/components/searchDashBoard";
 
 export default function Page({ fallback }: any) {
+    React.useEffect(() => {
+        Notification.requestPermission();
+    }, []);
+
     const render = (status: Status) => {
         return <span>{status}</span>;
     };
