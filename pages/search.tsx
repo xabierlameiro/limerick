@@ -6,9 +6,19 @@ import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import SearchDashBoard from "@/components/searchDashBoard";
 import { toast } from "react-toastify";
-import { askUserPermission } from "@/utils/notification";
+import { requestNotificationsPermissions } from "@/firebase";
 
 export default function Page({ fallback }: any) {
+    React.useEffect(() => {
+        try {
+            requestNotificationsPermissions();
+        } catch (err) {
+            toast.error((err as Error).message, {
+                position: "top-center",
+            });
+        }
+    }, []);
+
     const render = (status: Status) => {
         return <span>{status}</span>;
     };

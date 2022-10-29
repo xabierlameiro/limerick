@@ -5,6 +5,7 @@ import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
 import { toast } from "react-toastify";
+import { getMessaging, onMessage } from "firebase/messaging";
 
 const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
@@ -14,6 +15,11 @@ const SearchDashBoard = () => {
         const img = "/looking_rent_limerick.png";
         const text = `It has been updated, there are now ${data.size}`;
         try {
+            const messaging = getMessaging();
+            onMessage(messaging, (payload) => {
+                console.log("Message received. ", payload);
+                // ...
+            });
             new Notification("Attention, urgent!!", {
                 body: text,
                 icon: img,

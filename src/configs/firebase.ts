@@ -67,7 +67,7 @@ async function saveMessagingDeviceToken() {
         });
 }
 
-async function requestNotificationsPermissions() {
+export async function requestNotificationsPermissions() {
     if (isPushNotificationSupported()) {
         const permission = await askUserPermission();
 
@@ -79,8 +79,6 @@ async function requestNotificationsPermissions() {
         }
     }
 }
-
-requestNotificationsPermissions();
 
 export {
     getDoc,
