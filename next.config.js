@@ -1,17 +1,13 @@
 /** @type {import('next').NextConfig} */
-const withMDX = require("@next/mdx");
+const withMDX = require("@next/mdx")({
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+    },
+});
 
 const nextConfig = {
-    env: {
-        google_maps_key: "AIzaSyD_w6ud35ISjEvzQkdddzaUFpdDCDarqEY",
-    },
-    reactStrictMode: true,
-    swcMinify: true,
-    productionBrowserSourceMaps: false,
-    pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-    images: {
-        domains: ["media.daft.ie", "ss"],
-    },
     webpack: (config) => {
         return {
             ...config,
@@ -24,6 +20,16 @@ const nextConfig = {
                 };
             },
         };
+    },
+    env: {
+        google_maps_key: "AIzaSyD_w6ud35ISjEvzQkdddzaUFpdDCDarqEY",
+    },
+    reactStrictMode: true,
+    swcMinify: true,
+    productionBrowserSourceMaps: false,
+    pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+    images: {
+        domains: ["media.daft.ie", "ss"],
     },
     async redirects() {
         return [
