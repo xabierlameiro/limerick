@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import {
     getAuth,
     signInWithPopup,
@@ -37,6 +37,44 @@ auth.languageCode = "en";
 
 // db
 const db = getFirestore(app);
+
+// messaging
+
+async function saveMessagingDeviceToken() {
+    const messaging = getMessaging(app);
+    getToken(messaging, { vapidKey: process.env.NEXT_PUSH_KEY })
+        .then((currentToken) => {
+            if (currentToken) {
+                console.info("Registration token available");
+                onMessage(getMessaging(), (message) => {
+                    console.log(
+                        "New foreground notification from Firebase Messaging!",
+                        message.notification
+                    );
+                });
+            } else {
+                console.error(
+                    "No registration token available. Request permission to generate one."
+                );
+            }
+        })
+        .catch((err) => {
+            console.error("An error occurred while retrieving token. ", err);
+        });
+}
+
+async function requestNotificationsPermissions() {
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+        console.info("Notification permission granted.");
+        await saveMessagingDeviceToken();
+    } else {
+        console.error("Unable to get permission to notify.");
+    }
+}
+
+requestNotificationsPermissions();
 
 export {
     getDoc,
