@@ -5,10 +5,17 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import SearchDashBoard from "@/components/searchDashBoard";
+import { toast } from "react-toastify";
 
 export default function Page({ fallback }: any) {
     React.useEffect(() => {
-        Notification.requestPermission();
+        try {
+            Notification.requestPermission();
+        } catch (err) {
+            toast.error((err as Error).message, {
+                position: "top-center",
+            });
+        }
     }, []);
 
     const render = (status: Status) => {

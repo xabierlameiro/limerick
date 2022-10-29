@@ -4,6 +4,7 @@ import styles from "../../../styles/search.module.css";
 import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
+import { toast } from "react-toastify";
 
 const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
@@ -12,10 +13,16 @@ const SearchDashBoard = () => {
     React.useEffect(() => {
         const img = "/looking_rent_limerick.png";
         const text = `It has been updated, there are now ${data.size}`;
-        new Notification("Attention, urgent!!", {
-            body: text,
-            icon: img,
-        });
+        try {
+            new Notification("Attention, urgent!!", {
+                body: text,
+                icon: img,
+            });
+        } catch (err) {
+            toast.error((err as Error).message, {
+                position: "top-center",
+            });
+        }
     }, [data.size]);
 
     return (
