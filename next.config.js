@@ -16,7 +16,7 @@ const nextConfig = {
                 return {
                     ...entryConfig,
                     "public/firebase-messaging-sw.js":
-                        "./src/configs/firebase-messaging-sw.js",
+                        "./src/configs/firebase-messaging-sw.ts",
                 };
             },
         };
