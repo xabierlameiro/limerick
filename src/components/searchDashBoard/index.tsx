@@ -5,7 +5,6 @@ import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
 import { toast } from "react-toastify";
-import { getMessaging, onMessage } from "firebase/messaging";
 
 const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
@@ -13,9 +12,16 @@ const SearchDashBoard = () => {
 
     React.useEffect(() => {
         try {
-            const messaging = getMessaging();
-            onMessage(messaging, (payload) => {
-                console.log("Message received. ", payload);
+            const text = `It has been updated, there are now ${data.size}`;
+            const title = "New change Available!!";
+            const options = {
+                body: text,
+                vibrate: [200, 100, 200],
+                image: "/rent_share_limerick.jpg",
+            };
+
+            navigator.serviceWorker.ready.then(function (serviceWorker) {
+                serviceWorker.showNotification(title, options);
             });
         } catch (err) {
             toast.error((err as Error).message, {
