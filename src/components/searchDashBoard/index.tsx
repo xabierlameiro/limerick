@@ -12,17 +12,10 @@ const SearchDashBoard = () => {
     const [display, setDisplay] = React.useState(false);
 
     React.useEffect(() => {
-        const img = "/looking_rent_limerick.png";
-        const text = `It has been updated, there are now ${data.size}`;
         try {
             const messaging = getMessaging();
             onMessage(messaging, (payload) => {
                 console.log("Message received. ", payload);
-                // ...
-            });
-            new Notification("Attention, urgent!!", {
-                body: text,
-                icon: img,
             });
         } catch (err) {
             toast.error((err as Error).message, {
