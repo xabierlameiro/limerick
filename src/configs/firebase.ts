@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getFirebaseConfig } from "@/configs/firebase-config";
 
 import {
     getAuth,
@@ -12,23 +13,9 @@ import {
     setPersistence,
     browserLocalPersistence,
 } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyBNbhUBpizRzmGxmkjlR7QqivNHE214wrE",
-    authDomain: "limerick-366718.firebaseapp.com",
-    projectId: "limerick-366718",
-    storageBucket: "limerick-366718.appspot.com",
-    messagingSenderId: "476495180585",
-    appId: "1:476495180585:web:1b7dca4bd4090bb14c3d38",
-    measurementId: "G-M6G86XEWWQ",
-};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(getFirebaseConfig());
 // const analytics = getAnalytics(app);
 
 // auth
@@ -40,16 +27,18 @@ auth.languageCode = "en";
 const db = getFirestore(app);
 
 // messaging
-
 export function requestPermission() {
     const messaging = getMessaging(app);
     getToken(messaging, {
-        vapidKey:
-            "BMUC9BAeZObLcEGwWT4bTInw2fm6dBcY333217KBjhsLFa4Ztvd4Rd881PxZuxrv4KhEHjKmZofCv6C_y3XG2pU",
+        vapidKey: process.env.NEXT_PUBLIC_PUSH_KEY,
     })
         .then((currentToken) => {
             if (currentToken) {
                 console.info("Registration token available", currentToken);
+                const messaging = getMessaging();
+                onMessage(messaging, (payload) => {
+                    console.log("Message received. ", payload);
+                });
             } else {
                 console.error("Can no get token");
             }

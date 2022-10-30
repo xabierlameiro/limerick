@@ -19,6 +19,7 @@
             "@/src": ["src/*"],
             "@/hooks/*": ["src/hooks/*"],
             "@/utils/*": ["src/utils/*"],
+            "@/configs/*": ["src/configs/*"],
             "@/components/*": ["src/components/*"],
             "@/layout": ["src/components/layouts/index.tsx"],
             "@/layoutWithSEO": ["src/components/layouts/layoutWithSEO.tsx"],

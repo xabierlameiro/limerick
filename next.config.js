@@ -21,9 +21,6 @@ const nextConfig = {
             },
         };
     },
-    env: {
-        google_maps_key: "AIzaSyD_w6ud35ISjEvzQkdddzaUFpdDCDarqEY",
-    },
     reactStrictMode: true,
     swcMinify: true,
     productionBrowserSourceMaps: false,

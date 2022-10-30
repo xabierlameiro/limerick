@@ -1,16 +1,15 @@
 const config = {
-    apiKey: "AIzaSyBNbhUBpizRzmGxmkjlR7QqivNHE214wrE",
-    authDomain: "limerick-366718.firebaseapp.com",
-    projectId: "limerick-366718",
-    storageBucket: "limerick-366718.appspot.com",
-    messagingSenderId: "476495180585",
-    appId: "1:476495180585:web:1b7dca4bd4090bb14c3d38",
-    measurementId: "G-M6G86XEWWQ",
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJET_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 export function getFirebaseConfig() {
     if (!config || !config.apiKey) {
-        debugger;
         throw new Error(
             "No Firebase configuration object provided." +
                 "\n" +
