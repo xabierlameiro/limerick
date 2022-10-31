@@ -1,13 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-    name: string;
-};
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<any>
 ) {
     const tokenRequest = await fetch(
         `${process.env.NEXT_PUBLIC_DOMAIN}/api/token`
@@ -116,7 +112,6 @@ export default async function handler(
     const NUM_OF_ELEMENTS = 10;
 
     res.status(200).json({
-        ...resultOfRent,
         size: sortListFromPublishDate.length,
         listings: sortListFromPublishDate.slice(0, NUM_OF_ELEMENTS),
     });

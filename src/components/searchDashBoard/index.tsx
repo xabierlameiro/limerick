@@ -4,34 +4,10 @@ import styles from "../../../styles/search.module.css";
 import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
-import useFirstRender from "@/hooks/useFirstRender";
-import { toast } from "react-toastify";
 
 const SearchDashBoard = () => {
     const { data } = useSWR("/api/flats");
     const [display, setDisplay] = React.useState(false);
-    const { firstRender } = useFirstRender();
-
-    React.useEffect(() => {
-        try {
-            const text = `It has been updated, there are now ${data.size}`;
-            const title = "New change Available!!";
-            const options = {
-                body: text,
-                vibrate: [200, 100, 200],
-                image: "/rent_share_limerick.jpg",
-            };
-            if (!firstRender)
-                navigator.serviceWorker.ready.then(function (serviceWorker) {
-                    serviceWorker.showNotification(title, options);
-                });
-        } catch (err) {
-            toast.error((err as Error).message, {
-                position: "top-center",
-            });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data.size]);
 
     return (
         <section>

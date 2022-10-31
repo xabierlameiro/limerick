@@ -5,6 +5,48 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import SearchDashBoard from "@/components/searchDashBoard";
+import hash from "stable-hash";
+import useFirstRender from "@/hooks/useFirstRender";
+import { toast } from "react-toastify";
+
+function logger(useSWRNext: any) {
+    return (key: any, fetcher: any, config: any) => {
+        const laggyDataRef = React.useRef();
+        const { firstRender } = useFirstRender();
+
+        const swr = useSWRNext(key, fetcher, config);
+
+        React.useEffect(() => {
+            if (swr.data !== undefined) {
+                if (!hash(laggyDataRef.current) === hash(swr.data)) {
+                    try {
+                        const text = `It has been updated, there are now ${swr?.data?.size}`;
+                        const title = "New change Available!!";
+                        const options = {
+                            body: text,
+                            vibrate: [200, 100, 200],
+                            image: "/rent_share_limerick.jpg",
+                        };
+                        if (!firstRender)
+                            navigator.serviceWorker.ready.then(function (
+                                serviceWorker
+                            ) {
+                                serviceWorker.showNotification(title, options);
+                            });
+                    } catch (err) {
+                        toast.error((err as Error).message, {
+                            position: "top-center",
+                        });
+                    }
+                }
+
+                laggyDataRef.current = swr.data;
+            }
+        }, [swr.data]);
+
+        return useSWRNext(key, fetcher, config);
+    };
+}
 
 export default function Page({ fallback }: any) {
     const render = (status: Status) => {
@@ -42,6 +84,7 @@ export default function Page({ fallback }: any) {
                         refreshInterval: 20000,
                         refreshWhenHidden: true,
                         refreshWhenOffline: true,
+                        use: [logger],
                     }}
                 >
                     <SearchDashBoard />

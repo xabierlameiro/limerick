@@ -8,19 +8,6 @@ const withMDX = require("@next/mdx")({
 });
 
 const nextConfig = {
-    webpack: (config) => {
-        return {
-            ...config,
-            entry: async () => {
-                const entryConfig = await config.entry();
-                return {
-                    ...entryConfig,
-                    "public/firebase-messaging-sw.js":
-                        "./src/configs/firebase-messaging-sw.ts",
-                };
-            },
-        };
-    },
     reactStrictMode: true,
     swcMinify: true,
     productionBrowserSourceMaps: false,
