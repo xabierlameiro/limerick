@@ -4,10 +4,14 @@ import { SWRConfig } from "swr";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
-import SearchDashBoard from "@/components/searchDashBoard";
+import dynamic from "next/dynamic";
 import hash from "stable-hash";
 import useFirstRender from "@/hooks/useFirstRender";
 import { toast } from "react-toastify";
+
+const SearchDashBoard = dynamic(() => import("@/components/searchDashBoard"), {
+    suspense: true,
+});
 
 function logger(useSWRNext: any) {
     return (key: any, fetcher: any, config: any) => {
@@ -51,7 +55,7 @@ function logger(useSWRNext: any) {
 
 export default function Page({ fallback }: any) {
     const render = (status: Status) => {
-        return <span>{status}</span>;
+        return <section>{status}</section>;
     };
     return (
         <>
