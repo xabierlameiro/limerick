@@ -18,7 +18,7 @@ function logger(useSWRNext: any) {
 
         React.useEffect(() => {
             if (swr.data !== undefined) {
-                if (!hash(laggyDataRef.current) === hash(swr.data)) {
+                if (hash(laggyDataRef.current) !== hash(swr.data)) {
                     try {
                         const text = `It has been updated, there are now ${swr?.data?.size}`;
                         const title = "New change Available!!";
@@ -27,12 +27,13 @@ function logger(useSWRNext: any) {
                             vibrate: [200, 100, 200],
                             image: "/rent_share_limerick.jpg",
                         };
-                        if (!firstRender)
+                        if (!firstRender) {
                             navigator.serviceWorker.ready.then(function (
                                 serviceWorker
                             ) {
                                 serviceWorker.showNotification(title, options);
                             });
+                        }
                     } catch (err) {
                         toast.error((err as Error).message, {
                             position: "top-center",
