@@ -30,6 +30,7 @@ function logger(useSWRNext: any) {
                             body: text,
                             vibrate: [200, 100, 200],
                             image: "/rent_share_limerick.jpg",
+                            tag: Math.floor(Math.random() * 1000).toString(),
                         };
                         if (!firstRender) {
                             navigator.serviceWorker.ready.then(function (
