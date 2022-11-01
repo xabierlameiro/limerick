@@ -1,105 +1,39 @@
-// // Scripts for firebase and firebase messaging
-// importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
-// importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
-// // Initialize the Firebase app in the service worker by passing the generated config
-// const firebaseConfig = {
-//     apiKey: "AIzaSyBNbhUBpizRzmGxmkjlR7QqivNHE214wrE",
-//     authDomain: "limerick-366718.firebaseapp.com",
-//     projectId: "limerick-366718",
-//     storageBucket: "limerick-366718.appspot.com",
-//     messagingSenderId: "476495180585",
-//     appId: "1:476495180585:web:1b7dca4bd4090bb14c3d38",
-//     measurementId: "G-M6G86XEWWQ",
-// };
-
-// firebase.initializeApp(firebaseConfig);
-
-// // Retrieve firebase messaging
-// const messaging = firebase.messaging();
-
-// messaging.onBackgroundMessage(function (payload) {
-//     console.log("Received background message ", payload);
-
-//     const notificationTitle = payload.notification.title;
-//     const notificationOptions = {
-//         body: payload.notification.body,
-//     };
-
-//     self.registration.showNotification(notificationTitle, notificationOptions);
-// });
-
 // Scripts for firebase and firebase messaging
-importScripts("https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.9.1/firebase-messaging.js");
+// eslint-disable-next-line no-undef
+importScripts(
+    "https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"
+);
+// eslint-disable-next-line no-undef
+importScripts(
+    "https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js"
+);
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
-    apiKey: "AIzaSyBNbhUBpizRzmGxmkjlR7QqivNHE214wrE",
-    authDomain: "limerick-366718.firebaseapp.com",
-    projectId: "limerick-366718",
-    storageBucket: "limerick-366718.appspot.com",
-    messagingSenderId: "476495180585",
-    appId: "1:476495180585:web:1b7dca4bd4090bb14c3d38",
-    measurementId: "G-M6G86XEWWQ",
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJET_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-try {
-    if (firebase.messaging.isSupported()) {
-        if (!firebase?.apps?.length) {
-            firebase.initializeApp(firebaseConfig);
-        } else {
-            firebase.app();
-        }
+// eslint-disable-next-line no-undef
+firebase.initializeApp(firebaseConfig);
 
-        // Retrieve an instance of Firebase Messaging so that it can handle background
-        // messages.
-        const messaging = firebase.messaging();
+// Retrieve firebase messaging
+// eslint-disable-next-line no-undef
+const messaging = firebase.messaging();
 
-        const parseFirebaseMessage = (data) => {
-            const keys = Object.keys(data);
-            const tempData = { ...data };
+messaging.onBackgroundMessage(function (payload) {
+    // console.log('Received background message ', payload);
 
-            keys.forEach((key) => {
-                if (typeof tempData[key] === "string") {
-                    tempData[key] = JSON.parse(tempData[key]);
-                }
-            });
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+    };
 
-            return tempData;
-        };
-
-        messaging.onBackgroundMessage(async (payload) => {
-            console.log(
-                "[firebase-messaging-sw.js] Received background original message ",
-                payload
-            );
-
-            if (payload.data) {
-                const parsedData = payload?.data?.message
-                    ? null
-                    : parseFirebaseMessage(payload.data);
-                console.log(
-                    "[firebase-messaging-sw.js] Received background parsed message ",
-                    parsedData,
-                    self.registration
-                );
-
-                // Hide notifications trick
-                return new Promise(function (resolve, reject) {
-                    resolve();
-                    setTimeout(function () {
-                        self.registration
-                            .getNotifications()
-                            .then((notifications) => {
-                                notifications.forEach((notification) => {
-                                    notification.close();
-                                });
-                            });
-                    }, 100);
-                });
-            }
-        });
-    }
-} catch (e) {
-    console.error("[firebase-messaging-sw.js] - error: ", e.message);
-}
+    // eslint-disable-next-line no-restricted-globals
+    self.registration.showNotification(notificationTitle, notificationOptions);
+});
