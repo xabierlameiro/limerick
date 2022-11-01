@@ -10,13 +10,13 @@ importScripts(
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJET_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    apiKey: "AIzaSyBNbhUBpizRzmGxmkjlR7QqivNHE214wrE",
+    authDomain: "limerick-366718.firebaseapp.com",
+    projectId: "limerick-366718",
+    storageBucket: "limerick-366718.appspot.com",
+    messagingSenderId: "476495180585",
+    appId: "1:476495180585:web:1b7dca4bd4090bb14c3d38",
+    measurementId: "G-M6G86XEWWQ",
 };
 
 // eslint-disable-next-line no-undef
@@ -26,14 +26,21 @@ firebase.initializeApp(firebaseConfig);
 // eslint-disable-next-line no-undef
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function (payload) {
-    // console.log('Received background message ', payload);
+try {
+    messaging.onBackgroundMessage(function (payload) {
+        // console.log('Received background message ', payload);
 
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-    };
+        const notificationTitle = payload.notification.title;
+        const notificationOptions = {
+            body: payload.notification.body,
+        };
 
-    // eslint-disable-next-line no-restricted-globals
-    self.registration.showNotification(notificationTitle, notificationOptions);
-});
+        // eslint-disable-next-line no-restricted-globals
+        self.registration.showNotification(
+            notificationTitle,
+            notificationOptions
+        );
+    });
+} catch (e) {
+    console.error("firebase-messaging-sw.js error", e);
+}
