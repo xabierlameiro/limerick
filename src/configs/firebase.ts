@@ -34,7 +34,6 @@ export function requestPermission() {
     })
         .then((currentToken) => {
             if (currentToken) {
-                console.info("Registration token available", currentToken);
                 const messaging = getMessaging();
                 onMessage(messaging, (payload) => {
                     console.log("Message received. ", payload);

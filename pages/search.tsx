@@ -33,11 +33,14 @@ function logger(useSWRNext: any) {
                             tag: Math.floor(Math.random() * 1000).toString(),
                         };
                         if (!firstRender) {
-                            navigator.serviceWorker.ready.then(function (
-                                serviceWorker
-                            ) {
-                                serviceWorker.showNotification(title, options);
-                            });
+                            navigator.serviceWorker.ready.then(
+                                (registration) => {
+                                    registration.showNotification(
+                                        title,
+                                        options
+                                    );
+                                }
+                            );
                         }
                     } catch (err) {
                         toast.error((err as Error).message, {
@@ -48,7 +51,7 @@ function logger(useSWRNext: any) {
 
                 laggyDataRef.current = swr.data;
             }
-        }, [swr.data]);
+        }, [swr.data, firstRender]);
 
         return useSWRNext(key, fetcher, config);
     };
