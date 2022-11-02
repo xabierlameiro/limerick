@@ -19,11 +19,25 @@ class MyDocument extends Document {
         return (
             <Html lang="en-IE">
                 <Head>
+                    <link rel="manifest" href="/manifest.json" />
+                    <link
+                        href="/icons/favicon-16x16.png"
+                        rel="icon"
+                        type="image/png"
+                        sizes="16x16"
+                    />
+                    <link
+                        href="/icons/favicon-32x32.png"
+                        rel="icon"
+                        type="image/png"
+                        sizes="32x32"
+                    />
                     <link rel="icon" href="/favicon.svg" />
                     <link
                         rel="apple-touch-icon"
                         href="/looking_rent_limerick.png"
                     />
+                    <meta name="theme-color" content="#ffffff" />
                     <meta
                         property="og:site_name"
                         content="couplelookinghomeinlimerick"
