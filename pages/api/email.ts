@@ -53,7 +53,7 @@ export default async function handler(
             " with a family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
             " We are looking for accommodation for a long stay, if you want we can talk by WhatsApp and meet to see the house.\n" +
             " Please get in touch if you need more information. Thanks",
-        phone: "+34 603018268",
+        phone: "+353 85 883 8479",
     });
 
     var requestOptions: RequestInit = {

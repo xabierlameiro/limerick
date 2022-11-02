@@ -144,7 +144,7 @@ const Home: NextPageWithLayout = () => {
                                             "Sending whatsapp to Xabier",
                                     })
                                 }
-                                href="https://wa.me/+34603018268/?text=Hi,%20I%20saw%20you%20on%20www.couplelookinghomeinlimerick.com"
+                                href="https://wa.me/+353858838479/?text=Hi,%20I%20saw%20you%20on%20www.couplelookinghomeinlimerick.com"
                             >
                                 Send message
                             </a>
