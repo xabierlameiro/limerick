@@ -8,6 +8,10 @@ const withMDX = require("@next/mdx")({
 });
 
 const withPWA = require("next-pwa")({
+    pwa: {
+        dest: "public",
+    },
+    reactStrictMode: true,
     dest: "public",
 });
 
