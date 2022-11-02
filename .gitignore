@@ -40,3 +40,8 @@ robots.txt
 sitemap.xml
 sitemap-*.xml
 
+
+sw.js
+workbox-*.js
+fallback-*.js
+
