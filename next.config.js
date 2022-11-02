@@ -7,6 +7,10 @@ const withMDX = require("@next/mdx")({
     },
 });
 
+const withPWA = require("next-pwa")({
+    dest: "public",
+});
+
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
@@ -31,4 +35,4 @@ const nextConfig = {
     },
 };
 
-module.exports = withMDX(nextConfig);
+module.exports = withPWA(withMDX(nextConfig));

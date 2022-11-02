@@ -75,9 +75,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                             target="_blank"
                             rel="noreferrer"
                             title="Sen a landlord message"
-                            href={`https://wa.me/+353${listing.seller.phone
-                                .replace(/\D/g, "")
-                                .slice(-9)}/?text=Hello ${
+                            href={`https://wa.me/+353874038244/?text=Hello ${
                                 listing.seller?.name == "Private User"
                                     ? ""
                                     : listing.seller?.name ?? ""
