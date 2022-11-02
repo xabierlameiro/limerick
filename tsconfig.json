@@ -29,6 +29,12 @@
             "@/firebase": ["src/configs/firebase.ts"]
         }
     },
-    "include": ["types/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx"],
+    "include": [
+        "types/*.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mdx",
+        "/pages/_offline.tsx"
+    ],
     "exclude": ["node_modules"]
 }
