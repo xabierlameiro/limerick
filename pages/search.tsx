@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import hash from "stable-hash";
 import useFirstRender from "@/hooks/useFirstRender";
 import { toast } from "react-toastify";
+import Loading from "@/components/loading";
 
 const SearchDashBoard = dynamic(() => import("@/components/searchDashBoard"), {
     suspense: true,
@@ -58,8 +59,8 @@ function logger(useSWRNext: any) {
 }
 
 export default function Page({ fallback }: any) {
-    const render = (status: Status) => {
-        return <section>{status}</section>;
+    const render = () => {
+        return <Loading />;
     };
     return (
         <>

@@ -7,10 +7,12 @@ export const Flats = ({ data, display }: any) =>
     data.map(({ listing }: any, index: number) => {
         const ref = React.createRef<HTMLDivElement>();
         return (
-            <Delayed key={listing.id} index={index}>
+            <Delayed
+                key={`${listing.id}${new Date(listing.publishDate).getTime()}}`}
+                index={index}
+            >
                 <Card
                     display={display}
-                    key={listing.id}
                     mapReference={ref}
                     listing={listing}
                     index={index}
