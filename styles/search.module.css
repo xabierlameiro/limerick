@@ -21,6 +21,7 @@
     background-color: #fff;
     color: #000;
     animation: fadeIn 2s;
+    user-select: none;
 }
 
 .card > img {
