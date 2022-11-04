@@ -4,6 +4,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import noImage600x600 from "public/no-image-600x600.jpg";
 import { TbMailForward, TbMailOff, TbBrandWhatsapp } from "react-icons/tb";
+import { CgCopy } from "react-icons/cg";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
 import TimeCounter from "@/components/timeCounter";
@@ -53,7 +54,14 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                 {children}
             </CardMap>
 
-            <div className={styles.title}> {listing.title}</div>
+            <div
+                title="Click to copy"
+                className={styles.title}
+                onClick={() => navigator.clipboard.writeText(listing.title)}
+            >
+                {listing.title.slice(0, -14)}
+                <CgCopy className={styles.copy} />
+            </div>
             <div>
                 Price <strong>{listing.price}</strong>
             </div>

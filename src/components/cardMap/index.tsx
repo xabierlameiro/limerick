@@ -19,8 +19,8 @@ const CardMap = ({ children, mapReference, coordinates }: any) => {
                 rotateControl: false,
                 scrollwheel: false,
                 streetViewControl: false,
-                zoomControl: false,
-                fullscreenControl: false,
+                zoomControl: true,
+                fullscreenControl: true,
                 mapTypeControl: false,
             });
             setMap(map);
@@ -64,7 +64,7 @@ const CardMap = ({ children, mapReference, coordinates }: any) => {
         <>
             {children}
             <div>
-                Walking distance is {message[0]} (<strong>{message[1]}</strong>)
+                Walking {message[0]} (<strong>{message[1]}</strong>)
             </div>
         </>
     );
