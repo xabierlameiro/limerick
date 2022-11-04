@@ -11,6 +11,10 @@ const withPWA = require("next-pwa")({
     dest: "public",
 });
 
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
+
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
@@ -35,4 +39,4 @@ const nextConfig = {
     },
 };
 
-module.exports = withPWA(withMDX(nextConfig));
+module.exports = withBundleAnalyzer(withPWA(withMDX(nextConfig)));

@@ -50,7 +50,7 @@ export default async function handler(
         email: "xabier.lameiro@gmail.com",
         message:
             "Hello!!! My name is Xabier and I have seen your rental ad. I am a senior web developer working and living with my partner in Limerick,\n" +
-            " with a family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
+            " with a Irish family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
             " We are looking for accommodation for a long stay, if you want we can talk by WhatsApp and meet to see the house.\n" +
             " Please get in touch if you need more information. Thanks",
         phone: "+353 85 883 8479",

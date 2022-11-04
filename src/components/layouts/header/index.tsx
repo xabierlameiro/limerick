@@ -1,17 +1,8 @@
 import styles from "./header.module.css";
 import Link from "next/link";
 import React from "react";
-import {
-    signInWithPopup,
-    provider,
-    signOut,
-    setPersistence,
-    auth,
-    browserLocalPersistence,
-} from "@/firebase";
 import useAuthUser from "@/hooks/useAuthUser";
 import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
-import { toast } from "react-toastify";
 
 const Header = () => {
     const { user } = useAuthUser();
@@ -36,7 +27,16 @@ const Header = () => {
                 {!user && (
                     <MdOutlineLogin
                         className={styles.loginIcon}
-                        onClick={() =>
+                        onClick={async () => {
+                            const {
+                                auth,
+                                setPersistence,
+                                provider,
+                                signInWithPopup,
+                                signOut,
+                                browserLocalPersistence,
+                            } = await import("@/firebase");
+                            const { toast } = await import("react-toastify");
                             setPersistence(auth, browserLocalPersistence)
                                 .then(() => {
                                     return signInWithPopup(auth, provider)
@@ -80,8 +80,8 @@ const Header = () => {
                                     toast.error(error.message, {
                                         position: "top-center",
                                     });
-                                })
-                        }
+                                });
+                        }}
                     />
                 )}
                 {user && (
@@ -89,11 +89,14 @@ const Header = () => {
                         <span>Hi, Xabier</span>
                         <MdOutlineLogout
                             className={styles.loginIcon}
-                            onClick={() =>
+                            onClick={async () => {
+                                const { auth, signOut } = await import(
+                                    "@/firebase"
+                                );
                                 signOut(auth)
                                     .then(() => {})
-                                    .catch((error) => {})
-                            }
+                                    .catch(() => {});
+                            }}
                         />
                     </>
                 )}

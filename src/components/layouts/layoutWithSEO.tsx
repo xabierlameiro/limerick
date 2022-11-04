@@ -1,8 +1,21 @@
 import type { ReactElement } from "react";
 import Head from "next/head";
-import Footer from "@/components/layouts/footer";
-import Header from "@/components/layouts/header";
-import Coookies from "@/components/cookies";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(
+    () => import("@/components/layouts/header").then((mod) => mod),
+    { suspense: true }
+);
+
+const Footer = dynamic(
+    () => import("@/components/layouts/footer").then((mod) => mod),
+    { suspense: true }
+);
+
+const Coookies = dynamic(
+    () => import("@/components/cookies").then((mod) => mod),
+    { suspense: true }
+);
 
 type Props = {
     cookies: boolean;
