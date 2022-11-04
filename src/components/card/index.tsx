@@ -57,7 +57,15 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
             <div
                 title="Click to copy"
                 className={styles.title}
-                onClick={() => navigator.clipboard.writeText(listing.title)}
+                onClick={() => {
+                    toast.success(`Address copied ${listing.title}`, {
+                        hideProgressBar: true,
+                        position: "bottom-right",
+                        autoClose: 1000,
+                        toastId: listing.title,
+                    });
+                    navigator.clipboard.writeText(listing.title);
+                }}
             >
                 {listing.title.slice(0, -14)}
                 <CgCopy className={styles.copy} />
@@ -82,7 +90,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            title="Sen a landlord message"
+                            title="Send a message"
                             href={`https://wa.me/+353${listing.seller.phone
                                 .replace(/\D/g, "")
                                 .slice(-9)}/?text=Hello ${
@@ -111,6 +119,9 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                                         emailDate: new Date(),
                                     });
                                     setHasEmail(true);
+                                    toast.success("Email sent", {
+                                        position: "top-center",
+                                    });
                                 } catch (err) {
                                     toast.error((err as Error).message, {
                                         position: "top-center",
@@ -119,7 +130,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                             }}
                         />
                     )}
-                    {hasEmail && <TbMailOff className={styles.mailIcon} />}
+                    {hasEmail && <TbMailOff className={styles.noMailIcon} />}
                 </>
             )}
         </div>

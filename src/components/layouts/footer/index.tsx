@@ -5,7 +5,7 @@ import styles from "./footer.module.css";
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className={styles.footer}>
             <nav className={styles.media}>
                 <a
                     title="Linkedin profile"

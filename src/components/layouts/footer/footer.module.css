@@ -30,4 +30,22 @@
 
 .policies ul li {
     padding: 0;
+    text-align: center;
+}
+
+.footer {
+    padding: 0 20px 20px;
+    display: grid;
+    place-content: center;
+    grid-gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .policies ul li {
+        font-size: 14px;
+    }
+
+    .copyright {
+        font-size: 14px;
+    }
 }

@@ -105,6 +105,16 @@
     font-size: 30px;
 }
 
+.noMailIcon {
+    color: #000;
+    position: absolute;
+    bottom: 120px;
+    right: 10px;
+    cursor: not-allowed;
+    font-size: 30px;
+    opacity: 0.5;
+}
+
 .whatsappIcon {
     color: #000;
     position: absolute;

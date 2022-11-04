@@ -35,13 +35,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+# robots
 robots.txt
 sitemap.xml
 sitemap-*.xml
 
-
+# pwa
 sw.js
+sw.js.map
 workbox-*.js
+workbox-*.js.map
 fallback-*.js
 
