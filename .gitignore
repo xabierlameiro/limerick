@@ -47,3 +47,9 @@ workbox-*.js
 workbox-*.js.map
 fallback-*.js
 
+# functions
+functions
+.firebaserc
+firebase-debug.log
+firebase.json
+ui-debug.log
