@@ -141,12 +141,12 @@
 .otroMapa {
     min-height: 68vh;
     height: 100%;
-    margin: 0 auto;
 }
 
 .mapContainer {
     z-index: 0;
     width: 90vw;
+    margin: 0 auto;
     position: relative;
 }
 .remove {
