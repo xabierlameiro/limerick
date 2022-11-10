@@ -74,10 +74,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                 Price <strong>{listing.price}</strong>
             </div>
             <div>Category : {listing.category}</div>
-            <div>
-                Baths : {listing.numBathrooms ?? "No info"} | Room :{" "}
-                {listing.numBedrooms}
-            </div>
+            <div>Room : {listing.numBedrooms}</div>
             <div>
                 Publish date: {new Date(listing.publishDate).toLocaleString()}
             </div>
