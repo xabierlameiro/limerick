@@ -10,6 +10,9 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ToastContainer, Slide } from "react-toastify";
 import { requestPermission } from "@/firebase";
+import { MapPolygonsProvider } from "@/context/MapPolygonsContext";
+import { Wrapper } from "@googlemaps/react-wrapper";
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -80,8 +83,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
                     `}
                 </Script>
             )}
-
-            <Component {...pageProps} />
+            <Wrapper
+                apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}&libraries=drawing`}
+                render={() => <h1>loading..</h1>}
+            >
+                <MapPolygonsProvider>
+                    <Component {...pageProps} />
+                </MapPolygonsProvider>
+            </Wrapper>
             <ToastContainer transition={Slide} />
         </>
     );

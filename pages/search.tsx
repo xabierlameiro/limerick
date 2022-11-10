@@ -1,14 +1,12 @@
 import React from "react";
 import Head from "next/head";
 import { SWRConfig } from "swr";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import dynamic from "next/dynamic";
 import hash from "stable-hash";
 import useFirstRender from "@/hooks/useFirstRender";
 import { toast } from "react-toastify";
-import Loading from "@/components/loading";
 
 const SearchDashBoard = dynamic(() => import("@/components/searchDashBoard"), {
     suspense: true,
@@ -59,9 +57,6 @@ function logger(useSWRNext: any) {
 }
 
 export default function Page({ fallback }: any) {
-    const render = () => {
-        return <Loading />;
-    };
     return (
         <>
             <Head>
@@ -82,24 +77,19 @@ export default function Page({ fallback }: any) {
                 <meta name="robots" content="all" />
             </Head>
 
-            <Wrapper
-                apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}`}
-                render={render}
+            <SWRConfig
+                value={{
+                    fallback,
+                    fetcher: (arg: any, ...args: any) =>
+                        fetch(arg, ...args).then((res) => res.json()),
+                    refreshInterval: 20000,
+                    refreshWhenHidden: true,
+                    refreshWhenOffline: true,
+                    use: [logger],
+                }}
             >
-                <SWRConfig
-                    value={{
-                        fallback,
-                        fetcher: (arg: any, ...args: any) =>
-                            fetch(arg, ...args).then((res) => res.json()),
-                        refreshInterval: 20000,
-                        refreshWhenHidden: true,
-                        refreshWhenOffline: true,
-                        use: [logger],
-                    }}
-                >
-                    <SearchDashBoard />
-                </SWRConfig>
-            </Wrapper>
+                <SearchDashBoard />
+            </SWRConfig>
         </>
     );
 }

@@ -38,6 +38,14 @@ export function requestPermission() {
                 onMessage(messaging, (payload) => {
                     console.log("Message received. ", payload);
                 });
+                // try {
+                //     setDoc(doc(db, "tokens", currentToken), {
+                //         token: currentToken,
+                //         date: new Date(),
+                //     });
+                // } catch (e) {
+                //     console.log("No se ha podido guardar el token", e);
+                // }
             } else {
                 console.error("Can no get token");
             }

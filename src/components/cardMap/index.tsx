@@ -1,13 +1,36 @@
 import React from "react";
+import { usePolygons } from "@/context/MapPolygonsContext";
 
-const CardMap = ({ children, mapReference, coordinates }: any) => {
-    const [a, b]: [number, number] = coordinates;
+const CardMap = ({
+    children,
+    mapReference,
+    coordinates: coordinatesMap,
+}: any) => {
+    const [a, b]: [number, number] = coordinatesMap;
     const [map, setMap] = React.useState<google.maps.Map>();
     const [message, setMessage] = React.useState([""]);
+    const {
+        state: { coordinates },
+    } = usePolygons();
 
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
     }, [a, b]);
+
+    React.useEffect(() => {
+        if (coordinates && map) {
+            const bermudaTriangle = new google.maps.Polygon({
+                paths: coordinates as any,
+                fillColor: "#FE4C4C",
+                strokeColor: "#FE4C4C",
+                geodesic: true,
+                fillOpacity: 0.5,
+                strokeWeight: 1,
+                strokeOpacity: 1,
+            });
+            bermudaTriangle.setMap(map);
+        }
+    }, [coordinates, map]);
 
     React.useEffect(() => {
         if (mapReference?.current && !map) {
@@ -22,7 +45,8 @@ const CardMap = ({ children, mapReference, coordinates }: any) => {
                 zoomControl: true,
                 fullscreenControl: true,
                 mapTypeControl: false,
-            });
+            } as google.maps.MapOptions);
+
             setMap(map);
 
             let directionsRenderer = new google.maps.DirectionsRenderer();

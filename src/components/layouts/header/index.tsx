@@ -21,6 +21,11 @@ const Header = () => {
                             &#128269;
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/map" title="Go to the map">
+                            &#128506;
+                        </Link>
+                    </li>
                 </ul>
             </nav>
             <div className={styles.login}>

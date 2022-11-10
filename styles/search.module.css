@@ -137,3 +137,22 @@
     width: 20px;
     color: #000;
 }
+
+.otroMapa {
+    min-height: 68vh;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.mapContainer {
+    z-index: 0;
+    width: 90vw;
+    position: relative;
+}
+.remove {
+    position: absolute;
+    background-color: red;
+    z-index: 100;
+    bottom: 100px;
+    right: 10px;
+}

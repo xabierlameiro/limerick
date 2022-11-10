@@ -3,8 +3,8 @@ import Delayed from "@/components/delayed";
 import Card from "@/components/card";
 import styles from "../../../styles/search.module.css";
 
-export const Flats = ({ data, display }: any) =>
-    data.map(({ listing }: any, index: number) => {
+export const Flats = ({ data, display }: any) => {
+    return data.map(({ listing }: any, index: number) => {
         const ref = React.createRef<HTMLDivElement>();
         return (
             <Delayed
@@ -25,5 +25,6 @@ export const Flats = ({ data, display }: any) =>
             </Delayed>
         );
     });
+};
 
 export default Flats;

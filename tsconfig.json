@@ -20,6 +20,7 @@
             "@/hooks/*": ["src/hooks/*"],
             "@/utils/*": ["src/utils/*"],
             "@/configs/*": ["src/configs/*"],
+            "@/context/*": ["src/context/*"],
             "@/components/*": ["src/components/*"],
             "@/layout": ["src/components/layouts/index.tsx"],
             "@/layoutWithSEO": ["src/components/layouts/layoutWithSEO.tsx"],
