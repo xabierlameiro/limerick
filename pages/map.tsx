@@ -5,17 +5,20 @@ import styles from "@/styles/search.module.css";
 import useAuthUser from "@/hooks/useAuthUser";
 import Head from "next/head";
 import { usePolygons } from "@/context/MapPolygonsContext";
+import { db } from "@/firebase";
+import { collection, query, onSnapshot } from "firebase/firestore";
+const q = query(collection(db, "coordinates"));
 
 function createCenterControl(
     map: any,
-    polygons: any,
+    coordinates: any,
     dispatch: any,
     customButton: any,
     user: any
 ) {
     const controlButton = document.createElement("button");
 
-    if (!user || polygons) {
+    if (!user || coordinates) {
         const element = document.getElementById("customButton");
         element?.remove();
         customButton.current = false;
@@ -47,10 +50,10 @@ function createCenterControl(
         );
         customButton.current = true;
     }
-    if (polygons) {
+    if (coordinates) {
+        const index = coordinates.length - 1;
         var elemEventHandler = () => {
-            dispatch({ type: "POP_COORDINATE" });
-            polygons[polygons.length - 1].current?.setMap(null);
+            dispatch({ type: "POP_COORDINATE", payload: coordinates[index] });
         };
 
         controlButton.addEventListener("click", elemEventHandler);
@@ -63,12 +66,28 @@ export default function Map() {
     const drawing = React.useRef<google.maps.drawing.DrawingManager>();
     const polygon = React.useRef<google.maps.Polygon>();
     const customButton = React.useRef<boolean>();
-    const {
-        dispatch,
-        state: { coordinates, polygons },
-    } = usePolygons();
-
+    const initialized = React.useRef<any>();
+    const [coordinates, setCoordinates] = React.useState();
     const { user } = useAuthUser();
+    const { dispatch } = usePolygons();
+
+    React.useEffect(() => {
+        const unsuscribe = onSnapshot(q, (querySnapshot) => {
+            const cities: any = [];
+            querySnapshot.forEach((doc) => {
+                doc.data().data.forEach((e: Array<any>) => {
+                    cities.push(
+                        e[0].map((a: any) => new google.maps.LatLng(a))
+                    );
+                });
+            });
+            setCoordinates(cities);
+        });
+
+        return () => {
+            unsuscribe();
+        };
+    }, []);
 
     React.useEffect(() => {
         if (ref?.current && !map.current) {
@@ -104,19 +123,6 @@ export default function Map() {
                     },
                 });
 
-                if (coordinates && map) {
-                    const loadPolygons = new google.maps.Polygon({
-                        paths: coordinates,
-                        fillColor: "#FE4C4C",
-                        strokeColor: "#FE4C4C",
-                        geodesic: true,
-                        fillOpacity: 0.5,
-                        strokeWeight: 1,
-                        strokeOpacity: 1,
-                    });
-                    loadPolygons.setMap(map.current);
-                }
-
                 drawingManager.setMap(map.current);
 
                 google.maps.event.addListener(
@@ -127,7 +133,7 @@ export default function Map() {
 
                         polygon.current = data;
                         if (map.current && polygon.current)
-                            polygon.current.setMap(map.current);
+                            polygon.current.setMap(null);
 
                         dispatch({
                             type: "ADD_COORDINATES",
@@ -145,6 +151,23 @@ export default function Map() {
     }, [ref, map]);
 
     React.useEffect(() => {
+        if (Array.isArray(coordinates)) {
+            initialized?.current?.setMap(null);
+
+            initialized.current = new google.maps.Polygon({
+                paths: coordinates,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+            });
+
+            initialized.current.setMap(map.current);
+        }
+    }, [coordinates]);
+
+    React.useEffect(() => {
         if (drawing)
             drawing.current?.setOptions({
                 drawingControl: user,
@@ -155,9 +178,9 @@ export default function Map() {
     }, [user, drawing]);
 
     React.useEffect(() => {
-        createCenterControl(map, polygons, dispatch, customButton, user);
+        createCenterControl(map, coordinates, dispatch, customButton, user);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user, polygons]);
+    }, [user, coordinates]);
 
     return (
         <>

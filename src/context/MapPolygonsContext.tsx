@@ -1,4 +1,6 @@
 import * as React from "react";
+import { doc, db } from "@/firebase";
+import { arrayUnion, arrayRemove, updateDoc } from "firebase/firestore";
 
 type Action = {
     type: "ADD_COORDINATES" | "POP_COORDINATE";
@@ -16,22 +18,33 @@ const MapPolygonStateContext = React.createContext<
 function mapPolygonReducer(state: State, action: Action) {
     switch (action.type) {
         case "ADD_COORDINATES": {
-            return {
+            const newValue = {
                 ...state,
                 coordinates: [...state.coordinates, [...action.payload]],
                 polygons: [...state.polygons, { ...action.polygons }],
             };
+
+            try {
+                updateDoc(doc(db, "coordinates", "map"), {
+                    data: arrayUnion({
+                        0: JSON.parse(JSON.stringify(action.payload)),
+                    }),
+                });
+            } catch (e) {
+                console.error("Error when try write a document", e);
+            }
+            return newValue;
         }
         case "POP_COORDINATE": {
-            return {
-                ...state,
-                coordinates: state.coordinates.filter(
-                    (_, i) => i !== state.coordinates.length - 1
-                ),
-                polygons: state.polygons.filter(
-                    (_, i) => i !== state.polygons.length - 1
-                ),
-            };
+            try {
+                updateDoc(doc(db, "coordinates", "map"), {
+                    data: arrayRemove({
+                        0: JSON.parse(JSON.stringify(action.payload)),
+                    }),
+                });
+            } catch (e) {
+                console.error("Error when try write a document", e);
+            }
         }
         default: {
             return state;

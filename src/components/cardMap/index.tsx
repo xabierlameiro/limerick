@@ -1,5 +1,7 @@
 import React from "react";
-import { usePolygons } from "@/context/MapPolygonsContext";
+import { db } from "@/firebase";
+import { collection, query, onSnapshot } from "firebase/firestore";
+const q = query(collection(db, "coordinates"));
 
 const CardMap = ({
     children,
@@ -9,13 +11,29 @@ const CardMap = ({
     const [a, b]: [number, number] = coordinatesMap;
     const [map, setMap] = React.useState<google.maps.Map>();
     const [message, setMessage] = React.useState([""]);
-    const {
-        state: { coordinates },
-    } = usePolygons();
+    const [coordinates, setCoordinates] = React.useState();
 
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
     }, [a, b]);
+
+    React.useEffect(() => {
+        const unsuscribe = onSnapshot(q, (querySnapshot) => {
+            const cities: any = [];
+            querySnapshot.forEach((doc) => {
+                doc.data().data.forEach((e: Array<any>) => {
+                    cities.push(
+                        e[0].map((a: any) => new google.maps.LatLng(a))
+                    );
+                });
+            });
+            setCoordinates(cities);
+        });
+
+        return () => {
+            unsuscribe();
+        };
+    }, []);
 
     React.useEffect(() => {
         if (coordinates && map) {

@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
+import {
+    getFirestore,
+    setDoc,
+    getDoc,
+    updateDoc,
+    doc,
+} from "firebase/firestore";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getFirebaseConfig } from "@/configs/firebase-config";
 
@@ -57,6 +63,7 @@ export function requestPermission() {
 
 export {
     getDoc,
+    updateDoc,
     setDoc,
     db,
     doc,
