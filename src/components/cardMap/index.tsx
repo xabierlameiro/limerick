@@ -12,6 +12,7 @@ const CardMap = ({
     const [map, setMap] = React.useState<google.maps.Map>();
     const [message, setMessage] = React.useState([""]);
     const [coordinates, setCoordinates] = React.useState();
+    const initialized = React.useRef<any>();
 
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
@@ -36,17 +37,20 @@ const CardMap = ({
     }, []);
 
     React.useEffect(() => {
-        if (coordinates && map) {
-            const bermudaTriangle = new google.maps.Polygon({
-                paths: coordinates as any,
+        if (Array.isArray(coordinates)) {
+            initialized?.current?.setMap(null);
+
+            initialized.current = new google.maps.Polygon({
+                paths: coordinates,
                 fillColor: "#FE4C4C",
-                strokeColor: "#FE4C4C",
-                geodesic: true,
                 fillOpacity: 0.5,
-                strokeWeight: 1,
+                strokeColor: "#FE4C4C",
+                strokeWeight: 0,
                 strokeOpacity: 1,
+                geodesic: true,
             });
-            bermudaTriangle.setMap(map);
+
+            initialized.current.setMap(map);
         }
     }, [coordinates, map]);
 
