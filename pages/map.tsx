@@ -5,6 +5,7 @@ import styles from "@/styles/search.module.css";
 import useAuthUser from "@/hooks/useAuthUser";
 import Head from "next/head";
 import { usePolygons } from "@/context/MapPolygonsContext";
+import { toast } from "react-toastify";
 import { db } from "@/firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 const q = query(collection(db, "coordinates"));
@@ -44,6 +45,7 @@ function createCenterControl(
         const centerControlDiv = document.createElement("div");
         centerControlDiv.setAttribute("id", "customButton");
         centerControlDiv.appendChild(controlButton);
+        map.current?.controls[google.maps.ControlPosition.TOP_CENTER].pop();
 
         map.current?.controls[google.maps.ControlPosition.TOP_CENTER].push(
             centerControlDiv
@@ -53,7 +55,24 @@ function createCenterControl(
     if (coordinates) {
         const index = coordinates.length - 1;
         var elemEventHandler = () => {
-            dispatch({ type: "POP_COORDINATE", payload: coordinates[index] });
+            toast(
+                <>
+                    <p>Are you sure you want to delete it?</p>
+                    <button
+                        onClick={() =>
+                            dispatch({
+                                type: "POP_COORDINATE",
+                                payload: coordinates[index],
+                            })
+                        }
+                    >
+                        Yes
+                    </button>
+                    {"     "}
+                    <button onClick={() => console.log("close")}>No</button>
+                </>,
+                { autoClose: false }
+            );
         };
 
         controlButton.addEventListener("click", elemEventHandler);
@@ -118,8 +137,9 @@ export default function Map() {
                         fillColor: "#FE4C4C",
                         fillOpacity: 0.5,
                         strokeColor: "#FE4C4C",
-                        strokeWeight: 1,
+                        strokeWeight: 2,
                         strokeOpacity: 1,
+                        geodesic: true,
                     },
                 });
 
@@ -156,11 +176,12 @@ export default function Map() {
 
             initialized.current = new google.maps.Polygon({
                 paths: coordinates,
-                strokeColor: "#FF0000",
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: "#FF0000",
-                fillOpacity: 0.35,
+                fillColor: "#FE4C4C",
+                fillOpacity: 0.5,
+                strokeColor: "#FE4C4C",
+                strokeWeight: 0.1,
+                strokeOpacity: 1,
+                geodesic: true,
             });
 
             initialized.current.setMap(map.current);
