@@ -45,9 +45,9 @@ function createCenterControl(
         const centerControlDiv = document.createElement("div");
         centerControlDiv.setAttribute("id", "customButton");
         centerControlDiv.appendChild(controlButton);
-        map.current?.controls[google.maps.ControlPosition.TOP_CENTER].pop();
+        map.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.pop();
 
-        map.current?.controls[google.maps.ControlPosition.TOP_CENTER].push(
+        map.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.push(
             centerControlDiv
         );
         customButton.current = true;
