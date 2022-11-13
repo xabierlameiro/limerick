@@ -31,25 +31,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     React.useEffect(() => {
         if (notRegistered.current) {
             requestPermission();
-            // if ("serviceWorker" in navigator) {
-            //     navigator.serviceWorker
-            //         .register("/firebase-messaging-sw.js")
-            //         .then(
-            //             (registration) => {
-            //                 console.log(
-            //                     "Service worker registration succeeded:",
-            //                     registration
-            //                 );
-            //             },
-            //             (error) => {
-            //                 console.error(
-            //                     `Service worker registration failed: ${error}`
-            //                 );
-            //             }
-            //         );
-            // } else {
-            //     console.error("Service workers are not supported.");
-            // }
             notRegistered.current = false;
         }
     }, []);
