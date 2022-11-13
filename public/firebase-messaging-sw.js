@@ -28,16 +28,29 @@ const messaging = firebase.messaging();
 
 try {
     messaging.onBackgroundMessage(function (payload) {
-        console.log("Received background message ", payload);
+        console.log(
+            "[firebase-messaging-sw.js] Received background message ",
+            payload
+        );
+        const notification = payload.data;
+        if (!notification) {
+            console.warn(
+                "[firebase-messaging-sw.js] Unknown notification on message ",
+                payload
+            );
+            return;
+        }
 
-        const { title, body, image } = payload.notification ?? {};
-
-        // eslint-disable-next-line no-restricted-globals
-        self.registration.showNotification(title, {
-            body: body,
-            icon: image,
+        const notificationOptions = {
+            ...notification,
+            icon: notification.image,
             lang: "en-IE",
-        });
+        };
+
+        self.registration.showNotification(
+            notification.title,
+            notificationOptions
+        );
     });
 } catch (e) {
     console.error("firebase-messaging-sw.js error", e);
