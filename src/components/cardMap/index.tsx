@@ -43,7 +43,7 @@ const CardMap = ({
             initialized.current = new google.maps.Polygon({
                 paths: coordinates,
                 fillColor: "#FE4C4C",
-                fillOpacity: 0.5,
+                fillOpacity: 0.7,
                 strokeColor: "#FE4C4C",
                 strokeWeight: 0,
                 strokeOpacity: 1,

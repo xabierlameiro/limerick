@@ -45,9 +45,9 @@ function createCenterControl(
         const centerControlDiv = document.createElement("div");
         centerControlDiv.setAttribute("id", "customButton");
         centerControlDiv.appendChild(controlButton);
-        map.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.pop();
+        map?.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.pop();
 
-        map.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.push(
+        map?.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.push(
             centerControlDiv
         );
         customButton.current = true;
@@ -112,7 +112,7 @@ export default function Map() {
         if (ref?.current && !map.current) {
             const mapConfig = new window.google.maps.Map(ref.current, {
                 center: new google.maps.LatLng(52.6571673, -8.6216564),
-                zoom: 15,
+                zoom: 13.2,
                 panControl: false,
                 scaleControl: false,
                 rotateControl: false,
@@ -177,7 +177,7 @@ export default function Map() {
             initialized.current = new google.maps.Polygon({
                 paths: coordinates,
                 fillColor: "#FE4C4C",
-                fillOpacity: 0.5,
+                fillOpacity: 0.7,
                 strokeColor: "#FE4C4C",
                 strokeWeight: 0.1,
                 strokeOpacity: 1,
