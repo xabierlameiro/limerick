@@ -26,26 +26,31 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const router = useRouter();
     const getLayout = Component.getLayout ?? ((page) => page);
     const canonicalUrl = `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`;
+    const notRegistered = React.useRef(true);
 
     React.useEffect(() => {
-        requestPermission();
-
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/firebase-messaging-sw.js").then(
-                (registration) => {
-                    console.log(
-                        "Service worker registration succeeded:",
-                        registration
+        if (notRegistered.current) {
+            requestPermission();
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker
+                    .register("/firebase-messaging-sw.js")
+                    .then(
+                        (registration) => {
+                            console.log(
+                                "Service worker registration succeeded:",
+                                registration
+                            );
+                        },
+                        (error) => {
+                            console.error(
+                                `Service worker registration failed: ${error}`
+                            );
+                        }
                     );
-                },
-                (error) => {
-                    console.error(
-                        `Service worker registration failed: ${error}`
-                    );
-                }
-            );
-        } else {
-            console.error("Service workers are not supported.");
+            } else {
+                console.error("Service workers are not supported.");
+            }
+            notRegistered.current = false;
         }
     }, []);
 
