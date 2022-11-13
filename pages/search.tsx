@@ -19,39 +19,6 @@ function logger(useSWRNext: any) {
 
         const swr = useSWRNext(key, fetcher, config);
 
-        React.useEffect(() => {
-            if (swr.data !== undefined) {
-                if (hash(laggyDataRef.current) !== hash(swr.data)) {
-                    try {
-                        const text = `It has been updated, there are now ${swr?.data?.size}`;
-                        const title = "New change Available!!";
-                        const options = {
-                            body: text,
-                            vibrate: [200, 100, 200],
-                            image: "/rent_share_limerick.jpg",
-                            tag: Math.floor(Math.random() * 1000).toString(),
-                        };
-                        if (!firstRender) {
-                            navigator.serviceWorker.ready.then(
-                                (registration) => {
-                                    registration.showNotification(
-                                        title,
-                                        options
-                                    );
-                                }
-                            );
-                        }
-                    } catch (err) {
-                        toast.error((err as Error).message, {
-                            position: "top-center",
-                        });
-                    }
-                }
-
-                laggyDataRef.current = swr.data;
-            }
-        }, [swr.data, firstRender]);
-
         return useSWRNext(key, fetcher, config);
     };
 }

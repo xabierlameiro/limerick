@@ -28,7 +28,7 @@ const messaging = firebase.messaging();
 
 try {
     messaging.onBackgroundMessage(function (payload) {
-        // console.log('Received background message ', payload);
+        console.log("Received background message ", payload);
 
         const { title, body, image } = payload.notification ?? {};
 
