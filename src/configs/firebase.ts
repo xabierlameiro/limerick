@@ -7,7 +7,7 @@ import {
     updateDoc,
     doc,
 } from "firebase/firestore";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getMessaging, getToken } from "firebase/messaging";
 import { getFirebaseConfig } from "@/configs/firebase-config";
 
 import {
