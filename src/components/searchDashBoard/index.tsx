@@ -6,17 +6,13 @@ import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
 
 const SearchDashBoard = () => {
-    const { data } = useSWR("/api/flats");
+    const { data } = useSWR("/api/flats?number=10&area=58");
     const [display, setDisplay] = React.useState(false);
 
     return (
         <section>
             <h1>Limerick city centre home finder</h1>
             <div className={styles.information}>
-                {/* <p className={styles.textAlignCenter}>
-                    Adverts available in limerick city centre:{" "}
-                    <strong>{data.size}</strong>
-                </p> */}
                 <p className={styles.textAlignCenter}>
                     Showing the <strong>{data.listings.length}</strong> most
                     recent adds

@@ -58,13 +58,15 @@ Page.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getServerSideProps() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/flats`);
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_DOMAIN}/api/flats?number=10&area=58`
+    );
     const result = await response.json();
 
     return {
         props: {
             fallback: {
-                "/api/flats": result,
+                "/api/flats?number=10&area=58": result,
             },
         },
     };

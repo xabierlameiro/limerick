@@ -5,6 +5,9 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
+    const { query } = req;
+    const { number = 10, area = 37 } = query;
+
     const tokenRequest = await fetch(
         `${process.env.NEXT_PUBLIC_DOMAIN}/api/token`
     );
@@ -27,10 +30,10 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: "10",
+            pageSize: number,
         },
         geoFilter: {
-            storedShapeIds: ["37"], //17 county //37 city //58 city centre
+            storedShapeIds: [area], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",
@@ -62,10 +65,10 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: "10",
+            pageSize: number,
         },
         geoFilter: {
-            storedShapeIds: ["37"], //17 county //37 city //58 city centre
+            storedShapeIds: [area], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",
@@ -109,10 +112,8 @@ export default async function handler(
         (a: any, b: any) => b.listing.publishDate - a.listing.publishDate
     );
 
-    const NUM_OF_ELEMENTS = 10;
-
     res.status(200).json({
         size: sortListFromPublishDate.length,
-        listings: sortListFromPublishDate.slice(0, NUM_OF_ELEMENTS),
+        listings: sortListFromPublishDate.slice(0, number),
     });
 }
