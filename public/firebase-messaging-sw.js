@@ -34,7 +34,7 @@ try {
 
         // eslint-disable-next-line no-restricted-globals
         self.registration.showNotification(title, {
-            body,
+            body: body,
             icon: image,
             lang: "en-IE",
         });
