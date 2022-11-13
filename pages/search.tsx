@@ -4,9 +4,6 @@ import { SWRConfig } from "swr";
 import Layout from "@/components/layouts";
 import type { ReactElement } from "react";
 import dynamic from "next/dynamic";
-import hash from "stable-hash";
-import useFirstRender from "@/hooks/useFirstRender";
-import { toast } from "react-toastify";
 
 const SearchDashBoard = dynamic(() => import("@/components/searchDashBoard"), {
     suspense: true,
@@ -14,11 +11,6 @@ const SearchDashBoard = dynamic(() => import("@/components/searchDashBoard"), {
 
 function logger(useSWRNext: any) {
     return (key: any, fetcher: any, config: any) => {
-        const laggyDataRef = React.useRef();
-        const { firstRender } = useFirstRender();
-
-        const swr = useSWRNext(key, fetcher, config);
-
         return useSWRNext(key, fetcher, config);
     };
 }
