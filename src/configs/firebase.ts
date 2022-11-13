@@ -40,10 +40,6 @@ export function requestPermission() {
     })
         .then((currentToken) => {
             if (currentToken) {
-                const messaging = getMessaging();
-                onMessage(messaging, (payload) => {
-                    console.log("Message received. ", payload);
-                });
                 try {
                     setDoc(doc(db, "tokens", currentToken), {
                         token: currentToken,
