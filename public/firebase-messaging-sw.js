@@ -30,17 +30,14 @@ try {
     messaging.onBackgroundMessage(function (payload) {
         // console.log('Received background message ', payload);
 
-        const notificationTitle = payload.notification.title;
-        const notificationOptions = {
-            body: payload.notification.body,
-        };
+        const { title, body, image } = payload.notification ?? {};
 
         // eslint-disable-next-line no-restricted-globals
-        console.log("AKI EL PAYLOAD", payload);
-        self.registration.showNotification(
-            notificationTitle,
-            notificationOptions
-        );
+        self.registration.showNotification(title, {
+            body,
+            icon: image,
+            lang: "en-IE",
+        });
     });
 } catch (e) {
     console.error("firebase-messaging-sw.js error", e);
