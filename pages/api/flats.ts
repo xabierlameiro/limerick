@@ -27,10 +27,10 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: "50",
+            pageSize: "10",
         },
         geoFilter: {
-            storedShapeIds: ["58"], //17 county //37 city //58 city centre
+            storedShapeIds: ["37"], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",
@@ -62,10 +62,10 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: "50",
+            pageSize: "10",
         },
         geoFilter: {
-            storedShapeIds: ["58"], //17 county //37 city //58 city centre
+            storedShapeIds: ["37"], //17 county //37 city //58 city centre
             geoSearchType: "STORED_SHAPES",
         },
         terms: "",

@@ -13,10 +13,10 @@ const SearchDashBoard = () => {
         <section>
             <h1>Limerick city centre home finder</h1>
             <div className={styles.information}>
-                <p className={styles.textAlignCenter}>
+                {/* <p className={styles.textAlignCenter}>
                     Adverts available in limerick city centre:{" "}
                     <strong>{data.size}</strong>
-                </p>
+                </p> */}
                 <p className={styles.textAlignCenter}>
                     Showing the <strong>{data.listings.length}</strong> most
                     recent adds
