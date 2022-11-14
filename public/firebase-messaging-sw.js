@@ -42,10 +42,13 @@ try {
         }
 
         const notificationOptions = {
+            lang: "en-IE",
             body: notification.body,
             icon: notification.image,
-            lang: "en-IE",
+            tag: notification.tag,
             requireInteraction: true,
+            renotify: true,
+            vibrate: [200, 100, 200],
         };
 
         self.registration.showNotification(
@@ -55,11 +58,7 @@ try {
     });
 
     self.addEventListener("notificationclick", (event) => {
-        console.log("On notification click: ", event.notification);
         event.notification.close();
-
-        // This looks to see if the current is already open and
-        // focuses if it is
         event.waitUntil(
             clients
                 .matchAll({
@@ -67,15 +66,8 @@ try {
                     type: "window",
                 })
                 .then((clientList) => {
-                    console.log("clientList", clientList);
-
                     for (const client of clientList) {
-                        if (
-                            client.url ===
-                                "https://couplelookinghomeinlimerick.com/search" &&
-                            "focus" in client
-                        )
-                            return client.focus();
+                        if ("focus" in client) return client.focus();
                     }
                     if (clients.openWindow)
                         return clients.openWindow(client.url);
