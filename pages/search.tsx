@@ -41,6 +41,7 @@ export default function Page({ fallback }: any) {
                     fallback,
                     fetcher: (arg: any, ...args: any) =>
                         fetch(arg, ...args).then((res) => res.json()),
+                    refreshInterval: 300000,
                     refreshWhenHidden: true,
                     refreshWhenOffline: true,
                     // use: [logger],
