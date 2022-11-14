@@ -48,6 +48,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                 fill
             />
             <CardMap
+                display={display}
                 mapReference={mapReference}
                 coordinates={listing.point.coordinates}
             >

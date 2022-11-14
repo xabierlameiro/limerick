@@ -4,6 +4,7 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 const q = query(collection(db, "coordinates"));
 
 const CardMap = ({
+    display,
     children,
     mapReference,
     coordinates: coordinatesMap,
@@ -17,6 +18,10 @@ const CardMap = ({
     const center = React.useMemo(() => {
         return { lat: b, lng: a };
     }, [a, b]);
+
+    React.useEffect(() => {
+        map?.setZoom(14);
+    }, [display]);
 
     React.useEffect(() => {
         const unsuscribe = onSnapshot(q, (querySnapshot) => {
@@ -120,8 +125,8 @@ const CardMap = ({
                         icon: {
                             url: "/rightWord.jpeg",
                             scaledSize: {
-                                width: 40,
-                                height: 40,
+                                width: 30,
+                                height: 30,
                             },
                         },
                     });

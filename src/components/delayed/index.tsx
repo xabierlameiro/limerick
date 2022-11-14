@@ -6,7 +6,7 @@ const Delayed = ({ children, index }: any) => {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setIsShown(true);
-        }, index * 2000);
+        }, index * 1300);
         return () => clearTimeout(timer);
     }, [index]);
     return isShown ? children : null;
