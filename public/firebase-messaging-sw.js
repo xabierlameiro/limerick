@@ -63,6 +63,7 @@ try {
         event.waitUntil(
             clients
                 .matchAll({
+                    includeUncontrolled: true,
                     type: "window",
                 })
                 .then((clientList) => {
