@@ -66,7 +66,11 @@ try {
                     type: "window",
                 })
                 .then((clientList) => {
+                    console.log("clientList", clientList);
+
                     for (const client of clientList) {
+                        const url = new URL(client.url);
+                        console.log("clientList url", url);
                         if (client.url === "/search" && "focus" in client)
                             return client.focus();
                     }
