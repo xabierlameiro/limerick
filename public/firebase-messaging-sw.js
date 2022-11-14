@@ -42,7 +42,7 @@ try {
         }
 
         const notificationOptions = {
-            ...notification,
+            body: notification.body,
             icon: notification.image,
             lang: "en-IE",
             requireInteraction: true,
@@ -53,8 +53,9 @@ try {
             notificationOptions
         );
     });
+
     self.addEventListener("notificationclick", (event) => {
-        console.log("On notification click: ", event.notification.tag);
+        console.log("On notification click: ", event.notification);
         event.notification.close();
 
         // This looks to see if the current is already open and
@@ -65,7 +66,6 @@ try {
                     type: "window",
                 })
                 .then((clientList) => {
-                    console.log("clientList", clientList);
                     for (const client of clientList) {
                         if (client.url === "/search" && "focus" in client)
                             return client.focus();
