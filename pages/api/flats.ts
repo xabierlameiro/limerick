@@ -30,7 +30,7 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: number,
+            pageSize: "50",
         },
         geoFilter: {
             storedShapeIds: [area], //17 county //37 city //58 city centre
@@ -65,7 +65,7 @@ export default async function handler(
         ranges: [],
         paging: {
             from: "0",
-            pageSize: number,
+            pageSize: "50",
         },
         geoFilter: {
             storedShapeIds: [area], //17 county //37 city //58 city centre
