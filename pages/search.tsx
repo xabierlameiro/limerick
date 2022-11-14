@@ -41,10 +41,9 @@ export default function Page({ fallback }: any) {
                     fallback,
                     fetcher: (arg: any, ...args: any) =>
                         fetch(arg, ...args).then((res) => res.json()),
-                    refreshInterval: 20000,
                     refreshWhenHidden: true,
                     refreshWhenOffline: true,
-                    use: [logger],
+                    // use: [logger],
                 }}
             >
                 <SearchDashBoard />
