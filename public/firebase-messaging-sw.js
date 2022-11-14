@@ -70,13 +70,15 @@ try {
                     console.log("clientList", clientList);
 
                     for (const client of clientList) {
-                        const url = new URL(client.url);
-                        console.log("clientList url", url);
-                        if (client.url === "/search" && "focus" in client)
+                        if (
+                            client.url ===
+                                "https://couplelookinghomeinlimerick.com/search" &&
+                            "focus" in client
+                        )
                             return client.focus();
                     }
                     if (clients.openWindow)
-                        return clients.openWindow("/search");
+                        return clients.openWindow(client.url);
                 })
         );
     });
