@@ -14,8 +14,8 @@ const SearchDashBoard = () => {
             <h1>Limerick city centre home finder</h1>
             <div className={styles.information}>
                 <p className={styles.textAlignCenter}>
-                    Showing the <strong>{data.listings.length}</strong> most
-                    recent adds
+                    The <strong>{data.listings.length}</strong> most recent adds
+                    in real time
                 </p>
             </div>
 
