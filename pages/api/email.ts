@@ -49,11 +49,12 @@ export default async function handler(
         name: "Xabier Lameiro",
         email: "xabier.lameiro@gmail.com",
         message:
-            "Hello!!! My name is Xabier and I have seen your rental ad. I am a senior web developer working and living with my partner in Limerick,\n" +
-            " with a Irish family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
+            "Hello!!! a pleasure to greet you I have seen your rental ad. I am a senior webapp developer working and living with my partner in Limerick,\n" +
+            " I have seen your advertisement and I am interested, I've lived with a Irish family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
             " We are looking for accommodation for a long stay, if you want we can talk by WhatsApp and meet to see the house.\n" +
-            " Please get in touch if you need more information. Thanks",
-        phone: "+353 85 883 8479",
+            " Please get in touch if you need more information. Thanks,\n" +
+            " PD: We have no children, no pets, and we are not smokers.",
+        phone: "085 883 8479",
     });
 
     var requestOptions: RequestInit = {
