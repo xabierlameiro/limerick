@@ -47,7 +47,6 @@ try {
             icon: notification.image,
             tag: notification.tag,
             requireInteraction: true,
-            renotify: true,
             vibrate: [200, 100, 200],
         };
 
@@ -59,6 +58,7 @@ try {
 
     self.addEventListener("notificationclick", (event) => {
         event.notification.close();
+        const url = "https://couplelookinghomeinlimerick.com/search";
         event.waitUntil(
             clients
                 .matchAll({
@@ -67,10 +67,10 @@ try {
                 })
                 .then((clientList) => {
                     for (const client of clientList) {
-                        if ("focus" in client) return client.focus();
+                        if (client.url === url && "focus" in client)
+                            return client.focus();
                     }
-                    if (clients.openWindow)
-                        return clients.openWindow(client.url);
+                    if (clients.openWindow) return clients.openWindow(url);
                 })
         );
     });
