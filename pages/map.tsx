@@ -45,7 +45,13 @@ function createCenterControl(
         const centerControlDiv = document.createElement("div");
         centerControlDiv.setAttribute("id", "customButton");
         centerControlDiv.appendChild(controlButton);
-        map?.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.pop();
+        if (
+            map?.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]
+                .length > 0
+        )
+            map?.current?.controls?.[
+                google.maps.ControlPosition.TOP_CENTER
+            ]?.pop();
 
         map?.current?.controls?.[google.maps.ControlPosition.TOP_CENTER]?.push(
             centerControlDiv
@@ -121,9 +127,221 @@ export default function Map() {
                 zoomControl: true,
                 fullscreenControl: true,
                 mapTypeControl: false,
+                styles: [
+                    {
+                        featureType: "administrative",
+                        elementType: "labels.text.fill",
+                        stylers: [
+                            {
+                                color: "#686868",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "landscape",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                color: "#f2f2f2",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "poi",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                visibility: "off",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                saturation: -100,
+                            },
+                            {
+                                lightness: 45,
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                visibility: "simplified",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "geometry.fill",
+                        stylers: [
+                            {
+                                lightness: "-22",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "geometry.stroke",
+                        stylers: [
+                            {
+                                saturation: "11",
+                            },
+                            {
+                                lightness: "-51",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "labels.text",
+                        stylers: [
+                            {
+                                saturation: "3",
+                            },
+                            {
+                                lightness: "-56",
+                            },
+                            {
+                                weight: "2.20",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "labels.text.fill",
+                        stylers: [
+                            {
+                                lightness: "-52",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "labels.text.stroke",
+                        stylers: [
+                            {
+                                weight: "6.13",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "labels.icon",
+                        stylers: [
+                            {
+                                lightness: "-10",
+                            },
+                            {
+                                gamma: "0.94",
+                            },
+                            {
+                                weight: "1.24",
+                            },
+                            {
+                                saturation: "-100",
+                            },
+                            {
+                                visibility: "off",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.arterial",
+                        elementType: "geometry",
+                        stylers: [
+                            {
+                                lightness: "-16",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.arterial",
+                        elementType: "labels.text.fill",
+                        stylers: [
+                            {
+                                saturation: "-41",
+                            },
+                            {
+                                lightness: "-41",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.arterial",
+                        elementType: "labels.text.stroke",
+                        stylers: [
+                            {
+                                weight: "5.46",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.arterial",
+                        elementType: "labels.icon",
+                        stylers: [
+                            {
+                                visibility: "off",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.local",
+                        elementType: "geometry.fill",
+                        stylers: [
+                            {
+                                weight: "0.72",
+                            },
+                            {
+                                lightness: "-16",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "road.local",
+                        elementType: "labels.text.fill",
+                        stylers: [
+                            {
+                                lightness: "-37",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "transit",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                visibility: "off",
+                            },
+                        ],
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "all",
+                        stylers: [
+                            {
+                                color: "#b7e4f4",
+                            },
+                            {
+                                visibility: "on",
+                            },
+                        ],
+                    },
+                ],
             } as google.maps.MapOptions);
 
             map.current = mapConfig;
+
+            new google.maps.Marker({
+                position: { lat: 52.66472, lng: -8.627 },
+                icon: "/cloud-1.svg",
+                map: map.current,
+            });
 
             try {
                 const drawingManager = new google.maps.drawing.DrawingManager({
@@ -131,7 +349,10 @@ export default function Map() {
                     drawingControl: false,
                     drawingControlOptions: {
                         position: google.maps.ControlPosition.TOP_CENTER,
-                        drawingModes: [google.maps.drawing.OverlayType.POLYGON],
+                        drawingModes: [
+                            google.maps.drawing.OverlayType.POLYGON,
+                            google.maps.drawing.OverlayType.MARKER,
+                        ],
                     },
                     polygonOptions: {
                         fillColor: "#FE4C4C",
@@ -144,6 +365,19 @@ export default function Map() {
                 });
 
                 drawingManager.setMap(map.current);
+
+                google.maps.event.addListener(
+                    drawingManager,
+                    "markercomplete",
+                    function (data) {
+                        data.setMap(null);
+                        new google.maps.Marker({
+                            position: data.getPosition(),
+                            icon: "/cloud-1.svg",
+                            map: map.current,
+                        });
+                    }
+                );
 
                 google.maps.event.addListener(
                     drawingManager,
@@ -177,7 +411,7 @@ export default function Map() {
             initialized.current = new google.maps.Polygon({
                 paths: coordinates,
                 fillColor: "#FE4C4C",
-                fillOpacity: 0.7,
+                fillOpacity: 0.2,
                 strokeColor: "#FE4C4C",
                 strokeWeight: 0.1,
                 strokeOpacity: 1,

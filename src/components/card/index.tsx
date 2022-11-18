@@ -3,7 +3,13 @@ import styles from "@/styles/search.module.css";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import noImage600x600 from "public/no-image-600x600.jpg";
-import { TbMailForward, TbMailOff, TbBrandWhatsapp } from "react-icons/tb";
+import {
+    TbMailForward,
+    TbMailOff,
+    TbBrandWhatsapp,
+    TbExternalLink,
+    TbPhonePlus,
+} from "react-icons/tb";
 import { CgCopy } from "react-icons/cg";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
@@ -14,6 +20,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
     const { user } = useAuthUser();
     const [hasEmail, setHasEmail] = React.useState(false);
     const docRef = doc(db, "emails", listing.id.toString());
+    const [selectedPhoto, setSelectedPhoto] = React.useState(0);
 
     React.useEffect(() => {
         async function findDoc() {
@@ -36,12 +43,19 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
     return (
         <div className={styles.card}>
             <Image
+                onClick={() => {
+                    if (listing.media.images?.length - 1 > selectedPhoto) {
+                        setSelectedPhoto((data) => data + 1);
+                    } else {
+                        setSelectedPhoto(0);
+                    }
+                }}
                 className={`${styles.image} ${
                     !display ? styles.noDisplay : ""
                 }`}
                 src={
-                    listing.media.totalImages > 0
-                        ? listing.media.images?.[0].size600x600
+                    listing.media.images?.length > 0
+                        ? listing.media.images?.[selectedPhoto]?.size600x600
                         : noImage600x600
                 }
                 alt={listing.title}
@@ -129,6 +143,33 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                         />
                     )}
                     {hasEmail && <TbMailOff className={styles.noMailIcon} />}
+                    <a
+                        title="Link to rent advert"
+                        href={`https://www.daft.ie${listing.seoFriendlyPath}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <TbExternalLink className={styles.externalLink} />
+                    </a>
+                    {listing.seller.phone && (
+                        <TbPhonePlus
+                            onClick={() => {
+                                toast.success(
+                                    `Phone copied ${listing.seller.phone}`,
+                                    {
+                                        hideProgressBar: true,
+                                        position: "bottom-right",
+                                        autoClose: 1000,
+                                        toastId: listing.title,
+                                    }
+                                );
+                                navigator.clipboard.writeText(
+                                    listing.seller.phone
+                                );
+                            }}
+                            className={styles.copyPhone}
+                        />
+                    )}
                 </>
             )}
         </div>

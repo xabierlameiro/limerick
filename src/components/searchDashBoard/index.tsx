@@ -1,7 +1,6 @@
 import React from "react";
 import useSWR from "swr";
 import styles from "../../../styles/search.module.css";
-import Image from "next/image";
 import { TbMapSearch, TbHome } from "react-icons/tb";
 import Flats from "@/components/flats";
 
