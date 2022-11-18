@@ -3,8 +3,12 @@ import Link from "next/link";
 import React from "react";
 import useAuthUser from "@/hooks/useAuthUser";
 import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
+import RenderManager from "@/components/RenderManager";
 
-const Header = () => {
+type headerProps = {
+    title?: string;
+};
+const Header = ({ title }: headerProps) => {
     const { user } = useAuthUser();
 
     return (
@@ -28,6 +32,13 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+            {title ? (
+                <RenderManager hideOnMobile>
+                    <h1 className={styles.h1}>{title}</h1>
+                </RenderManager>
+            ) : (
+                <div />
+            )}
             <div className={styles.login}>
                 {!user && (
                     <MdOutlineLogin
@@ -90,7 +101,7 @@ const Header = () => {
                     />
                 )}
                 {user && (
-                    <>
+                    <div className={styles.userLogin}>
                         <span>Hi, Xabier</span>
                         <MdOutlineLogout
                             className={styles.loginIcon}
@@ -103,7 +114,7 @@ const Header = () => {
                                     .catch(() => {});
                             }}
                         />
-                    </>
+                    </div>
                 )}
             </div>
         </header>

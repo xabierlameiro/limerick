@@ -1,11 +1,11 @@
 .grid {
     display: grid;
-    width: 100vw;
+    width: inherit;
     max-width: 1752px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: 520px;
     grid-gap: 20px;
-    padding: 0 20px 20px 20px;
+    padding: 0 0 20px 0;
     scroll-behavior: smooth;
 }
 
@@ -54,20 +54,15 @@
 }
 
 .mapIcon {
-    position: fixed;
-    bottom: 10px;
-    right: 25px;
     cursor: pointer;
-    background-color: #000;
-    opacity: 0.5;
+    top: 0;
+    color: #fff;
 }
 
 .information {
     border: 1px solid #fff;
-    margin: 0 20px 20px;
     padding: 5px 10px;
     max-width: 400px;
-    width: calc(100vw - 40px);
 }
 
 .information strong {
@@ -126,7 +121,6 @@
 }
 
 .title {
-    width: 85%;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -144,10 +138,10 @@
 }
 
 .mapContainer {
-    z-index: 0;
-    width: 90vw;
-    margin: 0 auto;
-    position: relative;
+    width: 100vw;
+    padding: 0 20px;
+    min-height: 100%;
+    height: 100%;
 }
 .remove {
     position: absolute;
@@ -159,7 +153,7 @@
 .externalLink {
     color: #000;
     position: absolute;
-    bottom: 86px;
+    bottom: 84px;
     right: 8px;
     font-size: 32px;
 }
@@ -167,7 +161,7 @@
 .copyPhone {
     color: #000;
     position: absolute;
-    bottom: 50px;
+    bottom: 46px;
     right: 8px;
     font-size: 32px;
     cursor: pointer;
@@ -175,4 +169,17 @@
 
 .image {
     cursor: e-resize;
+}
+
+.informationBox {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px;
+    align-items: center;
+}
+
+.searchPage {
+    margin: 0 20px;
+    width: calc(100vw - 40px);
+    height: 100%;
 }

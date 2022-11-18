@@ -54,7 +54,7 @@ export default function Page({ fallback }: any) {
 }
 
 Page.getLayout = function getLayout(page: ReactElement) {
-    return <Layout>{page}</Layout>;
+    return <Layout title="Limerick city centre home finder">{page}</Layout>;
 };
 
 export async function getServerSideProps() {

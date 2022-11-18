@@ -10,7 +10,6 @@ import {
     TbExternalLink,
     TbPhonePlus,
 } from "react-icons/tb";
-import { CgCopy } from "react-icons/cg";
 import useAuthUser from "@/hooks/useAuthUser";
 import { setDoc, db, doc, getDoc } from "@/firebase";
 import TimeCounter from "@/components/timeCounter";
@@ -83,7 +82,6 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                 }}
             >
                 {listing.title.slice(0, -14)}
-                <CgCopy className={styles.copy} />
             </div>
             <div>
                 Price <strong>{listing.price}</strong>

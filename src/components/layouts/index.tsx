@@ -20,13 +20,14 @@ const Coookies = dynamic(
 
 type Props = {
     children: ReactElement;
+    title?: string;
 };
 
-export default function Layout({ children }: Props) {
+export default function Layout({ title, children }: Props) {
     return (
         <>
             <Suspense fallback={<Loading />}>
-                <Header />
+                <Header title={title} />
             </Suspense>
             {children}
             <Suspense fallback={<Loading />}>

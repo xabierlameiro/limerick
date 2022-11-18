@@ -8,6 +8,7 @@ import { usePolygons } from "@/context/MapPolygonsContext";
 import { toast } from "react-toastify";
 import { db } from "@/firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
+import useWindowResize from "@/hooks/useWidowResize";
 const q = query(collection(db, "coordinates"));
 
 function createCenterControl(
@@ -95,6 +96,7 @@ export default function Map() {
     const [coordinates, setCoordinates] = React.useState();
     const { user } = useAuthUser();
     const { dispatch } = usePolygons();
+    const { isMobile } = useWindowResize();
 
     React.useEffect(() => {
         const unsuscribe = onSnapshot(q, (querySnapshot) => {
@@ -117,7 +119,7 @@ export default function Map() {
     React.useEffect(() => {
         if (ref?.current && !map.current) {
             const mapConfig = new window.google.maps.Map(ref.current, {
-                center: new google.maps.LatLng(52.6571673, -8.6216564),
+                center: new google.maps.LatLng(52.66, -8.6216564),
                 zoom: 13.2,
                 panControl: false,
                 scaleControl: false,
@@ -405,6 +407,11 @@ export default function Map() {
     }, [ref, map]);
 
     React.useEffect(() => {
+        map.current?.setZoom(isMobile ? 12.5 : 12);
+        map.current?.setCenter({ lat: 52.66472, lng: -8.627 });
+    }, [isMobile, map]);
+
+    React.useEffect(() => {
         if (Array.isArray(coordinates)) {
             initialized?.current?.setMap(null);
 
@@ -455,7 +462,6 @@ export default function Map() {
                 />
                 <meta name="robots" content="all" />
             </Head>
-            <h1>Map of the least recommended areas</h1>
             <div className={styles.mapContainer}>
                 <div ref={ref} className={styles.otroMapa} />
             </div>
@@ -463,5 +469,7 @@ export default function Map() {
     );
 }
 Map.getLayout = function getLayout(page: ReactElement) {
-    return <Layout>{page}</Layout>;
+    return (
+        <Layout title={`"Less" recommended areas of Limerick`}>{page}</Layout>
+    );
 };
