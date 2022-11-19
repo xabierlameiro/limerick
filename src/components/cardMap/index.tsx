@@ -124,10 +124,7 @@ const CardMap = ({
                     const RightWordMarker = new google.maps.Marker({
                         icon: {
                             url: "/rightWord.jpeg",
-                            scaledSize: {
-                                width: 30,
-                                height: 30,
-                            },
+                            scaledSize: new google.maps.Size(30, 30),
                         },
                     });
                     RightWordMarker.setMap(map);
