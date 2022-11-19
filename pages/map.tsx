@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import { db } from "@/firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import useWindowResize from "@/hooks/useWidowResize";
+import useSWR from "swr";
+
 const q = query(collection(db, "coordinates"));
 
 function createCenterControl(
@@ -87,6 +89,8 @@ function createCenterControl(
 }
 
 export default function Map() {
+    const { data: { url, grade } = {} } = useSWR("/api/weather");
+
     const ref = React.createRef<HTMLDivElement>();
     const map = React.useRef<google.maps.Map>();
     const drawing = React.useRef<google.maps.drawing.DrawingManager>();
@@ -339,12 +343,6 @@ export default function Map() {
 
             map.current = mapConfig;
 
-            new google.maps.Marker({
-                position: { lat: 52.66472, lng: -8.627 },
-                icon: "/cloud-1.svg",
-                map: map.current,
-            });
-
             try {
                 const drawingManager = new google.maps.drawing.DrawingManager({
                     drawingMode: google.maps.drawing.OverlayType.POLYGON,
@@ -407,7 +405,25 @@ export default function Map() {
     }, [ref, map]);
 
     React.useEffect(() => {
-        map.current?.setZoom(isMobile ? 12.5 : 12);
+        if (typeof url !== "undefined")
+            new google.maps.Marker({
+                position: { lat: 52.66472, lng: -8.627 },
+                icon: {
+                    url: url,
+                    scaledSize: new google.maps.Size(100, 100),
+                },
+                map: map.current,
+                animation: google.maps.Animation.DROP,
+                label: {
+                    text: grade,
+                    fontSize: "22px",
+                    fontWeight: "bold",
+                },
+            });
+    }, [map, url, grade]);
+
+    React.useEffect(() => {
+        map.current?.setZoom(isMobile ? 12.5 : 13);
         map.current?.setCenter({ lat: 52.66472, lng: -8.627 });
     }, [isMobile, map]);
 

@@ -21,7 +21,7 @@ const nextConfig = {
     productionBrowserSourceMaps: false,
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
     images: {
-        domains: ["media.daft.ie", "ss"],
+        domains: ["media.daft.ie", "ss", "gstatic.com"],
     },
     async redirects() {
         return [

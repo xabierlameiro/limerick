@@ -12,6 +12,7 @@ import { ToastContainer, Slide } from "react-toastify";
 import { requestPermission } from "@/firebase";
 import { MapPolygonsProvider } from "@/context/MapPolygonsContext";
 import { Wrapper } from "@googlemaps/react-wrapper";
+import { SWRConfig } from "swr";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -69,12 +70,20 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
                     `}
                 </Script>
             )}
+
             <Wrapper
                 apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}&libraries=drawing`}
                 render={() => <h1>loading..</h1>}
             >
                 <MapPolygonsProvider>
-                    <Component {...pageProps} />
+                    <SWRConfig
+                        value={{
+                            fetcher: (arg: any, ...args: any) =>
+                                fetch(arg, ...args).then((res) => res.json()),
+                        }}
+                    >
+                        <Component {...pageProps} />
+                    </SWRConfig>
                 </MapPolygonsProvider>
             </Wrapper>
             <ToastContainer transition={Slide} />
