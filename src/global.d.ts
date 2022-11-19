@@ -4,11 +4,6 @@ declare module "*.mdx" {
 }
 
 declare namespace google.maps {
-    class Size {
-        width: number;
-        height: number;
-        equals?(other: Size): boolean;
-    }
     class DirectionsService {
         route(
             request: DirectionsRequest,
