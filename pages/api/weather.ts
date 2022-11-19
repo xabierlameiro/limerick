@@ -62,10 +62,12 @@ export default async function handler(
     );
     const dataString = await response.text();
 
-    const grade = dataString.substring(
-        dataString.indexOf('id="wob_tm" style="display:inline">') + 35,
-        dataString.indexOf('id="wob_tm" style="display:inline">') + 36
+    const pre = dataString.substring(
+        dataString.indexOf('id="wob_tm" style="display:inline">') + 33,
+        dataString.indexOf('id="wob_tm" style="display:inline">') + 38
     );
+
+    const grade = pre.substring(pre.indexOf(">") + 1, pre.indexOf("<"));
 
     const example2 = dataString.substring(
         dataString.indexOf('id="wob_tci"') - 2,

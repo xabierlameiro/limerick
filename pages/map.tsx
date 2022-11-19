@@ -97,6 +97,7 @@ export default function Map() {
     const polygon = React.useRef<google.maps.Polygon>();
     const customButton = React.useRef<boolean>();
     const initialized = React.useRef<any>();
+    const weatherMark = React.useRef<any>();
     const [coordinates, setCoordinates] = React.useState();
     const { user } = useAuthUser();
     const { dispatch } = usePolygons();
@@ -405,8 +406,9 @@ export default function Map() {
     }, [ref, map]);
 
     React.useEffect(() => {
-        if (typeof url !== "undefined")
-            new google.maps.Marker({
+        weatherMark.current?.setMap(null);
+        if (typeof url !== "undefined") {
+            weatherMark.current = new google.maps.Marker({
                 position: { lat: 52.66472, lng: -8.627 },
                 icon: {
                     url: url,
@@ -420,6 +422,7 @@ export default function Map() {
                     fontWeight: "bold",
                 },
             });
+        }
     }, [map, url, grade]);
 
     React.useEffect(() => {
