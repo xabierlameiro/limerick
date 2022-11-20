@@ -13,6 +13,8 @@ import { requestPermission } from "@/firebase";
 import { MapPolygonsProvider } from "@/context/MapPolygonsContext";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { SWRConfig } from "swr";
+import Router from "next/router";
+import Loading from "@/components/loading";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -24,10 +26,28 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     const consent = getCookie("cookies-consents");
+    const [loading, setLoading] = React.useState(false);
     const router = useRouter();
     const getLayout = Component.getLayout ?? ((page) => page);
     const canonicalUrl = `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`;
     const notRegistered = React.useRef(true);
+
+    React.useEffect(() => {
+        const start = () => {
+            setLoading(true);
+        };
+        const end = () => {
+            setLoading(false);
+        };
+        Router.events.on("routeChangeStart", start);
+        Router.events.on("routeChangeComplete", end);
+        Router.events.on("routeChangeError", end);
+        return () => {
+            Router.events.off("routeChangeStart", start);
+            Router.events.off("routeChangeComplete", end);
+            Router.events.off("routeChangeError", end);
+        };
+    }, []);
 
     React.useEffect(() => {
         if (notRegistered.current) {
@@ -71,22 +91,30 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
                 </Script>
             )}
 
-            <Wrapper
-                apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}&libraries=drawing`}
-                render={() => <h1>loading..</h1>}
-            >
-                <MapPolygonsProvider>
-                    <SWRConfig
-                        value={{
-                            fetcher: (arg: any, ...args: any) =>
-                                fetch(arg, ...args).then((res) => res.json()),
-                        }}
+            {loading ? (
+                <Loading />
+            ) : (
+                <>
+                    <Wrapper
+                        apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API}&libraries=drawing`}
+                        render={() => <Loading />}
                     >
-                        <Component {...pageProps} />
-                    </SWRConfig>
-                </MapPolygonsProvider>
-            </Wrapper>
-            <ToastContainer transition={Slide} />
+                        <MapPolygonsProvider>
+                            <SWRConfig
+                                value={{
+                                    fetcher: (arg: any, ...args: any) =>
+                                        fetch(arg, ...args).then((res) =>
+                                            res.json()
+                                        ),
+                                }}
+                            >
+                                <Component {...pageProps} />
+                            </SWRConfig>
+                        </MapPolygonsProvider>
+                    </Wrapper>
+                    <ToastContainer transition={Slide} />
+                </>
+            )}
         </>
     );
 }
