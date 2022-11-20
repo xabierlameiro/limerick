@@ -417,6 +417,7 @@ export default function Map() {
                 map: map.current,
                 animation: google.maps.Animation.DROP,
                 label: {
+                    className: "weather-grades",
                     text: grade,
                     fontSize: "22px",
                     fontWeight: "bold",

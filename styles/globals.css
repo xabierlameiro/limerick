@@ -6,6 +6,25 @@ body {
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     min-height: 100vh;
 }
+@keyframes myAnimation {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    100% {
+        display: block;
+
+        opacity: 1;
+    }
+}
+
+.weather-grades {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    animation-name: myAnimation;
+    animation-duration: 6000ms;
+}
 html {
     scroll-behavior: smooth;
 }
