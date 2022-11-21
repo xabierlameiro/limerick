@@ -60,7 +60,9 @@ const Header = ({ title }: headerProps) => {
                                             const user = result.user;
                                             if (
                                                 user.email !==
-                                                "xabier.lameiro@gmail.com"
+                                                    "xabier.lameiro@gmail.com" &&
+                                                user.email !==
+                                                    "maria.otero.ces@gmail.com"
                                             ) {
                                                 signOut(auth)
                                                     .then(() => {
