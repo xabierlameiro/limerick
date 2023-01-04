@@ -43,7 +43,7 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
         <div className={styles.card}>
             <Image
                 onClick={() => {
-                    if (listing.media.images?.length - 1 > selectedPhoto) {
+                    if (listing?.media.images?.length - 1 > selectedPhoto) {
                         setSelectedPhoto((data) => data + 1);
                     } else {
                         setSelectedPhoto(0);
@@ -53,8 +53,8 @@ export const Card = ({ listing, children, mapReference, display }: any) => {
                     !display ? styles.noDisplay : ""
                 }`}
                 src={
-                    listing.media.images?.length > 0
-                        ? listing.media.images?.[selectedPhoto]?.size600x600
+                    listing?.media.images?.length > 0
+                        ? listing?.media.images?.[selectedPhoto]?.size600x600
                         : noImage600x600
                 }
                 alt={listing.title}
