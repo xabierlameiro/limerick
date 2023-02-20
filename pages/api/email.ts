@@ -46,7 +46,7 @@ export default async function handler(
 
     var raw = JSON.stringify({
         adId: id,
-        name: "María Jose Otero && Xabier Lameiro",
+        name: "Maria Jose Otero and Xabier Lameiro",
         email: "xabier.lameiro@gmail.com",
         message:
             "Hello, I´m Maria, my couple and I are interested in this area. My partner is a programmer and he telecommute from home and I'm teacher in Westbury Preschool.\n" +
