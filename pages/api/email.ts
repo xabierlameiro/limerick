@@ -46,15 +46,14 @@ export default async function handler(
 
     var raw = JSON.stringify({
         adId: id,
-        name: "Xabier Lameiro",
+        name: "María Jose Otero && Xabier Lameiro",
         email: "xabier.lameiro@gmail.com",
         message:
-            "Hello!!! a pleasure to greet you I have seen your rental ad. I am a senior webapp developer working and living with my partner in Limerick,\n" +
-            " I have seen your advertisement and I am interested, I've lived with a Irish family who can give references. I also have a letter of recommendation from my company and my last landlady.\n" +
-            " We are looking for accommodation for a long stay, if you want we can talk by WhatsApp and meet to see the house.\n" +
-            " Please get in touch if you need more information. Thanks,\n" +
-            " PD: We have no children, no pets, and we are not smokers.",
-        phone: "085 883 8479",
+            "Hello, I´m Maria, my couple and I are interested in this area. My partner is a programmer and he telecommute from home and I'm teacher in Westbury Preschool.\n" +
+            "We are quite and clean, we don't smoke and we don't have pets. We have references if you need from our previus landlady , also we have references from the work.\n" +
+            "I would like to know if we can make an appointment to see the house because I think It would be perfect place for us. And of course if you need to know anything more about us,\n" +
+            "do not hesitate to ask me. Thank you very much, Regards, Xabier and Maria",
+        phone: "+353 85 883 8479",
     });
 
     var requestOptions: RequestInit = {
